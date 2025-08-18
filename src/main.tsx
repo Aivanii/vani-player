@@ -1,13 +1,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
+import Main from "./pages/main.tsx";
 
 import { Header } from "./entities/header.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Header />
-    <App />
+    <Main />
   </StrictMode>
 );
