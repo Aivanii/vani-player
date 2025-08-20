@@ -1,4 +1,4 @@
-import { AudioPlayer } from "../entities/audioPlayer";
+import { AudioPlayer } from "../entities/audioPlayer/audioPlayer";
 
 function Main() {
   return (

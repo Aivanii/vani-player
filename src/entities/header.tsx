@@ -14,9 +14,9 @@ const Header = () => {
               <path
                 d="M9 19v-7l8-2v7"
                 stroke="#FFD700"
-                stroke-width="2.1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>
               <defs>
                 <linearGradient
@@ -27,9 +27,9 @@ const Header = () => {
                   y2="28"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#43E97B"></stop>
-                  <stop offset="0.5" stop-color="#38F9D7"></stop>
-                  <stop offset="1" stop-color="#FF6A88"></stop>
+                  <stop stopColor="#43E97B"></stop>
+                  <stop offset="0.5" stopColor="#38F9D7"></stop>
+                  <stop offset="1" stopColor="#FF6A88"></stop>
                 </linearGradient>
               </defs>
             </svg>

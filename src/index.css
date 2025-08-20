@@ -33,9 +33,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-
-  --gradient-variant-1: linear-gradient(37deg,rgba(255, 222, 239, 1) 0%, rgba(247, 141, 141, 1) 100%);
-  --gradient-variant-2: linear-gradient(135deg,rgba(173, 247, 158, 1) 0%, rgba(64, 169, 179, 1) 50%, rgba(247, 141, 141, 1) 100%);
+  --gradient-variant-1: linear-gradient(
+    37deg,
+    rgba(255, 222, 239, 1) 0%,
+    rgba(247, 141, 141, 1) 100%
+  );
+  --gradient-variant-2: linear-gradient(
+    135deg,
+    rgba(173, 247, 158, 1) 0%,
+    rgba(64, 169, 179, 1) 50%,
+    rgba(247, 141, 141, 1) 100%
+  );
 }
 
 body {
@@ -68,6 +76,7 @@ input:focus-visible {
 }
 
 button {
+  cursor: pointer;
   padding: 8px;
   min-width: 36px;
   border-radius: 9999px;
@@ -75,14 +84,18 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+button:hover {
+  transform: scale(1.15);
 }
 
-main button:nth-child(even){
+main button:nth-child(even) {
   background: var(--gradient-variant-1);
   color: black;
 }
 
-main button:nth-child(odd){
+main button:nth-child(odd) {
   background: var(--gradient-variant-2);
 }
 
@@ -93,6 +106,7 @@ a {
 a:hover {
   color: var(--color-hover);
 }
+
 /*
 @media (prefers-color-scheme: light) {
   :root {
