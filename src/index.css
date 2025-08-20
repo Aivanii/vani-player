@@ -69,18 +69,20 @@ input:focus-visible {
 
 button {
   padding: 8px;
-  height: 36px;
   min-width: 36px;
   border-radius: 9999px;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.entity button:nth-child(even){
+main button:nth-child(even){
   background: var(--gradient-variant-1);
   color: black;
 }
 
-.entity button:nth-child(odd){
+main button:nth-child(odd){
   background: var(--gradient-variant-2);
 }
 
