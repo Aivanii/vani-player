@@ -35,8 +35,8 @@
 
   --gradient-variant-1: linear-gradient(
     37deg,
-    rgba(255, 222, 239, 1) 0%,
-    rgba(247, 141, 141, 1) 100%
+    rgb(240, 198, 198) 0%,
+    rgb(243, 114, 114) 100%
   );
   --gradient-variant-2: linear-gradient(
     135deg,
@@ -105,6 +105,15 @@ a {
 
 a:hover {
   color: var(--color-hover);
+}
+
+.bg-progressAudioGradient {
+  background: linear-gradient(
+    135deg,
+    rgba(173, 247, 158, 1) 0%,
+    rgba(64, 169, 179, 1) 50%,
+    rgba(247, 141, 141, 1) 100%
+  );
 }
 
 /*

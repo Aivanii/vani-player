@@ -1,11 +1,18 @@
 import { useEffect, useRef, useState, type ReactElement } from "react";
 import { handlePlay } from "./tools/handlePlay";
+import { formatTime } from "./tools/formatTime";
+import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 
 const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
+  const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const playBtnRef = useRef<HTMLButtonElement>(null);
+  const progressAudioRef = useRef<HTMLDivElement>(null);
 
+  //audio play/stop button
   useEffect(() => {
     const audio = audioRef.current;
     const playBtn = playBtnRef.current;
@@ -23,18 +30,53 @@ const AudioPlayer = () => {
     };
   }, []);
 
+  //audio change audioDurationMS
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleLoadedMetadata = () => {
+      setAudioDurationMS(audio.duration * 1000);
+    };
+
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+
+    if (audio.duration > 0) {
+      setAudioDurationMS(audio.duration);
+    }
+
+    return () => {
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    };
+  }, []);
+
+  //audio change currentAudioTimeMs
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleTimeUpdate = () => {
+      setCurrentAudioTimeMS(audio.currentTime * 1000);
+    };
+
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, []);
+
   return (
     <main className="w-full max-w-4xl p-6 flex justify-center items-center flex-col border-standart-border border-1 rounded-md shadow-standart bg-entity-bg">
       <audio
         id="audio"
         loop={false}
         muted={false}
-        controls
         preload="metadata"
         src="https://dl1.mp3party.net/online/4414262.mp3"
         ref={audioRef}
       ></audio>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-col">
         <div className="inline-block">
           <img
             className="w-32 h-32 rounded-md object-cover shadow-[0_0_0_4px_#ffffff1f]"
@@ -75,6 +117,23 @@ const AudioPlayer = () => {
               alt="next track"
             />
           </button>
+        </div>
+        <div className="flex flex-row justify-between items-center gap-4 mt-4">
+          <span>{formatTime(currentAudioTimeMS)}</span>
+          <div className="relative block">
+            <div className="relative w-48 h-1 bg-[#3D4F64] z-10 rounded-md"></div>
+            <div
+              className={`absolute top-0 left-0 h-1 bg-progressAudioGradient z-20 rounded-md`}
+              style={{
+                width: calculateProgressAudio(
+                  currentAudioTimeMS,
+                  audioDurationMS
+                ),
+              }}
+              ref={progressAudioRef}
+            ></div>
+          </div>
+          <span>{formatTime(audioDurationMS)}</span>
         </div>
       </div>
     </main>
