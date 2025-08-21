@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactElement } from "react";
 import { handlePlay } from "./tools/handlePlay";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
+import { changePlayedTime } from "./tools/changePlayedTime";
 
 const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -10,7 +11,7 @@ const AudioPlayer = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const playBtnRef = useRef<HTMLButtonElement>(null);
-  const progressAudioRef = useRef<HTMLDivElement>(null);
+  const progressAudioStaticRef = useRef<HTMLDivElement>(null);
 
   //audio play/stop button
   useEffect(() => {
@@ -50,22 +51,36 @@ const AudioPlayer = () => {
     };
   }, []);
 
-  //audio change currentAudioTimeMs
+  //audio change currentAudioTimeMS by user
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+    const audioBarStatic = progressAudioStaticRef.current;
 
-    const handleTimeUpdate = () => {
-      setCurrentAudioTimeMS(audio.currentTime * 1000);
-    };
+    if (!audioBarStatic) return;
 
-    audio.addEventListener("timeupdate", handleTimeUpdate);
+    const handleChangingTimeByUser = changePlayedTime(
+      audioBarStatic,
+      audioDurationMS,
+      setCurrentAudioTimeMS
+    );
+
+    if (!handleChangingTimeByUser) return;
+
+    audioBarStatic.addEventListener("click", handleChangingTimeByUser);
 
     return () => {
-      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audioBarStatic.removeEventListener("click", handleChangingTimeByUser);
     };
-  }, []);
+  }, [audioDurationMS]);
 
+  //audio change currentAudioTimeMS when time changes
+  useEffect(() => {
+    const audio = audioRef.current;
+    
+    if(!audio) return;
+
+    audio.currentTime = currentAudioTimeMS / 1000;
+  }, [currentAudioTimeMS])
+  
   return (
     <main className="w-full max-w-4xl p-6 flex justify-center items-center flex-col border-standart-border border-1 rounded-md shadow-standart bg-entity-bg">
       <audio
@@ -120,17 +135,19 @@ const AudioPlayer = () => {
         </div>
         <div className="flex flex-row justify-between items-center gap-4 mt-4">
           <span>{formatTime(currentAudioTimeMS)}</span>
-          <div className="relative block">
-            <div className="relative w-48 h-1 bg-[#3D4F64] z-10 rounded-md"></div>
+          <div className="relative block h-1 hover:h-2">
             <div
-              className={`absolute top-0 left-0 h-1 bg-progressAudioGradient z-20 rounded-md`}
+              className="relative w-48 h-full bg-[#3D4F64] z-10 rounded-md cursor-pointer"
+              ref={progressAudioStaticRef}
+            ></div>
+            <div
+              className={`absolute top-0 left-0 h-full bg-progressAudioGradient z-20 rounded-md pointer-events-none`}
               style={{
                 width: calculateProgressAudio(
                   currentAudioTimeMS,
                   audioDurationMS
                 ),
               }}
-              ref={progressAudioRef}
             ></div>
           </div>
           <span>{formatTime(audioDurationMS)}</span>
