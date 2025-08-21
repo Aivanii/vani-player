@@ -4,7 +4,19 @@ import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
 
+import type { Song } from "./tools/types";
+
+import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
+
 const AudioPlayer = () => {
+  const [activeSong, setActiveSong] = useState<Song>({
+    authorName: "Rin Tezuka",
+    songName: "Something cool",
+    songThumbnail:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBjIooFlTgcIGVC7PnaFLc9x1CMZxrBFVsaw&s",
+    songUrl: "https://dl1.mp3party.net/online/10471206.mp3",
+  });
+
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
@@ -91,23 +103,39 @@ const AudioPlayer = () => {
   }, []);
 
   return (
-    <main className="w-full max-w-4xl p-6 flex justify-center items-center flex-col border-standart-border border-1 rounded-md shadow-standart bg-entity-bg">
-      <audio
-        id="audio"
-        loop={false}
-        muted={false}
-        preload="metadata"
-        src="https://dl1.mp3party.net/online/4414262.mp3"
-        ref={audioRef}
-      ></audio>
-      <div className="flex justify-between items-center flex-col">
-        <div className="inline-block">
-          <img
-            className="w-32 h-32 rounded-md object-cover shadow-[0_0_0_4px_#ffffff1f]"
-            src="https://i.ytimg.com/vi/N3I7V6zvnVI/maxresdefault.jpg"
-            alt="audio preview"
-          />
+    <main
+      className="w-full max-w-4xl p-6 flex items-center flex-row border-standart-border border-1 
+      rounded-4xl shadow-standart bg-entity-bg"
+    >
+      <div className="flex gap-4 flex-col">
+        <audio
+          id="audio"
+          loop={false}
+          muted={false}
+          preload="metadata"
+          src={activeSong.songUrl}
+          ref={audioRef}
+        ></audio>
+
+        <div className="flex justify-between items-center flex-col">
+          <div className="inline-block">
+            <img
+              className="w-52 h-52 rounded-md object-cover shadow-[0_0_0_4px_#ffffff1f]"
+              src={activeSong.songThumbnail}
+              alt="audio preview"
+            />
+          </div>
         </div>
+        <span className="text-2xl text-center font-bold w-50 truncate">
+          {activeSong.songName}
+        </span>
+        <span className="text-center text-important w-50 truncate">
+          by {activeSong.authorName}
+        </span>
+      </div>
+
+      <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full">
+        <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex gap-6 items-center">
           <button className="aspect-square h-12">
             <img
@@ -142,11 +170,13 @@ const AudioPlayer = () => {
             />
           </button>
         </div>
-        <div className="flex flex-row justify-between items-center gap-4 mt-4">
-          <span>{formatTime(currentAudioTimeMS)}</span>
+        <div className="flex justify-around items-center gap-4 ">
+          <span className="cursor-default text-important">
+            {formatTime(currentAudioTimeMS)}
+          </span>
           <div className="relative block h-1 hover:h-2">
             <div
-              className="relative w-48 h-full bg-[#3D4F64] z-10 rounded-md cursor-pointer"
+              className="relative w-64 h-full bg-progressAudioGradient opacity-15 z-10 rounded-md cursor-pointer"
               ref={progressAudioStaticRef}
             ></div>
             <div
@@ -159,7 +189,9 @@ const AudioPlayer = () => {
               }}
             ></div>
           </div>
-          <span>{formatTime(audioDurationMS)}</span>
+          <span className="cursor-default text-important">
+            {formatTime(audioDurationMS)}
+          </span>
         </div>
       </div>
     </main>

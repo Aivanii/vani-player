@@ -1,0 +1,33 @@
+/* audioVisualizer.styles.css */
+.wave-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 96px;
+  width: 152px;
+}
+
+.wave-bar {
+  width: 4px;
+  background: var(--gradient-variant-1);
+  border-radius: 2px;
+  height: 10px; /* начальная высота */
+  transition: height 0.3s ease;
+}
+
+.wave-container.playing .wave-bar {
+  animation: waveAnimation 0.5s ease-in-out infinite;
+}
+
+.wave-container.paused .wave-bar {
+  animation: none;
+}
+
+@keyframes waveAnimation {
+  0%, 100% {
+    height: 10%;
+  }
+  50% {
+    height: 50%;
+  }
+}

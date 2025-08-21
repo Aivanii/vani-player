@@ -8,6 +8,8 @@
   --color-primary: rgba(255, 255, 255, 0.87);
   /* hovered interactive text */
   --color-hover: #dbae0a;
+  /* important text */
+  --color-important: gold;
 
   /* for main containers in entities */
   --color-entity-bg: #2a2c31;
@@ -33,17 +35,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --gradient-variant-1: linear-gradient(
-    37deg,
-    rgb(240, 198, 198) 0%,
-    rgb(243, 114, 114) 100%
-  );
   --gradient-variant-2: linear-gradient(
-    135deg,
-    rgba(173, 247, 158, 1) 0%,
-    rgba(64, 169, 179, 1) 50%,
-    rgba(247, 141, 141, 1) 100%
+    35deg,
+    rgb(185, 99, 255) 0%,
+    rgb(160, 255, 176) 100%
   );
+  --gradient-variant-1: linear-gradient(
+    135deg,
+    rgba(152, 255, 118, 0.8) 0%,
+    rgba(85, 192, 216, 0.8) 50%,
+    rgba(234, 247, 64, 0.8) 100%
+);
 }
 
 body {
@@ -90,6 +92,12 @@ button:hover {
   transform: scale(1.15);
 }
 
+main{
+  margin-top: 36px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 main button:nth-child(even) {
   background: var(--gradient-variant-1);
   color: black;
@@ -108,12 +116,7 @@ a:hover {
 }
 
 .bg-progressAudioGradient {
-  background: linear-gradient(
-    135deg,
-    rgba(173, 247, 158, 1) 0%,
-    rgba(64, 169, 179, 1) 50%,
-    rgba(247, 141, 141, 1) 100%
-  );
+  background: var(--gradient-variant-1)
 }
 
 /*
