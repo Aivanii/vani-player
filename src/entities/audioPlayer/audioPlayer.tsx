@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactElement } from "react";
 import { handlePlay } from "./tools/handlePlay";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
-import { changePlayedTime } from "./tools/changePlayedTime";
+import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
 
 const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -54,13 +54,14 @@ const AudioPlayer = () => {
   //audio change currentAudioTimeMS by user
   useEffect(() => {
     const audioBarStatic = progressAudioStaticRef.current;
+    const audio = audioRef.current;
 
-    if (!audioBarStatic) return;
+    if (!audioBarStatic || !audio) return;
 
-    const handleChangingTimeByUser = changePlayedTime(
+    const handleChangingTimeByUser = changePlayedTimeByUser(
       audioBarStatic,
       audioDurationMS,
-      setCurrentAudioTimeMS
+      audio
     );
 
     if (!handleChangingTimeByUser) return;
@@ -72,15 +73,23 @@ const AudioPlayer = () => {
     };
   }, [audioDurationMS]);
 
-  //audio change currentAudioTimeMS when time changes
+  //audio change currentAudioTimeMS when audio playing
   useEffect(() => {
     const audio = audioRef.current;
-    
-    if(!audio) return;
 
-    audio.currentTime = currentAudioTimeMS / 1000;
-  }, [currentAudioTimeMS])
-  
+    if (!audio) return;
+
+    const handleTimeChange = () => {
+      setCurrentAudioTimeMS(audio.currentTime * 1000);
+    };
+
+    audio.addEventListener("timeupdate", handleTimeChange);
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeChange);
+    };
+  }, []);
+
   return (
     <main className="w-full max-w-4xl p-6 flex justify-center items-center flex-col border-standart-border border-1 rounded-md shadow-standart bg-entity-bg">
       <audio
