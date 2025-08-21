@@ -2,7 +2,7 @@
 .wave-container {
   display: flex;
   align-items: flex-end;
-  justify-content: space-around;
+  justify-content: center;
   height: 96px;
   width: 152px;
 }
