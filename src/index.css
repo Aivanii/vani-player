@@ -12,9 +12,13 @@
   --color-important: gold;
 
   /* for main containers in entities */
-  --color-entity-bg: #2a2c31;
+  --color-entity-bg: rgba(42, 44, 49);
   --shadow-standart: 0 8px 40px 0 rgba(255, 255, 255, 0.08),
     0 1.5px 10px 0 rgba(255, 255, 255, 0.08);
+
+  /* interactive elems in ul */
+  --color-draggable-elem-bg: rgba(97, 97, 102, 0.4);
+  --color-draggable-active-elem-bg: rgba(97, 97, 102, 0.9);
 
   /* other */
   --color-standart-border: #4f4e53;

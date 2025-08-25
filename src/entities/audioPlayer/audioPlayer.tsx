@@ -1,23 +1,19 @@
-import { useEffect, useRef, useState, type ReactElement } from "react";
+import { useEffect, useRef, useState } from "react";
 import { handlePlay } from "./tools/handlePlay";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
 
-import type { Song } from "./tools/types";
+import type { AudioPlayerProps } from "./audioPlayer.types";
 
 import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
 
-const AudioPlayer = () => {
-  const [activeSong, setActiveSong] = useState<Song>({
-    authorName: "Rin Tezuka",
-    songName: "Something cool",
-    songThumbnail:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBjIooFlTgcIGVC7PnaFLc9x1CMZxrBFVsaw&s",
-    songUrl: "https://dl1.mp3party.net/online/10471206.mp3",
-  });
-
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+const AudioPlayer = ({
+  activeSong,
+  setActiveSong,
+  isPlaying,
+  setIsPlaying,
+}: AudioPlayerProps) => {
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
 
@@ -102,8 +98,13 @@ const AudioPlayer = () => {
     };
   }, []);
 
+  //audio auto start playing when new active song
+  useEffect(() => {
+    setCurrentAudioTimeMS(0);
+  }, [activeSong, isPlaying]);
+
   return (
-    <main
+    <div
       className="w-full max-w-4xl p-6 flex items-center flex-row border-standart-border border-1 
       rounded-4xl shadow-standart bg-entity-bg"
     >
@@ -112,7 +113,7 @@ const AudioPlayer = () => {
           id="audio"
           loop={false}
           muted={false}
-          preload="metadata"
+          preload="auto"
           src={activeSong.songUrl}
           ref={audioRef}
         ></audio>
@@ -174,7 +175,7 @@ const AudioPlayer = () => {
           <span className="cursor-default text-important">
             {formatTime(currentAudioTimeMS)}
           </span>
-          <div className="relative block h-1 hover:h-2">
+          <div className="relative block transition-300 h-1 hover:h-2">
             <div
               className="relative w-64 h-full bg-progressAudioGradient opacity-15 z-10 rounded-md cursor-pointer"
               ref={progressAudioStaticRef}
@@ -194,7 +195,7 @@ const AudioPlayer = () => {
           </span>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

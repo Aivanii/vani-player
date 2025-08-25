@@ -1,10 +1,39 @@
+import { useState } from "react";
 import { AudioPlayer } from "../entities/audioPlayer/audioPlayer";
+import { CurrentPlaylist } from "../entities/currentPlaylist/currentPlaylist";
+
+import type { Song } from "../types";
 
 function Main() {
+  const [activeSong, setActiveSong] = useState<Song>({
+    authorName: "Rin Tezuka",
+    songName: "Something cool",
+    songThumbnail:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBjIooFlTgcIGVC7PnaFLc9x1CMZxrBFVsaw&s",
+    songUrl: "https://dl1.mp3party.net/online/10471206.mp3",
+  });
+
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
   return (
-    <>
-      <AudioPlayer />
-    </>
+    <main className="w-full h-full">
+      <div className="flex justify-center items-start w-full h-full gap-6">
+        <CurrentPlaylist
+          activeSong={activeSong}
+          setActiveSong={setActiveSong}
+          setIsPlaying={setIsPlaying}
+        />
+        <div className="flex justify-center items-center gap-6 flex-col max-w-4xl w-full h-full">
+          <AudioPlayer
+            activeSong={activeSong}
+            setActiveSong={setActiveSong}
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+          />
+          <div className="border-2 h-48 w-full"></div>
+        </div>
+      </div>
+    </main>
   );
 }
 
