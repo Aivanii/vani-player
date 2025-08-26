@@ -12,7 +12,6 @@ const setNextSongAfterFinishingCurrent = ({
   setActiveSong,
 }: SetNextSongAfterFinishingCurrent) => {
   const handleFunc = () => {
-    console.log("next song");
     let currentSongIndex: number = -1;
 
     for (let i = 0; i < playlist.length; i++) {

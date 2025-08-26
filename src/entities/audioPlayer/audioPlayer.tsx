@@ -100,10 +100,14 @@ const AudioPlayer = ({
     };
   }, []);
 
-  //audio auto start playing when new active song
+  //auto start play song
   useEffect(() => {
-    setCurrentAudioTimeMS(0);
-  }, [activeSong, isPlaying]);
+    const audio = audioRef.current;
+
+    if (!audio || !isPlaying) return;
+
+    audio.play();
+  }, [activeSong]);
 
   return (
     <div
