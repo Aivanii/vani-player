@@ -105,27 +105,6 @@ const AudioPlayer = ({
     setCurrentAudioTimeMS(0);
   }, [activeSong, isPlaying]);
 
-  //audio change to next song in current playlist when current song finishes
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    if (!audio) return;
-
-    const handleNextSongLogic = setNextSongAfterFinishingCurrent({
-      playlist,
-      activeSong,
-      setActiveSong,
-    });
-
-    if (!handleNextSongLogic) return;
-
-    audio.addEventListener("ended", handleNextSongLogic);
-
-    return () => {
-      audio.removeEventListener("ended", handleNextSongLogic);
-    };
-  }, []);
-
   return (
     <div
       className="w-full max-w-4xl p-6 flex items-center flex-row border-standart-border border-1 
@@ -137,6 +116,11 @@ const AudioPlayer = ({
           loop={false}
           muted={false}
           preload="auto"
+          onEnded={setNextSongAfterFinishingCurrent({
+            playlist,
+            activeSong,
+            setActiveSong,
+          })}
           src={activeSong.songUrl}
           ref={audioRef}
         ></audio>
