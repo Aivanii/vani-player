@@ -5,6 +5,7 @@ interface AudioPlayerProps {
   setActiveSong: (song: Song) => void;
   isPlaying: boolean;
   setIsPlaying: (isPlaying: boolean) => void;
+  playlist: Song[];
 }
 
 export type { AudioPlayerProps };

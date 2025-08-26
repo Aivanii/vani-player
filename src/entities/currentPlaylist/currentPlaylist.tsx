@@ -9,30 +9,8 @@ const CurrentPlaylist = ({
   activeSong,
   setActiveSong,
   setIsPlaying,
+  playlist,
 }: CurrentPlaylistProps) => {
-  const [playlist, setPlaylist] = useState<Song[]>([
-    {
-      authorName: "Rin Tezuka",
-      songName: "Something cool",
-      songThumbnail:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBjIooFlTgcIGVC7PnaFLc9x1CMZxrBFVsaw&s",
-      songUrl: "https://dl1.mp3party.net/online/10471206.mp3",
-    },
-    {
-      authorName: "yuyoyuppe sick",
-      songName: "SICK Yanderu EP",
-      songThumbnail:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYW2Kr2xIM4bKzgXhOyHV7XUguj2LreQRvQg&s",
-      songUrl: "./yuyoyuppe_sick.mp3",
-    },{
-      authorName: " vocalokat",
-      songName: "self proclaimed angel",
-      songThumbnail:
-        "https://moc.muzyet.com/images/cover/vocalokat/vocalokat-self-proclaimed-angel.jpg",
-      songUrl: "./self_proclaimed_angel.mp3",
-    },
-  ]);
-
   return (
     <aside className="relative block border-2 w-full h-full max-w-120 shadow-standart bg-entity-bg border-standart-border rounded-4xl p-4">
       <h2 className="font-bold text-2xl text-center truncate">Your playlist</h2>

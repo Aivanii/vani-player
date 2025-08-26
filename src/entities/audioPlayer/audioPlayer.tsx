@@ -3,6 +3,7 @@ import { handlePlay } from "./tools/handlePlay";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
+import { setNextSongAfterFinishingCurrent } from "./tools/setNextSongAfterFinishingCurrent";
 
 import type { AudioPlayerProps } from "./audioPlayer.types";
 
@@ -13,6 +14,7 @@ const AudioPlayer = ({
   setActiveSong,
   isPlaying,
   setIsPlaying,
+  playlist,
 }: AudioPlayerProps) => {
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
@@ -102,6 +104,27 @@ const AudioPlayer = ({
   useEffect(() => {
     setCurrentAudioTimeMS(0);
   }, [activeSong, isPlaying]);
+
+  //audio change to next song in current playlist when current song finishes
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    const handleNextSongLogic = setNextSongAfterFinishingCurrent({
+      playlist,
+      activeSong,
+      setActiveSong,
+    });
+
+    if (!handleNextSongLogic) return;
+
+    audio.addEventListener("ended", handleNextSongLogic);
+
+    return () => {
+      audio.removeEventListener("ended", handleNextSongLogic);
+    };
+  }, []);
 
   return (
     <div
