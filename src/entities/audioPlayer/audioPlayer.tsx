@@ -5,6 +5,9 @@ import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
 import { setNextSongAfterFinishingCurrent } from "./tools/setNextSongAfterFinishingCurrent";
 
+import { setPreviousSong } from "./tools/setPreviousSong";
+import { SetNextSong } from "./tools/setNextSong";
+
 import type { AudioPlayerProps } from "./audioPlayer.types";
 
 import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
@@ -149,7 +152,14 @@ const AudioPlayer = ({
       <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full">
         <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex gap-6 items-center">
-          <button className="aspect-square h-12">
+          <button
+            className="aspect-square h-12"
+            onClick={setPreviousSong({
+              playlist,
+              activeSong,
+              setActiveSong,
+            })}
+          >
             <img
               className="invert-100"
               width="32"
@@ -172,7 +182,14 @@ const AudioPlayer = ({
               alt="play button"
             />
           </button>
-          <button className="aspect-square h-12">
+          <button
+            className="aspect-square h-12"
+            onClick={SetNextSong({
+              playlist,
+              activeSong,
+              setActiveSong,
+            })}
+          >
             <img
               className="invert-100"
               width="32"
