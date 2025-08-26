@@ -40,7 +40,7 @@ const CurrentPlaylist = ({
                       className="w-full h-full aspect-square absolute left-0 top-0 opacity-0 rounded-md transition duration-150 p-2 z-10 bg-transparent
                     hover:opacity-100 hover:backdrop-blur-[2px] hover:bg-[rgba(0,0,0,0.5)]"
                       onClick={() => {
-                        setNewActiveSong({ song, setActiveSong, setIsPlaying });
+                        setNewActiveSong({ song, setActiveSong });
                       }}
                     >
                       <img
