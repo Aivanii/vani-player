@@ -128,6 +128,8 @@ const AudioPlayer = ({
             activeSong,
             setActiveSong,
           })}
+          onPause={() => setIsPlaying(false)}
+          onPlay={() => setIsPlaying(true)}
           src={activeSong.songUrl}
           ref={audioRef}
         ></audio>
