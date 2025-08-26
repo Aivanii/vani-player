@@ -24,6 +24,12 @@ const CurrentPlaylist = ({
       songThumbnail:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYW2Kr2xIM4bKzgXhOyHV7XUguj2LreQRvQg&s",
       songUrl: "./yuyoyuppe_sick.mp3",
+    },{
+      authorName: " vocalokat",
+      songName: "self proclaimed angel",
+      songThumbnail:
+        "https://moc.muzyet.com/images/cover/vocalokat/vocalokat-self-proclaimed-angel.jpg",
+      songUrl: "./self_proclaimed_angel.mp3",
     },
   ]);
 
