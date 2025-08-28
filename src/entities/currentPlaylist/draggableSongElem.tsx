@@ -1,26 +1,78 @@
 import type { Song } from "../../types";
 import { setNewActiveSong } from "./tools/setNewActiveSong";
+import { useDrag, useDrop, type XYCoord } from "react-dnd";
+import { DragAndDropTypes } from "../../dragAndDrop.types";
+import { useRef } from "react";
 
 interface DraggableSongElemProps {
   song: Song;
   isPlayingNow: boolean;
   setActiveSong: (song: Song) => void;
+  onMoveSong: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const DraggableSongElem = ({
   song,
   isPlayingNow,
   setActiveSong,
+  onMoveSong,
 }: DraggableSongElemProps) => {
+  const ref = useRef<HTMLLIElement>(null);
+
+  const [, drop] = useDrop(() => ({
+    accept: DragAndDropTypes.SONG,
+    hover: (draggedItem: { song: Song }, monitor) => {
+      if (!ref.current) return;
+
+      const dragIndex = draggedItem.song.index;
+      const hoverIndex = song.index;
+
+      if (dragIndex === hoverIndex) return;
+
+      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const clientOffset = monitor.getClientOffset();
+      const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
+
+      if (dragIndex === undefined || hoverIndex === undefined) return;
+
+      // Dragging downwards
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        return;
+      }
+
+      // Dragging upwards
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        return;
+      }
+
+      onMoveSong(dragIndex, hoverIndex);
+      draggedItem.song.index = hoverIndex;
+    },
+  }));
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: DragAndDropTypes.SONG,
+    item: { song },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  }));
+
+  drag(drop(ref));
   return (
     <li
-      className={`border-1 border-standart-border p-2 rounded-2xl transition delay-50 cursor-pointer 
+      ref={ref}
+      className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
                   hover:scale-105
                   ${
                     isPlayingNow
-                      ? "bg-draggable-active-elem-bg border-2 shadow-standart"
+                      ? "border-2 shadow-standart draggable-active-elem"
                       : "bg-draggable-elem-bg"
-                  } `}
+                  } 
+                  ${isDragging ? "opacity-50 backdrop-blur-sm" : "backdrop-opacity-100"}
+                  `}
       data-audio-url={song.songUrl}
       key={song.songUrl}
     >

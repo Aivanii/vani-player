@@ -3,4 +3,5 @@ export interface Song {
   songName: string | undefined;
   songThumbnail: string | undefined;
   songUrl: string;
+  index?: number;
 }

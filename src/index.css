@@ -18,7 +18,7 @@
 
   /* interactive elems in ul */
   --color-draggable-elem-bg: rgba(97, 97, 102, 0.4);
-  --color-draggable-active-elem-bg: rgba(97, 97, 102, 0.9);
+  --color-draggable-active-elem-bg: linear-gradient(270deg,rgba(97, 97, 102, 1) 0%, rgba(134, 134, 150, 1) 100%);
 
   /* other */
   --color-standart-border: #4f4e53;
@@ -49,7 +49,7 @@
     rgba(152, 255, 118, 0.8) 0%,
     rgba(85, 192, 216, 0.8) 50%,
     rgba(234, 247, 64, 0.8) 100%
-);
+  );
 }
 
 body {
@@ -96,7 +96,7 @@ button:hover {
   transform: scale(1.15);
 }
 
-main{
+main {
   margin-top: 36px;
   margin-left: auto;
   margin-right: auto;
@@ -119,8 +119,11 @@ a:hover {
   color: var(--color-hover);
 }
 
+.draggable-active-elem {
+  background: var(--color-draggable-active-elem-bg);
+}
 .bg-progressAudioGradient {
-  background: var(--gradient-variant-1)
+  background: var(--gradient-variant-1);
 }
 
 /*

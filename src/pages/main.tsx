@@ -45,8 +45,8 @@ function Main() {
         <CurrentPlaylist
           activeSong={activeSong}
           setActiveSong={setActiveSong}
-          setIsPlaying={setIsPlaying}
           playlist={playlist}
+          setPlaylist={setPlaylist}
         />
         <div className="flex justify-center items-center gap-6 flex-col max-w-4xl w-full h-full">
           <AudioPlayer
