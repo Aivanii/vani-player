@@ -4,7 +4,7 @@ interface AudioPlayerProps {
   activeSong: Song;
   setActiveSong: (song: Song) => void;
   isPlaying: boolean;
-  setIsPlaying: (isPlaying: boolean) => void;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   playlist: Song[];
 }
 

@@ -42,7 +42,7 @@ const AudioPlayer = ({
     return () => {
       playBtn.removeEventListener("click", handlePlayLogic);
     };
-  }, []);
+  }, [setIsPlaying]);
 
   //audio change audioDurationMS
   useEffect(() => {
@@ -110,7 +110,7 @@ const AudioPlayer = ({
     if (!audio || !isPlaying) return;
 
     audio.play();
-  }, [activeSong]);
+  }, [activeSong, isPlaying]);
 
   return (
     <div
