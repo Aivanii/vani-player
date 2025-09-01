@@ -10,7 +10,6 @@ interface RecommendedSong {
 }
 
 const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
-    console.log(isSongInPlaylist({ song, playlist }), playlist.length)
   return (
     <div
       key={song.songUrl}
