@@ -18,7 +18,11 @@
 
   /* interactive elems in ul */
   --color-draggable-elem-bg: rgba(97, 97, 102, 0.4);
-  --color-draggable-active-elem-bg: linear-gradient(270deg,rgba(97, 97, 102, 1) 0%, rgba(134, 134, 150, 1) 100%);
+  --color-draggable-active-elem-bg: linear-gradient(
+    270deg,
+    rgba(97, 97, 102, 1) 0%,
+    rgba(134, 134, 150, 1) 100%
+  );
 
   /* other */
   --color-standart-border: #4f4e53;
@@ -41,14 +45,14 @@
 
   --gradient-variant-2: linear-gradient(
     35deg,
-    rgb(140, 34, 226) 0%,
-    rgb(128, 207, 74) 100%
+    rgb(199, 147, 241) 0%,
+    rgb(98, 74, 207) 100%
   );
   --gradient-variant-1: linear-gradient(
     135deg,
-    rgba(92, 226, 47, 0.8) 0%,
-    rgba(84, 20, 235, 0.8) 50%,
-    rgba(177, 39, 39, 0.8) 100%
+    rgba(137, 114, 218, 0.8) 0%,
+    rgba(192, 99, 204, 0.8) 50%,
+    rgba(115, 77, 204, 0.8) 100%
   );
 }
 
@@ -83,7 +87,6 @@ input:focus-visible {
 
 button {
   cursor: pointer;
-  padding: 8px;
   min-width: 36px;
   border-radius: 9999px;
   outline: none;
@@ -104,7 +107,6 @@ main {
 
 main button:nth-child(even) {
   background: var(--gradient-variant-1);
-  color: black;
 }
 
 main button:nth-child(odd) {

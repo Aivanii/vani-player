@@ -65,7 +65,7 @@ const DraggableSongElem = ({
     <li
       ref={ref}
       className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
-                  hover:scale-105
+                  hover:scale-105 hover:shadow-standart
                   ${
                     isPlayingNow
                       ? "border-2 shadow-standart draggable-active-elem"
