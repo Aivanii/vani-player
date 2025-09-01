@@ -25,7 +25,7 @@ const AudioPlayer = ({
   //[0-1]
   const [audioVolume, setAudioVolume] = useState<number>(1);
   const [isAudioChangingMenuOn, setIsAudioChangingMenuOn] =
-    useState<boolean>(true);
+    useState<boolean>(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const playBtnRef = useRef<HTMLButtonElement>(null);
@@ -150,7 +150,7 @@ const AudioPlayer = ({
   return (
     <div
       className="w-full max-w-4xl p-6 flex items-center flex-row border-standart-border border-1 
-      rounded-4xl shadow-standart bg-entity-bg"
+      rounded-4xl shadow-standart bg-entity-bg self-stretch"
     >
       <div className="flex gap-4 flex-col">
         <audio
@@ -238,6 +238,7 @@ const AudioPlayer = ({
           <div className=" flex flex-col items-center justify-center relative">
             <div>
               <button
+                className="p-2"
                 ref={audioVolumeButtonRef}
                 onClick={() => {
                   setIsAudioChangingMenuOn(!isAudioChangingMenuOn);
