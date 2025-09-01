@@ -21,10 +21,15 @@ const AudioPlayer = ({
 }: AudioPlayerProps) => {
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
+  const [isAudioChangingMenuOn, setIsAudioChangingMenuOn] =
+    useState<boolean>(true);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const playBtnRef = useRef<HTMLButtonElement>(null);
   const progressAudioStaticRef = useRef<HTMLDivElement>(null);
+
+  const audioVolumeButtonRef = useRef<HTMLButtonElement>(null);
+  const audioVolumeBarStaticRef = useRef<HTMLDivElement>(null);
 
   //audio play/stop button
   useEffect(() => {
@@ -151,7 +156,7 @@ const AudioPlayer = ({
         </span>
       </div>
 
-      <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full">
+      <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full relative">
         <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex gap-6 items-center">
           <button
@@ -200,6 +205,39 @@ const AudioPlayer = ({
               alt="next track"
             />
           </button>
+          <div className=" flex flex-col items-center justify-center relative">
+            <div>
+              <button
+                ref={audioVolumeButtonRef}
+                onClick={() => {
+                  setIsAudioChangingMenuOn(!isAudioChangingMenuOn);
+                }}
+              >
+                <img
+                  className="aspect-square invert-100"
+                  width="24"
+                  height="24"
+                  src="https://img.icons8.com/?size=100&id=41563&format=png&color=000000"
+                  alt="sound changing button"
+                />
+              </button>
+              <div
+                className={`duration-200 block ${
+                  isAudioChangingMenuOn ? "opacity-100 w-32" : "opacity-0 w-0"
+                }`}
+              >
+                <div className="absolute left-16 bottom-1/2 translate-y-[50%] w-full">
+                  <div
+                    className="w-full h-2 bg-audioVolumeBar rounded-md opacity-15"
+                    ref={audioVolumeBarStaticRef}
+                  ></div>
+                </div>
+                <div className="absolute left-16 bottom-1/2 translate-y-[50%]">
+                  <div className="w-20 h-2 bg-audioVolumeBar rounded-md pointer-events-none"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="flex justify-around items-center gap-4 ">
           <span className="cursor-default text-important">

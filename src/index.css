@@ -41,14 +41,14 @@
 
   --gradient-variant-2: linear-gradient(
     35deg,
-    rgb(185, 99, 255) 0%,
-    rgb(160, 255, 176) 100%
+    rgb(140, 34, 226) 0%,
+    rgb(128, 207, 74) 100%
   );
   --gradient-variant-1: linear-gradient(
     135deg,
-    rgba(152, 255, 118, 0.8) 0%,
-    rgba(85, 192, 216, 0.8) 50%,
-    rgba(234, 247, 64, 0.8) 100%
+    rgba(92, 226, 47, 0.8) 0%,
+    rgba(84, 20, 235, 0.8) 50%,
+    rgba(177, 39, 39, 0.8) 100%
   );
 }
 
@@ -124,6 +124,9 @@ a:hover {
 }
 .bg-progressAudioGradient {
   background: var(--gradient-variant-1);
+}
+.bg-audioVolumeBar {
+  background: var(--gradient-variant-2);
 }
 
 /*
