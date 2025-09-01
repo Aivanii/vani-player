@@ -3,6 +3,7 @@ import { handlePlay } from "./tools/handlePlay";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
+import { changeAudioVolumeByUser } from "./tools/changeAudioVolumeByUser";
 import { setNextSongAfterFinishingCurrent } from "./tools/setNextSongAfterFinishingCurrent";
 
 import { setPreviousSong } from "./tools/setPreviousSong";
@@ -21,6 +22,8 @@ const AudioPlayer = ({
 }: AudioPlayerProps) => {
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
+  //[0-1]
+  const [audioVolume, setAudioVolume] = useState<number>(1);
   const [isAudioChangingMenuOn, setIsAudioChangingMenuOn] =
     useState<boolean>(true);
 
@@ -116,6 +119,33 @@ const AudioPlayer = ({
 
     audio.play();
   }, [activeSong, isPlaying]);
+
+  //audio change audioVolume by user
+  useEffect(() => {
+    const audioVolumeBarStatic = audioVolumeBarStaticRef.current;
+
+    if (!audioVolumeBarStatic) return;
+
+    const handleLogic = changeAudioVolumeByUser({
+      audioVolumeBarStatic,
+      setAudioVolume,
+    });
+
+    if (!handleLogic) return;
+
+    audioVolumeBarStatic.addEventListener("click", handleLogic);
+
+    return () => {
+      audioVolumeBarStatic.removeEventListener("click", handleLogic);
+    };
+  });
+
+  //set new audio volume
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = Math.max(0, Math.min(1, audioVolume));
+  }, [audioVolume]);
 
   return (
     <div
@@ -226,14 +256,17 @@ const AudioPlayer = ({
                   isAudioChangingMenuOn ? "opacity-100 w-32" : "opacity-0 w-0"
                 }`}
               >
-                <div className="absolute left-16 bottom-1/2 translate-y-[50%] w-full">
+                <div className="absolute h-1 left-16 bottom-1/2 translate-y-[50%] w-full transition-300 hover:h-2">
                   <div
-                    className="w-full h-2 bg-audioVolumeBar rounded-md opacity-15"
+                    className="relative w-full h-full bg-audioVolumeBar rounded-md opacity-15 z-10 cursor-pointer transition-300"
                     ref={audioVolumeBarStaticRef}
                   ></div>
-                </div>
-                <div className="absolute left-16 bottom-1/2 translate-y-[50%]">
-                  <div className="w-20 h-2 bg-audioVolumeBar rounded-md pointer-events-none"></div>
+                  <div className="absolute h-full w-32 left-0 bottom-1/2 translate-y-[50%] transition-300">
+                    <div
+                      className={`relative h-full bg-audioVolumeBar rounded-md z-20 pointer-events-none transition-300`}
+                      style={{ width: `${100 * audioVolume}%` }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -245,11 +278,11 @@ const AudioPlayer = ({
           </span>
           <div className="relative block transition-300 h-1 hover:h-2">
             <div
-              className="relative w-64 h-full bg-progressAudioGradient opacity-15 z-10 rounded-md cursor-pointer"
+              className="relative w-64 h-full bg-progressAudioGradient opacity-15 z-10 rounded-md cursor-pointer transition-300"
               ref={progressAudioStaticRef}
             ></div>
             <div
-              className={`absolute top-0 left-0 h-full bg-progressAudioGradient z-20 rounded-md pointer-events-none`}
+              className={`absolute top-0 left-0 h-full bg-progressAudioGradient z-20 rounded-md pointer-events-none transition-300`}
               style={{
                 width: calculateProgressAudio(
                   currentAudioTimeMS,
