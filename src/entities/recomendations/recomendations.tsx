@@ -8,11 +8,24 @@ import { RecommendedSong } from "./recommendedSong";
 const Recomendations = ({ playlist, setPlaylist }: RecommendationProps) => {
   const [recomendationSongs, setRecomendationSongs] = useState<Song[]>([
     {
-      authorName: "Yasuo",
+      authorName: "JubyPhonic",
       songName: "Electric Angel",
       songThumbnail:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9t15jtwy2djQ7jti4KxHavL02xQU2_qdpRg&s",
       songUrl: "./electricAngel.mp3",
+    },
+    {
+      authorName: "Kanna Yanagi",
+      songName: "Speedy Speed Boy",
+      songThumbnail: "https://i.ytimg.com/vi/gqi8AWtDJ74/maxresdefault.jpg",
+      songUrl: "./speedySpeedBoy.mp3",
+    },
+    {
+      authorName: "bitbreaker",
+      songName: "God Only Knows",
+      songThumbnail:
+        "https://images.genius.com/3b7612f22a4c2a1f5dcb1032dda1aef2.300x300x1.png",
+      songUrl: "./godOnlyKnows.mp3",
     },
   ]);
   return (

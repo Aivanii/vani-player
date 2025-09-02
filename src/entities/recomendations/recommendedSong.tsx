@@ -1,6 +1,7 @@
 import type { Song } from "../../types";
 
 import { addSongToPlaylist } from "./tools/addSongToPlaylist";
+import { removeSongFromPlaylist } from "./tools/removeSongFromPlaylist";
 import { isSongInPlaylist } from "./tools/isSongInPlaylist";
 
 interface RecommendedSong {
@@ -34,10 +35,17 @@ const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
             });
           }}
         >
-          + Add
+          Add
         </button>
       ) : (
-        <button>nope</button>
+        <button
+          className="px-6 py-1"
+          onClick={() => {
+            removeSongFromPlaylist({ song, playlist, setPlaylist });
+          }}
+        >
+          Remove
+        </button>
       )}
     </div>
   );
