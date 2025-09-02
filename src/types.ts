@@ -5,3 +5,8 @@ export interface Song {
   songUrl: string;
   index?: number;
 }
+
+export interface ContextMenuItem {
+  label: string;
+  action: () => void;
+}

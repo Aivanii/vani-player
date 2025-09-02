@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AudioPlayer } from "../entities/audioPlayer/audioPlayer";
 import { CurrentPlaylist } from "../entities/currentPlaylist/currentPlaylist";
 import { Recomendations } from "../entities/recomendations/recomendations";
+import { ContextMenu } from "../entities/contextMenu/contextMenuSong";
 
 import type { Song } from "../types";
 
@@ -60,6 +61,7 @@ function Main() {
           <Recomendations playlist={playlist} setPlaylist={setPlaylist} />
         </div>
       </div>
+      <ContextMenu />
     </main>
   );
 }

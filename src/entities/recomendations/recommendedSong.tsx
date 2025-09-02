@@ -4,6 +4,8 @@ import { addSongToPlaylist } from "./tools/addSongToPlaylist";
 import { removeSongFromPlaylist } from "./tools/removeSongFromPlaylist";
 import { isSongInPlaylist } from "./tools/isSongInPlaylist";
 
+import { useSongContextMenu } from "../../hooks/useContextMenu";
+
 interface RecommendedSong {
   song: Song;
   playlist: Song[];
@@ -11,16 +13,19 @@ interface RecommendedSong {
 }
 
 const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
+  const handleContextMenu = useSongContextMenu(song);
+
   return (
     <div
       key={song.songUrl}
       className="rounded-2xl border-1 border-standart-border w-48 h-58 flex flex-col justify-center gap-1 items-center duration-150
               backdrop-opacity-100 bg-draggable-elem-bg hover:shadow-standart"
+      onContextMenu={handleContextMenu}
     >
       <img
         src={song.songThumbnail}
         alt={`${song.songName} thumbnail`}
-        className="aspect-square w-24 rounded-md shadow-[0_0_0_2px_#ffffff1f]"
+        className="aspect-square w-24 rounded-md shadow-[0_0_0_2px_#ffffff1f] object-cover"
       />
       <span
         className={`block overflow-ellipsis text-[1.2rem] w-full text-center line-clamp-2 px-2 h-${
