@@ -29,7 +29,7 @@ const Recomendations = ({ playlist, setPlaylist }: RecommendationProps) => {
     },
     {
       authorName: "vocaCircus",
-      songName: "【DEX】 Misery Loves Company",
+      songName: "【DEX】 Misery Loves Company .........................................123",
       songThumbnail:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
       songUrl: "./mlcc.mp3",
@@ -54,17 +54,19 @@ const Recomendations = ({ playlist, setPlaylist }: RecommendationProps) => {
       <div className="">
         <h3 className="text-2xl font-bold truncate">Recommended for you</h3>
       </div>
-      <div className="pt-6 flex flex-row gap-4">
-        {recomendationSongs.map((song) => {
-          return (
-            <RecommendedSong
-              key={song.songUrl}
-              song={song}
-              playlist={playlist}
-              setPlaylist={setPlaylist}
-            />
-          );
-        })}
+      <div className="flex justify-center items-center">
+        <div className="pt-6 flex flex-row gap-4 flex-wrap justify-start max-w-204">
+          {recomendationSongs.map((song) => {
+            return (
+              <RecommendedSong
+                key={song.songUrl}
+                song={song}
+                playlist={playlist}
+                setPlaylist={setPlaylist}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
