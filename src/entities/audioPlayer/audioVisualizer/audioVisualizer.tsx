@@ -1,6 +1,7 @@
 import "./audioVisualizer.styles.css";
+import { observer } from "mobx-react-lite";
 
-const AudioVisualizer = ({ isPlaying }: { isPlaying: boolean }) => {
+const AudioVisualizer = observer(({ isPlaying }: { isPlaying: boolean }) => {
   return (
     <div className="wave-container">
       {[...Array(14)].map((_, index) => (
@@ -17,6 +18,6 @@ const AudioVisualizer = ({ isPlaying }: { isPlaying: boolean }) => {
       ))}
     </div>
   );
-};
+});
 
 export { AudioVisualizer };

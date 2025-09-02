@@ -1,25 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { handlePlay } from "./tools/handlePlay";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
 import { changeAudioVolumeByUser } from "./tools/changeAudioVolumeByUser";
-import { setNextSongAfterFinishingCurrent } from "./tools/setNextSongAfterFinishingCurrent";
-
-import { setPreviousSong } from "./tools/setPreviousSong";
-import { SetNextSong } from "./tools/setNextSong";
-
-import type { AudioPlayerProps } from "./audioPlayer.types";
-
 import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
+import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
 
-const AudioPlayer = ({
-  activeSong,
-  setActiveSong,
-  isPlaying,
-  setIsPlaying,
-  playlist,
-}: AudioPlayerProps) => {
+import { toJS } from "mobx";
+import { observer } from "mobx-react-lite";
+
+const AudioPlayer = observer(() => {
+  const { currentSong, togglePlay, isPlaying } = currentPlaylistStore;
+
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
   //[0-1]
@@ -33,24 +25,6 @@ const AudioPlayer = ({
 
   const audioVolumeButtonRef = useRef<HTMLButtonElement>(null);
   const audioVolumeBarStaticRef = useRef<HTMLDivElement>(null);
-
-  //audio play/stop button
-  useEffect(() => {
-    const audio = audioRef.current;
-    const playBtn = playBtnRef.current;
-
-    if (!playBtn) return;
-
-    const handlePlayLogic = handlePlay({ audio, setIsPlaying });
-
-    if (!handlePlayLogic) return;
-
-    playBtn.addEventListener("click", handlePlayLogic);
-
-    return () => {
-      playBtn.removeEventListener("click", handlePlayLogic);
-    };
-  }, [setIsPlaying]);
 
   //audio change audioDurationMS
   useEffect(() => {
@@ -111,15 +85,6 @@ const AudioPlayer = ({
     };
   }, []);
 
-  //auto start play song
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    if (!audio || !isPlaying) return;
-
-    audio.play();
-  }, [activeSong, isPlaying]);
-
   //audio change audioVolume by user
   useEffect(() => {
     const audioVolumeBarStatic = audioVolumeBarStaticRef.current;
@@ -138,14 +103,18 @@ const AudioPlayer = ({
     return () => {
       audioVolumeBarStatic.removeEventListener("click", handleLogic);
     };
-  });
+  }, []);
 
-  //set new audio volume
+  //audio set to play/stop
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.volume = Math.max(0, Math.min(1, audioVolume));
-  }, [audioVolume]);
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }, [isPlaying]);
 
   return (
     <div
@@ -158,14 +127,7 @@ const AudioPlayer = ({
           loop={false}
           muted={false}
           preload="auto"
-          onEnded={setNextSongAfterFinishingCurrent({
-            playlist,
-            activeSong,
-            setActiveSong,
-          })}
-          onPause={() => setIsPlaying(false)}
-          onPlay={() => setIsPlaying(true)}
-          src={activeSong.songUrl}
+          src={currentSong?.songUrl}
           ref={audioRef}
         ></audio>
 
@@ -173,30 +135,23 @@ const AudioPlayer = ({
           <div className="inline-block">
             <img
               className="w-52 h-52 rounded-md object-cover shadow-[0_0_0_4px_#ffffff1f]"
-              src={activeSong.songThumbnail}
+              src={currentSong?.songThumbnail}
               alt="audio preview"
             />
           </div>
         </div>
         <span className="text-2xl text-center font-bold w-50 truncate">
-          {activeSong.songName}
+          {currentSong?.songName}
         </span>
         <span className="text-center text-important w-50 truncate">
-          by {activeSong.authorName}
+          by {currentSong?.authorName}
         </span>
       </div>
 
       <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full relative">
         <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex gap-6 items-center">
-          <button
-            className="aspect-square h-12"
-            onClick={setPreviousSong({
-              playlist,
-              activeSong,
-              setActiveSong,
-            })}
-          >
+          <button className="aspect-square h-12">
             <img
               className="invert-100"
               width="32"
@@ -205,7 +160,13 @@ const AudioPlayer = ({
               alt="previous track"
             />
           </button>
-          <button className="aspect-square h-16" id="playBtn" ref={playBtnRef}>
+          <button
+            className="aspect-square h-16"
+            id="playBtn"
+            onClick={() => {
+              togglePlay();
+            }}
+          >
             <img
               id="playBtnImgElem"
               className="invert-100"
@@ -219,14 +180,7 @@ const AudioPlayer = ({
               alt="play button"
             />
           </button>
-          <button
-            className="aspect-square h-12"
-            onClick={SetNextSong({
-              playlist,
-              activeSong,
-              setActiveSong,
-            })}
-          >
+          <button className="aspect-square h-12">
             <img
               className="invert-100"
               width="32"
@@ -299,6 +253,6 @@ const AudioPlayer = ({
       </div>
     </div>
   );
-};
+});
 
 export { AudioPlayer };

@@ -1,24 +1,25 @@
 import type { Song } from "../../types";
-import { setNewActiveSong } from "./tools/setNewActiveSong";
-import { useDrag, useDrop, type XYCoord } from "react-dnd";
-import { DragAndDropTypes } from "../../dragAndDrop.types";
+import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
 import { useRef } from "react";
 
 interface DraggableSongElemProps {
   song: Song;
   isPlayingNow: boolean;
-  setActiveSong: (song: Song) => void;
-  onMoveSong: (dragIndex: number, hoverIndex: number) => void;
+  index: number;
+  //onMoveSong: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const DraggableSongElem = ({
   song,
   isPlayingNow,
-  setActiveSong,
-  onMoveSong,
+  index,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
+  const isDragging = false;
 
+  const { setNewCurrentSongIndex } = currentPlaylistStore;
+
+  /*
   const [, drop] = useDrop(() => ({
     accept: DragAndDropTypes.SONG,
     hover: (draggedItem: { song: Song }, monitor) => {
@@ -47,7 +48,7 @@ const DraggableSongElem = ({
         return;
       }
 
-      onMoveSong(dragIndex, hoverIndex);
+      //onMoveSong(dragIndex, hoverIndex);
       draggedItem.song.index = hoverIndex;
     },
   }));
@@ -61,6 +62,7 @@ const DraggableSongElem = ({
   }));
 
   drag(drop(ref));
+  */
   return (
     <li
       ref={ref}
@@ -71,7 +73,11 @@ const DraggableSongElem = ({
                       ? "border-2 shadow-standart draggable-active-elem"
                       : "bg-draggable-elem-bg"
                   } 
-                  ${isDragging ? "opacity-50 backdrop-blur-sm" : "backdrop-opacity-100"}
+                  ${
+                    isDragging
+                      ? "opacity-50 backdrop-blur-sm"
+                      : "backdrop-opacity-100"
+                  }
                   `}
       data-audio-url={song.songUrl}
       key={song.songUrl}
@@ -87,7 +93,7 @@ const DraggableSongElem = ({
             className="w-full h-full aspect-square absolute left-0 top-0 opacity-0 rounded-md transition duration-150 p-2 z-10 bg-transparent
                     hover:opacity-100 hover:backdrop-blur-[2px] hover:bg-[rgba(0,0,0,0.5)]"
             onClick={() => {
-              setNewActiveSong({ song, setActiveSong });
+              setNewCurrentSongIndex(index);
             }}
           >
             <img
