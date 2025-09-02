@@ -29,7 +29,7 @@ const Recomendations = ({ playlist, setPlaylist }: RecommendationProps) => {
     },
     {
       authorName: "vocaCircus",
-      songName: "【DEX】 Misery Loves Company .........................................123",
+      songName: "【DEX】 Misery Loves Company",
       songThumbnail:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
       songUrl: "./mlcc.mp3",

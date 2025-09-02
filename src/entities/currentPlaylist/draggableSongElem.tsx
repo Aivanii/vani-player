@@ -98,7 +98,7 @@ const DraggableSongElem = ({
           </div>
         </div>
         <div className="flex flex-col w-full h-full items-start gap-2">
-          <span className="block truncate">{song.songName}</span>
+          <span className="block truncate max-w-90">{song.songName}</span>
           <span className="block text-important truncate">
             {song.authorName}
           </span>
