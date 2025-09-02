@@ -27,13 +27,34 @@ const Recomendations = ({ playlist, setPlaylist }: RecommendationProps) => {
         "https://images.genius.com/3b7612f22a4c2a1f5dcb1032dda1aef2.300x300x1.png",
       songUrl: "./godOnlyKnows.mp3",
     },
+    {
+      authorName: "vocaCircus",
+      songName: "【DEX】 Misery Loves Company",
+      songThumbnail:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
+      songUrl: "./mlcc.mp3",
+    },
+    {
+      authorName: "король и шут",
+      songName: "Дайте людям рому!",
+      songThumbnail:
+        "https://korol-i-shut.su/images/albums/prodavets-koshmarov.jpg",
+      songUrl: "./kisdlr.mp3",
+    },
+    {
+      authorName: "Will Stetson",
+      songName: "Override",
+      songThumbnail:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZUCXw9WkET76F8BPfTW4TPfA0IuIqh-jmQ&s",
+      songUrl: "./override.mp3",
+    },
   ]);
   return (
     <div className="relative block border-1 w-full h-full shadow-standart bg-entity-bg border-standart-border rounded-4xl p-6 self-stretch">
       <div className="">
         <h3 className="text-2xl font-bold truncate">Recommended for you</h3>
       </div>
-      <div className="pt-6">
+      <div className="pt-6 flex flex-row gap-4">
         {recomendationSongs.map((song) => {
           return (
             <RecommendedSong

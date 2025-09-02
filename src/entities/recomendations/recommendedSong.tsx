@@ -22,7 +22,7 @@ const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
         alt={`${song.songName} thumbnail`}
         className="aspect-square w-24 rounded-md shadow-[0_0_0_2px_#ffffff1f]"
       />
-      <span className="block truncate text-[1.2rem]">{song.songName}</span>
+      <span className="block truncate text-[1.2rem] w-24">{song.songName}</span>
       <span className="block truncate text-important">{song.authorName}</span>
       {!isSongInPlaylist({ song, playlist }) ? (
         <button
