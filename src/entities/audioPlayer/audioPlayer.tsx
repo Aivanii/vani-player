@@ -2,29 +2,33 @@ import { useEffect, useRef, useState } from "react";
 import { formatTime } from "./tools/formatTime";
 import { calculateProgressAudio } from "./tools/calculateProgressAudio";
 import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
-import { changeAudioVolumeByUser } from "./tools/changeAudioVolumeByUser";
 import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
 import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
 
-import { toJS } from "mobx";
+import { getAudioPercentageFromClick } from "../../utils/dom/getAudioPercentageFromClick";
+
 import { observer } from "mobx-react-lite";
 
 const AudioPlayer = observer(() => {
-  const { currentSong, togglePlay, isPlaying } = currentPlaylistStore;
+  const {
+    currentSong,
+    togglePlay,
+    isPlaying,
+    setPreviousSong,
+    setNextSong,
+    setVolume,
+    isVolumeBarOnScreen,
+    currentVolume,
+    setIsVolumeBarOnScreen,
+  } = currentPlaylistStore;
 
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
   const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
   //[0-1]
-  const [audioVolume, setAudioVolume] = useState<number>(1);
-  const [isAudioChangingMenuOn, setIsAudioChangingMenuOn] =
-    useState<boolean>(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
-  const playBtnRef = useRef<HTMLButtonElement>(null);
+  const audioVolumeBarStatic = useRef<HTMLDivElement>(null);
   const progressAudioStaticRef = useRef<HTMLDivElement>(null);
-
-  const audioVolumeButtonRef = useRef<HTMLButtonElement>(null);
-  const audioVolumeBarStaticRef = useRef<HTMLDivElement>(null);
 
   //audio change audioDurationMS
   useEffect(() => {
@@ -85,26 +89,6 @@ const AudioPlayer = observer(() => {
     };
   }, []);
 
-  //audio change audioVolume by user
-  useEffect(() => {
-    const audioVolumeBarStatic = audioVolumeBarStaticRef.current;
-
-    if (!audioVolumeBarStatic) return;
-
-    const handleLogic = changeAudioVolumeByUser({
-      audioVolumeBarStatic,
-      setAudioVolume,
-    });
-
-    if (!handleLogic) return;
-
-    audioVolumeBarStatic.addEventListener("click", handleLogic);
-
-    return () => {
-      audioVolumeBarStatic.removeEventListener("click", handleLogic);
-    };
-  }, []);
-
   //audio set to play/stop
   useEffect(() => {
     const audio = audioRef.current;
@@ -114,7 +98,15 @@ const AudioPlayer = observer(() => {
     } else {
       audio.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, currentSong]);
+
+  //audio change volume
+  useEffect(() => {
+    const audio = audioRef.current;
+    if(!audio) return;
+    
+    audio.volume = currentVolume;
+  }, [currentVolume])
 
   return (
     <div
@@ -151,7 +143,7 @@ const AudioPlayer = observer(() => {
       <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full relative">
         <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex gap-6 items-center">
-          <button className="aspect-square h-12">
+          <button className="aspect-square h-12" onClick={setPreviousSong}>
             <img
               className="invert-100"
               width="32"
@@ -163,9 +155,7 @@ const AudioPlayer = observer(() => {
           <button
             className="aspect-square h-16"
             id="playBtn"
-            onClick={() => {
-              togglePlay();
-            }}
+            onClick={togglePlay}
           >
             <img
               id="playBtnImgElem"
@@ -180,7 +170,7 @@ const AudioPlayer = observer(() => {
               alt="play button"
             />
           </button>
-          <button className="aspect-square h-12">
+          <button className="aspect-square h-12" onClick={setNextSong}>
             <img
               className="invert-100"
               width="32"
@@ -189,15 +179,18 @@ const AudioPlayer = observer(() => {
               alt="next track"
             />
           </button>
-          <div className=" flex flex-col items-center justify-center relative">
-            <div>
-              <button
-                className="p-2"
-                ref={audioVolumeButtonRef}
-                onClick={() => {
-                  setIsAudioChangingMenuOn(!isAudioChangingMenuOn);
-                }}
-              >
+
+          <div
+            className="relative w-fit flex justify-start"
+            onMouseOut={() => {
+              setIsVolumeBarOnScreen(false);
+            }}
+            onMouseOver={() => {
+              setIsVolumeBarOnScreen(true);
+            }}
+          >
+            <div className="flex flex-row items-center justify-center">
+              <button className="p-2">
                 <img
                   className="aspect-square invert-100"
                   width="24"
@@ -206,21 +199,31 @@ const AudioPlayer = observer(() => {
                   alt="sound changing button"
                 />
               </button>
-              <div
-                className={`duration-200 block ${
-                  isAudioChangingMenuOn ? "opacity-100 w-32" : "opacity-0 w-0"
-                }`}
-              >
-                <div className="absolute h-1 left-16 bottom-1/2 translate-y-[50%] w-full transition-300 hover:h-2">
-                  <div
-                    className="relative w-full h-full bg-audioVolumeBar rounded-md opacity-15 z-10 cursor-pointer transition-300"
-                    ref={audioVolumeBarStaticRef}
-                  ></div>
-                  <div className="absolute h-full w-32 left-0 bottom-1/2 translate-y-[50%] transition-300">
+              <div className="relative h-18 w-fit flex justify-center items-center ml-4">
+                <div
+                  className={`duration-300 block ${
+                    isVolumeBarOnScreen ? "opacity-100 w-32" : "opacity-0 w-0"
+                  }`}
+                >
+                  <div className="absolute h-1 bottom-1/2 translate-y-[50%] w-full transition-300 hover:h-2">
                     <div
-                      className={`relative h-full bg-audioVolumeBar rounded-md z-20 pointer-events-none transition-300`}
-                      style={{ width: `${100 * audioVolume}%` }}
-                    ></div>
+                      className="relative w-full h-full bg-audioVolumeBar rounded-md opacity-15 z-10 cursor-pointer transition-300"
+                      ref={audioVolumeBarStatic}
+                      onClick={(event) => {
+                        setVolume(
+                          getAudioPercentageFromClick({
+                            audioVolumeBarStatic,
+                            event,
+                          })
+                        );
+                      }}
+                    />
+                    <div className="absolute h-full w-32 left-0 bottom-1/2 translate-y-[50%] transition-300">
+                      <div
+                        className={`relative h-full bg-audioVolumeBar rounded-md z-20 pointer-events-none transition-300`}
+                        style={{ width: `${100 * currentVolume}%` }}
+                      ></div>
+                    </div>
                   </div>
                 </div>
               </div>

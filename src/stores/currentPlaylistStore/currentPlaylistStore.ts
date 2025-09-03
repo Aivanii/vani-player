@@ -21,6 +21,10 @@ class CurrentPlaylistStore {
   ];
   isPlaying: boolean = false;
   currentSongIndex: number | null = 1;
+  //[0-1]
+  volume: number = 1;
+  isVolumeBarOnScreen: boolean = false;
+  isMuted: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -30,13 +34,42 @@ class CurrentPlaylistStore {
     this.isPlaying = !this.isPlaying;
   };
 
-  removeSong = (index: number) => {
-    this.playlist.splice(index, 1);
+  setIsVolumeBarOnScreen = (value: boolean) => {
+    this.isVolumeBarOnScreen = value;
   };
 
   setNewCurrentSongIndex = (index: number) => {
     this.currentSongIndex = index;
   };
+
+  setPreviousSong = () => {
+    if (!this.currentSongIndex) return;
+    this.currentSongIndex = Math.max(0, this.currentSongIndex - 1);
+  };
+
+  setNextSong = () => {
+    if (this.currentSongIndex === null) return;
+    this.currentSongIndex = Math.min(
+      this.playlist.length - 1,
+      this.currentSongIndex + 1
+    );
+  };
+
+  setVolume = (volume: number) => {
+    this.volume = volume;
+  };
+
+  removeSong = (index: number) => {
+    this.playlist.splice(index, 1);
+  };
+
+  get currentVolume() {
+    return this.volume;
+  }
+
+  get isVolumeBarCurrentlyOnScreen() {
+    return this.isVolumeBarOnScreen;
+  }
 
   get currentlyPlaying() {
     return this.isPlaying;
