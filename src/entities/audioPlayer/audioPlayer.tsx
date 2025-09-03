@@ -123,6 +123,7 @@ const AudioPlayer = observer(() => {
           preload="auto"
           src={currentSong?.songUrl}
           ref={audioRef}
+          onEnded={setNextSong}
         ></audio>
 
         <div className="flex justify-between items-center flex-col">
