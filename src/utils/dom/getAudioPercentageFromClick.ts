@@ -1,3 +1,5 @@
+import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
+
 interface GetAudioPercentageFromClick {
   audioVolumeBarStatic: React.RefObject<HTMLDivElement | null>;
   event: { clientX: number };
@@ -6,8 +8,10 @@ interface GetAudioPercentageFromClick {
 const getAudioPercentageFromClick = ({
   audioVolumeBarStatic,
   event,
-}: GetAudioPercentageFromClick): number | undefined => {
-  if (!audioVolumeBarStatic || !audioVolumeBarStatic.current) return 1;
+}: GetAudioPercentageFromClick): number => {
+  const { currentVolume } = currentPlaylistStore;
+
+  if (!audioVolumeBarStatic || !audioVolumeBarStatic.current) return currentVolume;
 
   const rect = audioVolumeBarStatic.current.getBoundingClientRect();
   const clickX = event.clientX - rect.left;

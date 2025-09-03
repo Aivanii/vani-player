@@ -20,6 +20,8 @@ const AudioPlayer = observer(() => {
     isVolumeBarOnScreen,
     currentVolume,
     setIsVolumeBarOnScreen,
+    toggleMute,
+    isCurrentlyMuted,
   } = currentPlaylistStore;
 
   const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
@@ -103,10 +105,10 @@ const AudioPlayer = observer(() => {
   //audio change volume
   useEffect(() => {
     const audio = audioRef.current;
-    if(!audio) return;
-    
+    if (!audio) return;
+
     audio.volume = currentVolume;
-  }, [currentVolume])
+  }, [currentVolume]);
 
   return (
     <div
@@ -117,7 +119,7 @@ const AudioPlayer = observer(() => {
         <audio
           id="audio"
           loop={false}
-          muted={false}
+          muted={isCurrentlyMuted}
           preload="auto"
           src={currentSong?.songUrl}
           ref={audioRef}
@@ -190,12 +192,16 @@ const AudioPlayer = observer(() => {
             }}
           >
             <div className="flex flex-row items-center justify-center">
-              <button className="p-2">
+              <button className="p-2" onClick={toggleMute}>
                 <img
                   className="aspect-square invert-100"
                   width="24"
                   height="24"
-                  src="https://img.icons8.com/?size=100&id=41563&format=png&color=000000"
+                  src={` ${
+                    isCurrentlyMuted
+                      ? "https://img.icons8.com/ios-filled/100/no-audio--v1.png"
+                      : "https://img.icons8.com/ios-filled/100/high-volume--v1.png"
+                  }`}
                   alt="sound changing button"
                 />
               </button>

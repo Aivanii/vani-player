@@ -34,6 +34,10 @@ class CurrentPlaylistStore {
     this.isPlaying = !this.isPlaying;
   };
 
+  toggleMute = () => {
+    this.isMuted = !this.isMuted;
+  };
+
   setIsVolumeBarOnScreen = (value: boolean) => {
     this.isVolumeBarOnScreen = value;
   };
@@ -62,6 +66,10 @@ class CurrentPlaylistStore {
   removeSong = (index: number) => {
     this.playlist.splice(index, 1);
   };
+
+  get isCurrentlyMuted() {
+    return this.isMuted;
+  }
 
   get currentVolume() {
     return this.volume;
