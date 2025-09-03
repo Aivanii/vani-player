@@ -1,1 +1,2 @@
 1. Add time rewind into audioPlayer on <- and -> btns
+2. Add change state to isPlaying = false when song finishes and there is no next one
