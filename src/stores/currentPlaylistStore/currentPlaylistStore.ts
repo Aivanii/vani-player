@@ -18,6 +18,26 @@ class CurrentPlaylistStore {
         "https://moc.muzyet.com/images/cover/vocalokat/vocalokat-self-proclaimed-angel.jpg",
       songUrl: "./self_proclaimed_angel.mp3",
     },
+    {
+      authorName: "Kanna Yanagi",
+      songName: "Speedy Speed Boy",
+      songThumbnail: "https://i.ytimg.com/vi/gqi8AWtDJ74/maxresdefault.jpg",
+      songUrl: "./speedySpeedBoy.mp3",
+    },
+    {
+      authorName: "bitbreaker",
+      songName: "God Only Knows",
+      songThumbnail:
+        "https://images.genius.com/3b7612f22a4c2a1f5dcb1032dda1aef2.300x300x1.png",
+      songUrl: "./godOnlyKnows.mp3",
+    },
+    {
+      authorName: "vocaCircus",
+      songName: "【DEX】 Misery Loves Company",
+      songThumbnail:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
+      songUrl: "./mlcc.mp3",
+    },
   ];
   isPlaying: boolean = false;
   currentSongIndex: number | null = 1;
@@ -66,12 +86,25 @@ class CurrentPlaylistStore {
   removeSong = (index: number) => {
     this.playlist.splice(index, 1);
   };
-  
 
-  get currentlyPlayingSongIndex(){
+  swapSongIndexes = (index1: number, index2: number) => {
+    if (this.currentSongIndex === index1) {
+      this.currentSongIndex = index2;
+    }
+    if (this.currentSongIndex === index2) {
+      this.currentSongIndex = index1;
+    }
+
+    [this.playlist[index1], this.playlist[index2]] = [
+      this.playlist[index2],
+      this.playlist[index1],
+    ];
+  };
+
+  get currentlyPlayingSongIndex() {
     return this.currentSongIndex;
   }
-  
+
   get isCurrentlyMuted() {
     return this.isMuted;
   }

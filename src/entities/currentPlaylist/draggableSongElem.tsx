@@ -1,6 +1,8 @@
 import type { Song } from "../../types";
 import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
 import { useRef } from "react";
+import { useDrag, useDrop, type XYCoord } from "react-dnd";
+import { DragAndDropTypes } from "../../dragAndDrop.types";
 
 interface DraggableSongElemProps {
   song: Song;
@@ -9,7 +11,8 @@ interface DraggableSongElemProps {
   isPlaying: boolean;
   isThisSongCurrentlyPlaying: boolean;
   togglePlay: () => void;
-  //onMoveSong: (dragIndex: number, hoverIndex: number) => void;
+  swapSongIndexes: (index1: number, index2: number) => void;
+  onMoveSong: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const DraggableSongElem = ({
@@ -19,14 +22,13 @@ const DraggableSongElem = ({
   isPlaying,
   isThisSongCurrentlyPlaying,
   togglePlay,
+  swapSongIndexes,
+  onMoveSong,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
-  const isDragging = false;
-
   const { setNewCurrentSongIndex } = currentPlaylistStore;
 
-  /*
-  const [, drop] = useDrop(() => ({
+const [, drop] = useDrop(() => ({
     accept: DragAndDropTypes.SONG,
     hover: (draggedItem: { song: Song }, monitor) => {
       if (!ref.current) return;
@@ -54,7 +56,7 @@ const DraggableSongElem = ({
         return;
       }
 
-      //onMoveSong(dragIndex, hoverIndex);
+      onMoveSong(dragIndex, hoverIndex);
       draggedItem.song.index = hoverIndex;
     },
   }));
@@ -65,10 +67,10 @@ const DraggableSongElem = ({
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  }));
+  }));  
 
   drag(drop(ref));
-  */
+
   return (
     <li
       ref={ref}
