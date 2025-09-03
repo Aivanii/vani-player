@@ -4,15 +4,21 @@ import { useRef } from "react";
 
 interface DraggableSongElemProps {
   song: Song;
-  isPlayingNow: boolean;
+  isActiveSong: boolean;
   index: number;
+  isPlaying: boolean;
+  isThisSongCurrentlyPlaying: boolean;
+  togglePlay: () => void;
   //onMoveSong: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const DraggableSongElem = ({
   song,
-  isPlayingNow,
+  isActiveSong,
   index,
+  isPlaying,
+  isThisSongCurrentlyPlaying,
+  togglePlay,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
   const isDragging = false;
@@ -69,7 +75,7 @@ const DraggableSongElem = ({
       className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
                   hover:scale-105 hover:shadow-standart
                   ${
-                    isPlayingNow
+                    isActiveSong
                       ? "border-2 shadow-standart draggable-active-elem"
                       : "bg-draggable-elem-bg"
                   } 
@@ -94,11 +100,20 @@ const DraggableSongElem = ({
                     hover:opacity-100 hover:backdrop-blur-[2px] hover:bg-[rgba(0,0,0,0.5)]"
             onClick={() => {
               setNewCurrentSongIndex(index);
+              if (!isThisSongCurrentlyPlaying && !isPlaying) {
+                togglePlay();
+              } else if (isThisSongCurrentlyPlaying) {
+                togglePlay();
+              }
             }}
           >
             <img
               className="z-20 invert-100"
-              src="https://img.icons8.com/puffy/32/play.png"
+              src={
+                isThisSongCurrentlyPlaying
+                  ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
+                  : "https://img.icons8.com/puffy/32/play.png"
+              }
               alt="play this song"
             />
           </div>

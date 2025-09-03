@@ -1,10 +1,11 @@
-import { checkIsThisCurrentlyPlaying } from "./tools/checkIsThisCurrentlyPlaying";
 import { DraggableSongElem } from "./draggableSongElem";
 
 import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
 
-const CurrentPlaylist = () => {
-  const { playlist, isPlaying } = currentPlaylistStore;
+import { observer } from "mobx-react-lite";
+const CurrentPlaylist = observer(() => {
+  const { playlist, currentlyPlayingSongIndex, currentlyPlaying, togglePlay } =
+    currentPlaylistStore;
   /*
   const onMoveSong = useCallback(
     (dragIndex: number, hoverIndex: number) => {
@@ -27,13 +28,18 @@ const CurrentPlaylist = () => {
       <div className="pt-4">
         <ul className="flex flex-col gap-4">
           {playlist.map((song, index) => {
-            song.index = index;
+            const songWithIndex = { ...song, index: index };
             return (
               <DraggableSongElem
-                key={song.songUrl}
-                song={song}
+                key={songWithIndex.songUrl}
+                song={songWithIndex}
                 index={index}
-                isPlayingNow={isPlaying}
+                isActiveSong={index === currentlyPlayingSongIndex}
+                isThisSongCurrentlyPlaying={
+                  currentlyPlaying && index === currentlyPlayingSongIndex
+                }
+                isPlaying = {currentlyPlaying}
+                togglePlay={togglePlay}
               />
             );
           })}
@@ -41,6 +47,6 @@ const CurrentPlaylist = () => {
       </div>
     </aside>
   );
-};
+});
 
-export { CurrentPlaylist };
+export default CurrentPlaylist;

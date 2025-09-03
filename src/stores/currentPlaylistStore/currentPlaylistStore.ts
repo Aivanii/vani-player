@@ -66,7 +66,12 @@ class CurrentPlaylistStore {
   removeSong = (index: number) => {
     this.playlist.splice(index, 1);
   };
+  
 
+  get currentlyPlayingSongIndex(){
+    return this.currentSongIndex;
+  }
+  
   get isCurrentlyMuted() {
     return this.isMuted;
   }

@@ -265,4 +265,4 @@ const AudioPlayer = observer(() => {
   );
 });
 
-export { AudioPlayer };
+export default AudioPlayer;

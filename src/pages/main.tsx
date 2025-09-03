@@ -1,5 +1,5 @@
-import { AudioPlayer } from "../entities/audioPlayer/audioPlayer";
-import { CurrentPlaylist } from "../entities/currentPlaylist/currentPlaylist";
+import AudioPlayer from "../entities/audioPlayer/audioPlayer";
+import CurrentPlaylist from "../entities/currentPlaylist/currentPlaylist";
 import { Recomendations } from "../entities/recomendations/recomendations";
 import { ContextMenu } from "../entities/contextMenu/contextMenuSong";
 
