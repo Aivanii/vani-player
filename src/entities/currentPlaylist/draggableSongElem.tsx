@@ -1,5 +1,5 @@
 import type { Identifier, XYCoord } from "dnd-core";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrag, useDrop, type DragSourceMonitor } from "react-dnd";
 import type { Song } from "../../types";
 import { useRef } from "react";
 import { dragAndDropTypes } from "../../dnd.types";
@@ -25,11 +25,7 @@ const DraggableSongElem = ({
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
 
-  const [{ handlerId }, drop] = useDrop<
-    Song,
-    void,
-    { handlerId: Identifier | null }
-  >({
+  const [, drop] = useDrop<Song, void, { handlerId: Identifier | null }>({
     accept: dragAndDropTypes.SONG,
     collect(monitor) {
       return {
@@ -65,11 +61,6 @@ const DraggableSongElem = ({
       }
 
       moveSong(dragIndex, hoverIndex);
-
-      // Note: we're mutating the monitor item here!
-      // Generally it's better to avoid mutations,
-      // but it's good here for the sake of performance
-      // to avoid expensive index searches.
       song.index = hoverIndex;
     },
   });
@@ -79,7 +70,7 @@ const DraggableSongElem = ({
     item: () => {
       return song;
     },
-    collect: (monitor: any) => ({
+    collect: (monitor: DragSourceMonitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
@@ -88,22 +79,12 @@ const DraggableSongElem = ({
 
   return (
     <li
-      data-handler-id={handlerId}
       ref={ref}
-      className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
-                  hover:scale-105 hover:shadow-standart
-                  ${
-                    isThisSongActive
-                      ? "border-2 shadow-standart draggable-active-elem"
-                      : "bg-draggable-elem-bg"
-                  } 
-                  
-                  ${
-                    isDragging
-                      ? "opacity-30 backdrop-blur-sm"
-                      : "backdrop-opacity-100"
-                  }
-                  `}
+      className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer hover:scale-105 hover:shadow-standart ${
+        isThisSongActive
+          ? "border-2 shadow-standart draggable-active-elem"
+          : "bg-draggable-elem-bg"
+      } ${isDragging ? "opacity-30 backdrop-blur-sm" : "backdrop-opacity-100"}`}
       data-audio-url={song.songUrl}
       key={song.songUrl}
     >
