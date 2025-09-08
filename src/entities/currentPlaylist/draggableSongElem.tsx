@@ -6,20 +6,17 @@ import { DragAndDropTypes } from "../../dragAndDrop.types";
 
 interface DraggableSongElemProps {
   song: Song;
-  isActiveSong: boolean;
-  index: number;
   isPlaying: boolean;
-  isThisSongCurrentlyPlaying: boolean;
-  setNewCurrentSongIndex: (index: number) => void;
+  isThisSongActive: boolean;
+  setNewActiveSongUrl: (url: string) => void;
   togglePlay: () => void;
 }
 
 const DraggableSongElem = ({
   song,
-  index,
   isPlaying,
-  isThisSongCurrentlyPlaying,
-  setNewCurrentSongIndex,
+  isThisSongActive,
+  setNewActiveSongUrl,
   togglePlay,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
@@ -28,7 +25,12 @@ const DraggableSongElem = ({
     <li
       ref={ref}
       className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
-                  hover:scale-105 hover:shadow-standart`}
+                  hover:scale-105 hover:shadow-standart
+                  ${
+                    isThisSongActive
+                      ? "border-2 shadow-standart draggable-active-elem"
+                      : "bg-draggable-elem-bg"
+                  } `}
       data-audio-url={song.songUrl}
       key={song.songUrl}
     >
@@ -43,10 +45,10 @@ const DraggableSongElem = ({
             className="w-full h-full aspect-square absolute left-0 top-0 opacity-0 rounded-md transition duration-150 p-2 z-10 bg-transparent
                     hover:opacity-100 hover:backdrop-blur-[2px] hover:bg-[rgba(0,0,0,0.5)]"
             onClick={() => {
-              setNewCurrentSongIndex(index);
-              if (!isThisSongCurrentlyPlaying && !isPlaying) {
+              setNewActiveSongUrl(song.songUrl);
+              if (!isThisSongActive && !isPlaying) {
                 togglePlay();
-              } else if (isThisSongCurrentlyPlaying) {
+              } else if (isThisSongActive) {
                 togglePlay();
               }
             }}
@@ -54,7 +56,7 @@ const DraggableSongElem = ({
             <img
               className="z-20 invert-100"
               src={
-                isThisSongCurrentlyPlaying
+                isThisSongActive && isPlaying
                   ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
                   : "https://img.icons8.com/puffy/32/play.png"
               }

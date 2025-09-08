@@ -7,11 +7,11 @@ import { useCallback, useEffect, useState } from "react";
 
 const CurrentPlaylist = observer(() => {
   const {
-    currentlyPlayingSongIndex,
-    currentlyPlaying,
+    activeSongUrl,
+    isPlaying,
     togglePlay,
+    setNewActiveSongUrl,
     playlist,
-    setNewCurrentSongIndex,
   } = currentPlaylistStore;
 
   return (
@@ -25,12 +25,11 @@ const CurrentPlaylist = observer(() => {
               <DraggableSongElem
                 key={songWithIndex.songUrl}
                 song={songWithIndex}
-                index={index}
-                isPlaying={currentlyPlaying}
-                isThisSongCurrentlyPlaying={
-                  currentlyPlaying && index === currentlyPlayingSongIndex
+                isPlaying={isPlaying}
+                isThisSongActive={
+                  activeSongUrl === songWithIndex.songUrl
                 }
-                setNewCurrentSongIndex={setNewCurrentSongIndex}
+                setNewActiveSongUrl={setNewActiveSongUrl}
                 togglePlay={togglePlay}
               />
             );

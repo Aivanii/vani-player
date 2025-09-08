@@ -40,7 +40,7 @@ class CurrentPlaylistStore {
     },
   ];
   isPlaying: boolean = false;
-  currentSongIndex: number | null = 1;
+  activeSongUrl: string = this.playlist[2].songUrl;
   //[0-1]
   volume: number = 1;
   isVolumeBarOnScreen: boolean = false;
@@ -62,51 +62,45 @@ class CurrentPlaylistStore {
     this.isVolumeBarOnScreen = value;
   };
 
-  setNewCurrentSongIndex = (index: number) => {
-    this.currentSongIndex = index;
+  setNewActiveSongUrl = (url: string) => {
+    this.activeSongUrl = url;
   };
 
   setPreviousSong = () => {
-    if (!this.currentSongIndex) return;
-    this.currentSongIndex = Math.max(0, this.currentSongIndex - 1);
+    if (this.activeSongUrl === null) return;
+
+    const newActiveSongUrl =
+      this.playlist.findIndex((song) => song.songUrl === this.activeSongUrl) -
+      1;
+    if (newActiveSongUrl >= 0)
+      this.activeSongUrl = this.playlist[newActiveSongUrl].songUrl;
   };
 
   setNextSong = () => {
-    if (this.currentSongIndex === null) return;
-    this.currentSongIndex = Math.min(
-      this.playlist.length - 1,
-      this.currentSongIndex + 1
-    );
+    if (this.activeSongUrl === null) return;
+
+    const newActiveSongUrl =
+      this.playlist.findIndex((song) => song.songUrl === this.activeSongUrl) +
+      1;
+    if (this.playlist[newActiveSongUrl])
+      this.activeSongUrl = this.playlist[newActiveSongUrl].songUrl;
+    else{
+      this.isPlaying = false;
+    }
   };
 
   setVolume = (volume: number) => {
     this.volume = volume;
   };
 
-  setNewPlaylist = (songs: Song[]) => {
-    this.playlist = songs;
+  get currentSongUrl() {
+    return this.activeSongUrl;
   }
 
-  removeSong = (index: number) => {
-    this.playlist.splice(index, 1);
-  };
-
-  swapSongIndexes = (index1: number, index2: number) => {
-    if (this.currentSongIndex === index1) {
-      this.currentSongIndex = index2;
-    }
-    if (this.currentSongIndex === index2) {
-      this.currentSongIndex = index1;
-    }
-
-    [this.playlist[index1], this.playlist[index2]] = [
-      this.playlist[index2],
-      this.playlist[index1],
-    ];
-  };
-
   get currentlyPlayingSongIndex() {
-    return this.currentSongIndex;
+    return this.playlist.findIndex(
+      (song) => song.songUrl === this.activeSongUrl
+    );
   }
 
   get isCurrentlyMuted() {
@@ -117,22 +111,10 @@ class CurrentPlaylistStore {
     return this.volume;
   }
 
-  get isVolumeBarCurrentlyOnScreen() {
-    return this.isVolumeBarOnScreen;
-  }
-
-  get currentlyPlaying() {
-    return this.isPlaying;
-  }
-
   get currentSong() {
-    if (this.currentSongIndex === null) return undefined;
-    return this.playlist[this.currentSongIndex];
+    return this.playlist.find((song) => song.songUrl === this.activeSongUrl);
   }
 
-  get playlistLength() {
-    return this.playlist.length;
-  }
 }
 
 export const currentPlaylistStore = new CurrentPlaylistStore();
