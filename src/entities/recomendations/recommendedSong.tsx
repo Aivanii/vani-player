@@ -1,18 +1,20 @@
 import type { Song } from "../../types";
 
-import { addSongToPlaylist } from "./tools/addSongToPlaylist";
-import { removeSongFromPlaylist } from "./tools/removeSongFromPlaylist";
-import { isSongInPlaylist } from "./tools/isSongInPlaylist";
-
 import { useSongContextMenu } from "../../hooks/useContextMenu";
 
 interface RecommendedSong {
   song: Song;
-  playlist: Song[];
-  setPlaylist: React.Dispatch<React.SetStateAction<Song[]>>;
+  isSongInPlaylist: boolean;
+  addSongIntoCurrentPlaylist: (song: Song) => void;
+  removeSongFromCurrentPlaylist: (song: Song) => void;
 }
 
-const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
+const RecommendedSong = ({
+  song,
+  isSongInPlaylist,
+  addSongIntoCurrentPlaylist,
+  removeSongFromCurrentPlaylist,
+}: RecommendedSong) => {
   const handleContextMenu = useSongContextMenu(song);
 
   return (
@@ -29,7 +31,7 @@ const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
       />
       <span
         className={`block overflow-ellipsis text-[1.2rem] w-full text-center line-clamp-2 px-2 h-${
-          song.songName?.length > 24 ? "14" : "6"
+          song.songName && song.songName.length > 24 ? "14" : "6"
         }`}
       >
         {song.songName}
@@ -37,25 +39,17 @@ const RecommendedSong = ({ song, playlist, setPlaylist }: RecommendedSong) => {
       <span className="block overflow-ellipsis text-important px-2">
         {song.authorName}
       </span>
-      {!isSongInPlaylist({ song, playlist }) ? (
+      {!isSongInPlaylist ? (
         <button
           className="px-6 py-1"
-          onClick={() => {
-            addSongToPlaylist({
-              song,
-              playlist,
-              setPlaylist,
-            });
-          }}
+          onClick={() => addSongIntoCurrentPlaylist(song)}
         >
           Add
         </button>
       ) : (
         <button
           className="px-6 py-1"
-          onClick={() => {
-            removeSongFromPlaylist({ song, playlist, setPlaylist });
-          }}
+          onClick={() => removeSongFromCurrentPlaylist(song)}
         >
           Remove
         </button>

@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-
 import type { Song } from "../../types";
 
 class CurrentPlaylistStore {
@@ -10,37 +9,10 @@ class CurrentPlaylistStore {
       songThumbnail:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYW2Kr2xIM4bKzgXhOyHV7XUguj2LreQRvQg&s",
       songUrl: "./yuyoyuppe_sick.mp3",
-    },
-    {
-      authorName: " vocalokat",
-      songName: "self proclaimed angel",
-      songThumbnail:
-        "https://moc.muzyet.com/images/cover/vocalokat/vocalokat-self-proclaimed-angel.jpg",
-      songUrl: "./self_proclaimed_angel.mp3",
-    },
-    {
-      authorName: "Kanna Yanagi",
-      songName: "Speedy Speed Boy",
-      songThumbnail: "https://i.ytimg.com/vi/gqi8AWtDJ74/maxresdefault.jpg",
-      songUrl: "./speedySpeedBoy.mp3",
-    },
-    {
-      authorName: "bitbreaker",
-      songName: "God Only Knows",
-      songThumbnail:
-        "https://images.genius.com/3b7612f22a4c2a1f5dcb1032dda1aef2.300x300x1.png",
-      songUrl: "./godOnlyKnows.mp3",
-    },
-    {
-      authorName: "vocaCircus",
-      songName: "【DEX】 Misery Loves Company",
-      songThumbnail:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
-      songUrl: "./mlcc.mp3",
-    },
+    }
   ];
   isPlaying: boolean = false;
-  activeSongUrl: string = this.playlist[2].songUrl;
+  activeSongUrl: string = this.playlist[0].songUrl;
   //[0-1]
   volume: number = 1;
   isVolumeBarOnScreen: boolean = false;
@@ -51,7 +23,9 @@ class CurrentPlaylistStore {
   }
 
   togglePlay = () => {
-    this.isPlaying = !this.isPlaying;
+    if (this.activeSongUrl) {
+      this.isPlaying = !this.isPlaying;
+    }
   };
 
   toggleMute = () => {
@@ -84,13 +58,44 @@ class CurrentPlaylistStore {
       1;
     if (this.playlist[newActiveSongUrl])
       this.activeSongUrl = this.playlist[newActiveSongUrl].songUrl;
-    else{
+    else {
       this.isPlaying = false;
     }
   };
 
   setVolume = (volume: number) => {
     this.volume = volume;
+  };
+
+  addSong = (song: Song) => {
+    this.playlist.push(song);
+  };
+
+  removeSong = (song: Song) => {
+    if (song.songUrl === this.activeSongUrl) {
+      let currentSongIndex = this.currentlyPlayingSongIndex;
+      if (this.playlist.length - 1 > currentSongIndex) {
+        currentSongIndex++;
+      } else if (this.playlist.length > 1) {
+        currentSongIndex--;
+      } else {
+        currentSongIndex = -1;
+      }
+      this.activeSongUrl = this.playlist[currentSongIndex]?.songUrl || "";
+
+      if (this.activeSongUrl === "") {
+        this.isPlaying = false;
+      }
+    }
+    this.playlist = this.playlist.filter(
+      (playlistSong) => playlistSong.songUrl !== song.songUrl
+    );
+  };
+
+  isSongInPlaylist = (song: Song): boolean => {
+    return !!this.playlist.find(
+      (playlistSong) => song.songUrl === playlistSong.songUrl
+    );
   };
 
   get currentSongUrl() {
@@ -114,7 +119,6 @@ class CurrentPlaylistStore {
   get currentSong() {
     return this.playlist.find((song) => song.songUrl === this.activeSongUrl);
   }
-
 }
 
 export const currentPlaylistStore = new CurrentPlaylistStore();

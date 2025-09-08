@@ -8,14 +8,14 @@ import type { Song } from "../../types";
 const CurrentPlaylist = observer(() => {
   const { activeSongUrl, isPlaying, togglePlay, setNewActiveSongUrl } =
     currentPlaylistStore;
+  const { playlist } = currentPlaylistStore;
 
   //we need copyPlaylist for Drag-N-Drop
   const [copyPlaylist, setCopyPlaylist] = useState<Song[]>([]);
 
   useEffect(() => {
-    const { playlist } = currentPlaylistStore;
     setCopyPlaylist(playlist);
-  }, []);
+  }, [playlist]);
 
   const moveSong = useCallback((dragIndex: number, hoverIndex: number) => {
     setCopyPlaylist((prevPlaylist: Song[]) =>

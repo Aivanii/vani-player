@@ -11,6 +11,7 @@ import { observer } from "mobx-react-lite";
 
 const AudioPlayer = observer(() => {
   const {
+    activeSongUrl,
     currentSong,
     togglePlay,
     isPlaying,
@@ -50,7 +51,7 @@ const AudioPlayer = observer(() => {
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, []);
+  }, [activeSongUrl]);
 
   //audio change currentAudioTimeMS by user
   useEffect(() => {
@@ -75,6 +76,7 @@ const AudioPlayer = observer(() => {
   }, [audioDurationMS]);
 
   //audio change currentAudioTimeMS when audio playing
+  //or change currentAudioTimeMS to 0 when there is no songs
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -127,20 +129,24 @@ const AudioPlayer = observer(() => {
         ></audio>
 
         <div className="flex justify-between items-center flex-col">
-          <div className="inline-block">
-            <img
-              className="w-52 h-52 rounded-md object-cover shadow-[0_0_0_4px_#ffffff1f]"
-              src={currentSong?.songThumbnail}
-              alt="audio preview"
-            />
+          <div className="inline-block w-52 h-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
+            {currentSong?.songThumbnail && (
+              <img
+                className="object-cover w-52 h-52 rounded-md"
+                src={currentSong.songThumbnail}
+                alt={"current song preview"}
+              />
+            )}
           </div>
         </div>
         <span className="text-2xl text-center font-bold w-50 truncate">
           {currentSong?.songName}
         </span>
-        <span className="text-center text-important w-50 truncate">
-          by {currentSong?.authorName}
-        </span>
+        {currentSong?.authorName && (
+          <span className="text-center text-important w-50 truncate">
+            by {currentSong?.authorName}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full relative">

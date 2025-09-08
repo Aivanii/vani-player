@@ -1,6 +1,6 @@
 import AudioPlayer from "../entities/audioPlayer/audioPlayer";
 import CurrentPlaylist from "../entities/currentPlaylist/currentPlaylist";
-import { Recomendations } from "../entities/recomendations/recomendations";
+import Recomendations from "../entities/recomendations/recomendations";
 import { ContextMenu } from "../entities/contextMenu/contextMenuSong";
 
 function Main() {
@@ -11,7 +11,7 @@ function Main() {
 
         <div className="flex justify-center items-center gap-6 flex-col max-w-4xl w-full h-full">
           <AudioPlayer />
-          {/*  <Recomendations /> */}
+          <Recomendations />
         </div>
       </div>
       <ContextMenu />

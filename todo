@@ -1,2 +1,2 @@
 1. Add time rewind into audioPlayer on <- and -> btns
-2. Add change state to isPlaying = false when song finishes and there is no next one
+2. Remove broken progress bar when user deletes all the songs in his playlist and current playTime is not 00:00
