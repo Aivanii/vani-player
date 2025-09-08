@@ -1,28 +1,94 @@
+import type { Identifier, XYCoord } from "dnd-core";
+import { useDrag, useDrop } from "react-dnd";
 import type { Song } from "../../types";
-import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
 import { useRef } from "react";
-import { useDrag, useDrop, type XYCoord } from "react-dnd";
-import { DragAndDropTypes } from "../../dragAndDrop.types";
+import { dragAndDropTypes } from "../../dnd.types";
 
 interface DraggableSongElemProps {
   song: Song;
   isPlaying: boolean;
   isThisSongActive: boolean;
+  index: number;
   setNewActiveSongUrl: (url: string) => void;
   togglePlay: () => void;
+  moveSong: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const DraggableSongElem = ({
   song,
   isPlaying,
   isThisSongActive,
+  index,
   setNewActiveSongUrl,
   togglePlay,
+  moveSong,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
 
+  const [{ handlerId }, drop] = useDrop<
+    Song,
+    void,
+    { handlerId: Identifier | null }
+  >({
+    accept: dragAndDropTypes.SONG,
+    collect(monitor) {
+      return {
+        handlerId: monitor.getHandlerId(),
+      };
+    },
+    hover(song: Song, monitor) {
+      if (!ref.current) {
+        return;
+      }
+      const dragIndex = song.index;
+      const hoverIndex = index;
+
+      if (dragIndex === hoverIndex || dragIndex === undefined) {
+        return;
+      }
+
+      const hoverBoundingRect = ref.current?.getBoundingClientRect();
+
+      const hoverMiddleY =
+        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+      const clientOffset = monitor.getClientOffset();
+
+      const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
+
+      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+        return;
+      }
+
+      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+        return;
+      }
+
+      moveSong(dragIndex, hoverIndex);
+
+      // Note: we're mutating the monitor item here!
+      // Generally it's better to avoid mutations,
+      // but it's good here for the sake of performance
+      // to avoid expensive index searches.
+      song.index = hoverIndex;
+    },
+  });
+
+  const [{ isDragging }, drag] = useDrag({
+    type: dragAndDropTypes.SONG,
+    item: () => {
+      return song;
+    },
+    collect: (monitor: any) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  drag(drop(ref));
+
   return (
     <li
+      data-handler-id={handlerId}
       ref={ref}
       className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
                   hover:scale-105 hover:shadow-standart
@@ -30,7 +96,14 @@ const DraggableSongElem = ({
                     isThisSongActive
                       ? "border-2 shadow-standart draggable-active-elem"
                       : "bg-draggable-elem-bg"
-                  } `}
+                  } 
+                  
+                  ${
+                    isDragging
+                      ? "opacity-30 backdrop-blur-sm"
+                      : "backdrop-opacity-100"
+                  }
+                  `}
       data-audio-url={song.songUrl}
       key={song.songUrl}
     >
