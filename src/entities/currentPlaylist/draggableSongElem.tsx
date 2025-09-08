@@ -10,83 +10,25 @@ interface DraggableSongElemProps {
   index: number;
   isPlaying: boolean;
   isThisSongCurrentlyPlaying: boolean;
+  setNewCurrentSongIndex: (index: number) => void;
   togglePlay: () => void;
-  swapSongIndexes: (index1: number, index2: number) => void;
-  onMoveSong: (dragIndex: number, hoverIndex: number) => void;
 }
 
 const DraggableSongElem = ({
   song,
-  isActiveSong,
   index,
   isPlaying,
   isThisSongCurrentlyPlaying,
+  setNewCurrentSongIndex,
   togglePlay,
-  swapSongIndexes,
-  onMoveSong,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
-  const { setNewCurrentSongIndex } = currentPlaylistStore;
-
-const [, drop] = useDrop(() => ({
-    accept: DragAndDropTypes.SONG,
-    hover: (draggedItem: { song: Song }, monitor) => {
-      if (!ref.current) return;
-
-      const dragIndex = draggedItem.song.index;
-      const hoverIndex = song.index;
-
-      if (dragIndex === hoverIndex) return;
-
-      const hoverBoundingRect = ref.current?.getBoundingClientRect();
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-      const clientOffset = monitor.getClientOffset();
-      const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
-
-      if (dragIndex === undefined || hoverIndex === undefined) return;
-
-      // Dragging downwards
-      if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-        return;
-      }
-
-      // Dragging upwards
-      if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-        return;
-      }
-
-      onMoveSong(dragIndex, hoverIndex);
-      draggedItem.song.index = hoverIndex;
-    },
-  }));
-
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: DragAndDropTypes.SONG,
-    item: { song },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  }));  
-
-  drag(drop(ref));
 
   return (
     <li
       ref={ref}
       className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer 
-                  hover:scale-105 hover:shadow-standart
-                  ${
-                    isActiveSong
-                      ? "border-2 shadow-standart draggable-active-elem"
-                      : "bg-draggable-elem-bg"
-                  } 
-                  ${
-                    isDragging
-                      ? "opacity-50 backdrop-blur-sm"
-                      : "backdrop-opacity-100"
-                  }
-                  `}
+                  hover:scale-105 hover:shadow-standart`}
       data-audio-url={song.songUrl}
       key={song.songUrl}
     >

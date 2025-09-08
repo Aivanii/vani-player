@@ -83,6 +83,10 @@ class CurrentPlaylistStore {
     this.volume = volume;
   };
 
+  setNewPlaylist = (songs: Song[]) => {
+    this.playlist = songs;
+  }
+
   removeSong = (index: number) => {
     this.playlist.splice(index, 1);
   };
