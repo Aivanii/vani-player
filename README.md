@@ -1,4 +1,4 @@
-# current functionalities:
+current functionalities:
 
 - audio player
   - stop/play btn
@@ -18,4 +18,4 @@
     - can play next song
     - can add song to playlist
     - can remove song from playlist
-    - closes when user clicks outside of size of context menu
+    - context menu closes when clicking outside
