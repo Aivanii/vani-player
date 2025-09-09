@@ -1,4 +1,4 @@
-#current functionalities:
+# current functionalities:
 
 - audio player
   - stop/play btn
