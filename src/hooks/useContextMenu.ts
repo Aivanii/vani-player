@@ -1,14 +1,26 @@
 import { useCallback } from "react";
 import { contextMenuStore } from "../stores/contextMenuStore/ContextMenuStore";
 import type { Song } from "../types";
-import { menuItems } from "../stores/contextMenuStore/ContextMenuItems";
+import { menuActions } from "../stores/contextMenuStore/ContextMenuActions";
 
 const useSongContextMenu = (song: Song) => {
-  const handleContextMenu = useCallback(
-    (event) => {
-      event.preventDefault();
+  const settledMenuItems = [
+    {
+      label: "play next",
+      action: () => {
+        menuActions.playNext(song);
+      },
+    },
+  ];
 
-      contextMenuStore.open(event.clientX, event.clientY, menuItems);
+  const handleContextMenu = useCallback(
+    (event: {
+      preventDefault: () => void;
+      clientX: number;
+      clientY: number;
+    }) => {
+      event.preventDefault();
+      contextMenuStore.open(event.clientX, event.clientY, settledMenuItems);
     },
     [song]
   );

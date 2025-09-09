@@ -9,7 +9,7 @@ class CurrentPlaylistStore {
       songThumbnail:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYW2Kr2xIM4bKzgXhOyHV7XUguj2LreQRvQg&s",
       songUrl: "./yuyoyuppe_sick.mp3",
-    }
+    },
   ];
   isPlaying: boolean = false;
   activeSongUrl: string = this.playlist[0].songUrl;
@@ -69,6 +69,17 @@ class CurrentPlaylistStore {
 
   addSong = (song: Song) => {
     this.playlist.push(song);
+  };
+
+  addSongNextAndPlay = (song: Song) => {
+    const currentSongIndex = this.playlist.findIndex(
+      (elem) => elem.songUrl === this.activeSongUrl
+    );
+    this.playlist = [
+      ...this.playlist.splice(0, currentSongIndex + 1),
+      song,
+      ...this.playlist,
+    ];
   };
 
   removeSong = (song: Song) => {

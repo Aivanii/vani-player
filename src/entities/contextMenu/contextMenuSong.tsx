@@ -19,7 +19,7 @@ const ContextMenu = observer(() => {
             <button
               key={index}
               onClick={() => {
-                item.action;
+                item.action();
                 close();
               }}
             >
