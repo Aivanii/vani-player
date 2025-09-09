@@ -1,31 +1,30 @@
-import { act, useCallback } from "react";
+import { useCallback } from "react";
 import { contextMenuStore } from "../stores/contextMenuStore/ContextMenuStore";
-import type { Song } from "../types";
-import { menuActions } from "../stores/contextMenuStore/ContextMenuActions";
-import { action } from "mobx";
+import type { ContextMenuItem, Song } from "../types";
+import { menuActions,  menuTitles} from "../stores/contextMenuStore/ContextMenuActions";
 
 const useSongContextMenu = (song: Song) => {
-  const settledMenuItems = [
+  const settledMenuItems: ContextMenuItem[] = [
     {
-      label: "Play",
+      label: menuTitles.playImmediately,
       action: () => {
         menuActions.playImmediately(song);
       },
     },
     {
-      label: "Play next",
+      label: menuTitles.playNext,
       action: () => {
         menuActions.playNext(song);
       },
     },
     {
-      label: "Add to playlist",
+      label: menuTitles.addToQueue,
       action: () => {
         menuActions.addToQueue(song);
       },
     },
     {
-      label: "Remove from playlist",
+      label: menuTitles.removeFromQueue,
       action: () => {
         menuActions.removeFromQueue(song);
       },
