@@ -4,8 +4,8 @@
   - stop/play btn
   - prev/next track btn
   - change sound btn
-  - showing song's img, name, author and duration 
-  - audio vizualizer 
+  - showing song's img, name, author and duration
+  - audio vizualizer
 - current playlist
   - showing songs' imgs, names, authors
   - can be changed currently playing track in audio player on click
@@ -13,3 +13,9 @@
 - recommendetions
   - showing songs' imgs, names, authors
   - can add/remove song into current playlist
+  - context menu:
+    - can play song immediatelly
+    - can play next song
+    - can add song to playlist
+    - can remove song from playlist
+    - closes when user clicks outside of size of context menu
