@@ -68,10 +68,14 @@ class CurrentPlaylistStore {
   };
 
   addSong = (song: Song) => {
+    const isSongInThePlaylist = this.playlist.find(
+      (elem) => elem.songUrl === song.songUrl
+    );
+    if (isSongInThePlaylist) return;
     this.playlist.push(song);
   };
 
-  addSongNextAndPlay = (song: Song) => {
+  addSongNext = (song: Song) => {
     const currentSongIndex = this.playlist.findIndex(
       (elem) => elem.songUrl === this.activeSongUrl
     );
@@ -80,6 +84,14 @@ class CurrentPlaylistStore {
       song,
       ...this.playlist,
     ];
+  };
+
+  addSongNextAndPlay = (song: Song) => {
+    this.addSongNext(song);
+    this.activeSongUrl = song.songUrl;
+    if (!this.isPlaying) {
+      this.isPlaying = true;
+    }
   };
 
   removeSong = (song: Song) => {
