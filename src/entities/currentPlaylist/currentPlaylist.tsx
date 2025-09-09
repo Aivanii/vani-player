@@ -24,13 +24,13 @@ const CurrentPlaylist = observer(() => {
           [dragIndex, 1],
           [hoverIndex, 0, prevPlaylist[dragIndex] as Song],
         ],
-      })
+      }),
     );
   }, []);
 
   return (
-    <aside className="relative block border-1 w-full h-full max-w-120 shadow-standart bg-entity-bg border-standart-border rounded-4xl p-4 self-stretch">
-      <h2 className="font-bold text-2xl text-center truncate">Your playlist</h2>
+    <aside className="shadow-standart bg-entity-bg border-standart-border relative block h-full w-full max-w-120 self-stretch rounded-4xl border-1 p-4 backdrop-blur-sm">
+      <h2 className="truncate text-center text-2xl font-bold">Your playlist</h2>
       <div className="pt-4">
         <ul className="flex flex-col gap-4">
           {copyPlaylist.map((song, index) => {

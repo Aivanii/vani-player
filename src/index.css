@@ -12,17 +12,17 @@
   --color-important: gold;
 
   /* for main containers in entities */
-  --color-entity-bg: rgba(42, 44, 49);
+  --color-entity-bg: rgba(50, 50, 50, 0.2);
   --shadow-standart:
     0 8px 40px 0 rgba(255, 255, 255, 0.08),
     0 1.5px 10px 0 rgba(255, 255, 255, 0.08);
 
   /* interactive elems in ul */
-  --color-draggable-elem-bg: rgba(97, 97, 102, 0.4);
+  --color-draggable-elem-bg: rgba(97, 97, 102, 0.1);
   --color-draggable-active-elem-bg: linear-gradient(
     270deg,
-    rgba(97, 97, 102, 1) 0%,
-    rgba(134, 134, 150, 1) 100%
+    rgba(97, 97, 102, 0.2) 0%,
+    rgba(134, 134, 150, 0.5) 100%
   );
 
   /* other */
@@ -37,7 +37,7 @@
 
   /*color-scheme: light dark;*/
   color: var(--color-primary);
-  background-color: #1c1d23;
+  background-color: #12111a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

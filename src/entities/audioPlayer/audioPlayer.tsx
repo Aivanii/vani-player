@@ -63,7 +63,7 @@ const AudioPlayer = observer(() => {
     const handleChangingTimeByUser = changePlayedTimeByUser(
       audioBarStatic,
       audioDurationMS,
-      audio
+      audio,
     );
 
     if (!handleChangingTimeByUser) return;
@@ -113,11 +113,8 @@ const AudioPlayer = observer(() => {
   }, [currentVolume]);
 
   return (
-    <div
-      className="w-full max-w-4xl p-6 flex items-center flex-row border-standart-border border-1 
-      rounded-4xl shadow-standart bg-entity-bg self-stretch"
-    >
-      <div className="flex gap-4 flex-col">
+    <div className="border-standart-border shadow-standart bg-entity-bg flex w-full max-w-4xl flex-row items-center self-stretch rounded-4xl border-1 p-6 backdrop-blur-sm">
+      <div className="flex flex-col gap-4">
         <audio
           id="audio"
           loop={false}
@@ -128,30 +125,30 @@ const AudioPlayer = observer(() => {
           onEnded={setNextSong}
         ></audio>
 
-        <div className="flex justify-between items-center flex-col">
-          <div className="inline-block w-52 h-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
+        <div className="flex flex-col items-center justify-between">
+          <div className="inline-block h-52 w-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
             {currentSong?.songThumbnail && (
               <img
-                className="object-cover w-52 h-52 rounded-md"
+                className="h-52 w-52 rounded-md object-cover"
                 src={currentSong.songThumbnail}
                 alt={"current song preview"}
               />
             )}
           </div>
         </div>
-        <span className="text-2xl text-center font-bold w-50 truncate">
+        <span className="w-50 truncate text-center text-2xl font-bold">
           {currentSong?.songName}
         </span>
         {currentSong?.authorName && (
-          <span className="text-center text-important w-50 truncate">
+          <span className="text-important w-50 truncate text-center">
             by {currentSong?.authorName}
           </span>
         )}
       </div>
 
-      <div className="flex flex-col justify-between items-center gap-4 mt-4 w-full h-full relative">
+      <div className="relative mt-4 flex h-full w-full flex-col items-center justify-between gap-4">
         <AudioVisualizer isPlaying={isPlaying} />
-        <div className="inline-flex gap-6 items-center">
+        <div className="inline-flex items-center gap-6">
           <button className="aspect-square h-12" onClick={setPreviousSong}>
             <img
               className="invert-100"
@@ -190,7 +187,7 @@ const AudioPlayer = observer(() => {
           </button>
 
           <div
-            className="relative w-fit flex justify-start"
+            className="relative flex w-fit justify-start"
             onMouseOut={() => {
               setIsVolumeBarOnScreen(false);
             }}
@@ -212,28 +209,28 @@ const AudioPlayer = observer(() => {
                   alt="sound changing button"
                 />
               </button>
-              <div className="relative h-18 w-fit flex justify-center items-center ml-4">
+              <div className="relative ml-4 flex h-18 w-fit items-center justify-center">
                 <div
-                  className={`duration-300 block ${
-                    isVolumeBarOnScreen ? "opacity-100 w-32" : "opacity-0 w-0"
+                  className={`block duration-300 ${
+                    isVolumeBarOnScreen ? "w-32 opacity-100" : "w-0 opacity-0"
                   }`}
                 >
-                  <div className="absolute h-1 bottom-1/2 translate-y-[50%] w-full transition-300 hover:h-2">
+                  <div className="transition-300 absolute bottom-1/2 h-1 w-full translate-y-[50%] hover:h-2">
                     <div
-                      className="relative w-full h-full bg-audioVolumeBar rounded-md opacity-15 z-10 cursor-pointer transition-300"
+                      className="bg-audioVolumeBar transition-300 relative z-10 h-full w-full cursor-pointer rounded-md opacity-15"
                       ref={audioVolumeBarStatic}
                       onClick={(event) => {
                         setVolume(
                           getAudioPercentageFromClick({
                             audioVolumeBarStatic,
                             event,
-                          })
+                          }),
                         );
                       }}
                     />
-                    <div className="absolute h-full w-32 left-0 bottom-1/2 translate-y-[50%] transition-300">
+                    <div className="transition-300 absolute bottom-1/2 left-0 h-full w-32 translate-y-[50%]">
                       <div
-                        className={`relative h-full bg-audioVolumeBar rounded-md z-20 pointer-events-none transition-300`}
+                        className={`bg-audioVolumeBar transition-300 pointer-events-none relative z-20 h-full rounded-md`}
                         style={{ width: `${100 * currentVolume}%` }}
                       ></div>
                     </div>
@@ -243,26 +240,26 @@ const AudioPlayer = observer(() => {
             </div>
           </div>
         </div>
-        <div className="flex justify-around items-center gap-4 ">
-          <span className="cursor-default text-important">
+        <div className="flex items-center justify-around gap-4">
+          <span className="text-important cursor-default">
             {formatTime(currentAudioTimeMS)}
           </span>
-          <div className="relative block transition-300 h-1 hover:h-2">
+          <div className="transition-300 relative block h-1 hover:h-2">
             <div
-              className="relative w-64 h-full bg-progressAudioGradient opacity-15 z-10 rounded-md cursor-pointer transition-300"
+              className="bg-progressAudioGradient transition-300 relative z-10 h-full w-64 cursor-pointer rounded-md opacity-15"
               ref={progressAudioStaticRef}
             ></div>
             <div
-              className={`absolute top-0 left-0 h-full bg-progressAudioGradient z-20 rounded-md pointer-events-none transition-300`}
+              className={`bg-progressAudioGradient transition-300 pointer-events-none absolute top-0 left-0 z-20 h-full rounded-md`}
               style={{
                 width: calculateProgressAudio(
                   currentAudioTimeMS,
-                  audioDurationMS
+                  audioDurationMS,
                 ),
               }}
             ></div>
           </div>
-          <span className="cursor-default text-important">
+          <span className="text-important cursor-default">
             {formatTime(audioDurationMS)}
           </span>
         </div>

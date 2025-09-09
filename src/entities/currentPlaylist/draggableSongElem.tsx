@@ -80,24 +80,23 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-1 border-standart-border p-2 rounded-2xl transition duration-150 cursor-pointer hover:scale-105 hover:shadow-standart ${
+      className={`border-standart-border hover:shadow-standart cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
         isThisSongActive
-          ? "border-2 shadow-standart draggable-active-elem"
+          ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
-      } ${isDragging ? "opacity-30 backdrop-blur-sm" : "backdrop-opacity-100"}`}
+      } ${isDragging ? "opacity-30 backdrop-blur-sm" : "opacity-100"}`}
       data-audio-url={song.songUrl}
       key={song.songUrl}
     >
       <div className="flex flex-row gap-3">
         <div className="relative">
           <img
-            className="relative w-16 aspect-square object-cover rounded-md shadow-[0_0_0_2px_#ffffff1f]"
+            className="relative aspect-square w-16 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
             src={song.songThumbnail}
             alt="img alt"
           ></img>
           <div
-            className="w-full h-full aspect-square absolute left-0 top-0 opacity-0 rounded-md transition duration-150 p-2 z-10 bg-transparent
-                    hover:opacity-100 hover:backdrop-blur-[2px] hover:bg-[rgba(0,0,0,0.5)]"
+            className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
             onClick={() => {
               setNewActiveSongUrl(song.songUrl);
               if (!isThisSongActive && !isPlaying) {
@@ -118,9 +117,9 @@ const DraggableSongElem = ({
             />
           </div>
         </div>
-        <div className="flex flex-col w-full h-full items-start gap-2">
-          <span className="block truncate max-w-90">{song.songName}</span>
-          <span className="block text-important truncate">
+        <div className="flex h-full w-full flex-col items-start gap-2">
+          <span className="block max-w-90 truncate">{song.songName}</span>
+          <span className="text-important block truncate">
             {song.authorName}
           </span>
         </div>

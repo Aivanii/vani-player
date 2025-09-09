@@ -12,15 +12,15 @@ const Recomendations = observer(() => {
     isCanBeAddedIntoCurrentPlaylist,
   } = recommendationStore;
 
-  const {playlist} = currentPlaylistStore;
+  const { playlist } = currentPlaylistStore;
 
   return (
-    <div className="relative block border-1 w-full h-full shadow-standart bg-entity-bg border-standart-border rounded-4xl p-6 self-stretch">
+    <div className="shadow-standart bg-entity-bg border-standart-border relative block h-full w-full self-stretch rounded-4xl border-1 p-6 backdrop-blur-sm">
       <div className="">
-        <h3 className="text-2xl font-bold truncate">Recommended for you</h3>
+        <h3 className="truncate text-2xl font-bold">Recommended for you</h3>
       </div>
-      <div className="flex justify-center items-center">
-        <div className="pt-6 flex flex-row gap-4 flex-wrap justify-start max-w-204">
+      <div className="flex items-center justify-center">
+        <div className="flex max-w-204 flex-row flex-wrap justify-start gap-4 pt-6">
           {recommendations.map((song) => {
             return (
               <RecommendedSong
