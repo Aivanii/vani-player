@@ -13,7 +13,8 @@
 
   /* for main containers in entities */
   --color-entity-bg: rgba(42, 44, 49);
-  --shadow-standart: 0 8px 40px 0 rgba(255, 255, 255, 0.08),
+  --shadow-standart:
+    0 8px 40px 0 rgba(255, 255, 255, 0.08),
     0 1.5px 10px 0 rgba(255, 255, 255, 0.08);
 
   /* interactive elems in ul */
@@ -45,14 +46,14 @@
 
   --gradient-variant-2: linear-gradient(
     35deg,
-    rgb(100, 100, 100) 0%,
-    rgb(148, 148, 148) 100%
+    rgba(100, 100, 100, 0.3) 0%,
+    rgb(148, 148, 148, 0.25) 100%
   );
   --gradient-variant-1: linear-gradient(
     135deg,
-    rgba(54, 54, 54, 0.8) 0%,
-    rgba(124, 124, 124, 0.8) 50%,
-    rgba(54, 54, 54, 0.8) 100%
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(124, 124, 124, 0.6) 50%,
+    rgba(54, 54, 54, 0.4) 100%
   );
 }
 
@@ -94,6 +95,7 @@ button {
   justify-content: center;
   align-items: center;
   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--color-standart-border);
 }
 button:hover {
   transform: scale(1.15);
@@ -105,11 +107,11 @@ main {
   margin-right: auto;
 }
 
-main button:nth-child(even) {
+body button:nth-child(even) {
   background: var(--gradient-variant-1);
 }
 
-main button:nth-child(odd) {
+body button:nth-child(odd) {
   background: var(--gradient-variant-2);
 }
 
