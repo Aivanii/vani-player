@@ -39,26 +39,25 @@ const MusicSearch = () => {
       ></input>
       {isMenuOpen && (
         <>
-          <ul className="border-standart-border shadow-standart absolute z-70 flex w-full flex-col gap-4 rounded-2xl p-4 backdrop-blur-sm duration-150">
+          <ul className="border-standart-border shadow-standart absolute z-70 flex w-full flex-col gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150">
             {data &&
               data.results.map((elem) => {
                 return (
                   <li
                     key={elem.id}
-                    className="z-50 flex w-64 flex-row items-center justify-start gap-3"
+                    className="hover:shadow-standart bg-draggable-elem-bg border-standart-border z-50 flex flex-row items-center justify-start gap-3 rounded-2xl border-1 p-2 duration-150 hover:scale-105"
                   >
-                    <div>
+                    <div className="relative block h-16 w-16 flex-shrink-0">
                       <img
                         src={elem.album_image}
                         alt={elem.album_name}
-                        className="aspect-square w-16 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
+                        className="h-16 w-16 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
                       />
                     </div>
-                    <div>
-                      <span className="block max-w-48 truncate">
-                        {elem.name}
-                      </span>
-                      <span className="text-important block max-w-48 truncate">
+
+                    <div className="relative min-w-0 flex-1">
+                      <span className="block w-full truncate">{elem.name}</span>
+                      <span className="text-important block w-full truncate">
                         {elem.artist_name}
                       </span>
                     </div>
@@ -66,16 +65,6 @@ const MusicSearch = () => {
                 );
               })}
           </ul>
-          <div>
-            {createPortal(
-              <div
-                className="fixed top-0 left-0 z-60 h-full w-full"
-                onClick={() => setIsMenuOpen(false)}
-                onContextMenu={() => setIsMenuOpen(false)}
-              ></div>,
-              document.body,
-            )}
-          </div>
         </>
       )}
     </div>
