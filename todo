@@ -2,3 +2,5 @@
 2. Remove broken progress bar when user deletes all the songs in his playlist and current playTime is not 00:00
 3. Auto set currentSong when there were none and user adds new into his playlist
 4. Add optimization to different screen sizes
+5. Add tabindexes
+6. Add phone optimization
