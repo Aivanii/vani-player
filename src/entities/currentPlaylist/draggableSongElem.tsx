@@ -85,8 +85,8 @@ const DraggableSongElem = ({
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
       } ${isDragging ? "opacity-30 backdrop-blur-sm" : "opacity-100"}`}
-      data-audio-url={song.url}
-      key={song.url}
+      data-audio-url={song.audio}
+      key={song.id}
     >
       <div className="flex flex-row gap-3">
         <div className="relative">
@@ -98,7 +98,7 @@ const DraggableSongElem = ({
           <div
             className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
             onClick={() => {
-              setNewActiveurl(song.url);
+              setNewActiveurl(song.audio);
               if (!isThisSongActive && !isPlaying) {
                 togglePlay();
               } else if (isThisSongActive) {

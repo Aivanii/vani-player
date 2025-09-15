@@ -1,22 +1,62 @@
-const SongElem = ({ song }) => {
-  return (
-    <li className="hover:shadow-standart bg-draggable-elem-bg border-standart-border z-50 flex flex-row items-center justify-start gap-3 rounded-2xl border-1 p-2 duration-150 hover:scale-105">
-      <div className="relative block h-16 w-16 flex-shrink-0">
-        <img
-          src={song.album_image}
-          alt={song.album_name}
-          className="h-16 w-16 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
-        />
-      </div>
+import type { Song } from "../../types";
 
-      <div className="relative min-w-0 flex-1">
-        <span className="block w-full truncate">{song.name}</span>
-        <span className="text-important block w-full truncate">
-          {song.artist_name}
-        </span>
+interface SongElemProps {
+  song: Song;
+  isPlaying: boolean;
+  isThisSongActive: boolean;
+  index: number;
+  addSongNextAndPlay: (song: Song) => void;
+}
+
+const SongElem = ({
+  song,
+  isPlaying,
+  isThisSongActive,
+  addSongNextAndPlay,
+}: SongElemProps) => {
+  return (
+    <li
+      className={`border-standart-border hover:shadow-standart cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
+        isThisSongActive
+          ? "shadow-standart draggable-active-elem border-2"
+          : "bg-draggable-elem-bg"
+      }`}
+      data-audio-url={song.id}
+      key={song.id}
+    >
+      <div className="flex flex-row gap-3">
+        <div className="relative">
+          <img
+            className="relative aspect-square w-20 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
+            src={song.album_image}
+            alt="img alt"
+          ></img>
+          <div
+            className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
+            onClick={() => {
+              addSongNextAndPlay(song);
+            }}
+          >
+            <img
+              className="z-20 invert-100"
+              src={
+                isThisSongActive && isPlaying
+                  ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
+                  : "https://img.icons8.com/puffy/32/play.png"
+              }
+              alt="play this song"
+            />
+          </div>
+        </div>
+        <div className="flex h-full w-full flex-col items-start gap-2">
+          <span className="block max-w-52 truncate">{song.name}</span>
+          <span className="text-important block max-w-52 truncate">
+            {song.artist_name}
+          </span>
+        </div>
       </div>
     </li>
   );
 };
 
-export default SongElem;
+export { SongElem };

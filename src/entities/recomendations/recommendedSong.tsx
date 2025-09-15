@@ -19,7 +19,7 @@ const RecommendedSong = ({
 
   return (
     <div
-      key={song.url}
+      key={song.id}
       className="border-standart-border bg-draggable-elem-bg hover:shadow-standart flex h-58 w-48 flex-col items-center justify-center gap-1 rounded-2xl border-1 backdrop-opacity-100 duration-150"
       onContextMenu={handleContextMenu}
     >

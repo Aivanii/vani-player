@@ -1,18 +1,21 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import type { Song } from "../../types";
 
 class CurrentPlaylistStore {
   playlist: Song[] = [
     {
+      id: "0",
       artist_name: "yuyoyuppe sick",
+      artist_id: "dunno",
       name: "SICK Yanderu EP",
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYW2Kr2xIM4bKzgXhOyHV7XUguj2LreQRvQg&s",
-      url: "./yuyoyuppe_sick.mp3",
+      album_name: "dunno",
+      audio: "./yuyoyuppe_sick.mp3",
     },
   ];
   isPlaying: boolean = false;
-  activeurl: string = this.playlist[0].url;
+  activeurl: string = this.playlist[0].audio;
   //[0-1]
   volume: number = 1;
   isVolumeBarOnScreen: boolean = false;
@@ -44,17 +47,17 @@ class CurrentPlaylistStore {
     if (this.activeurl === null) return;
 
     const newActiveurl =
-      this.playlist.findIndex((song) => song.url === this.activeurl) - 1;
-    if (newActiveurl >= 0) this.activeurl = this.playlist[newActiveurl].url;
+      this.playlist.findIndex((song) => song.audio === this.activeurl) - 1;
+    if (newActiveurl >= 0) this.activeurl = this.playlist[newActiveurl].audio;
   };
 
   setNextSong = () => {
     if (this.activeurl === null) return;
 
     const newActiveurl =
-      this.playlist.findIndex((song) => song.url === this.activeurl) + 1;
+      this.playlist.findIndex((song) => song.audio === this.activeurl) + 1;
     if (this.playlist[newActiveurl])
-      this.activeurl = this.playlist[newActiveurl].url;
+      this.activeurl = this.playlist[newActiveurl].audio;
     else {
       this.isPlaying = false;
     }
@@ -66,7 +69,7 @@ class CurrentPlaylistStore {
 
   addSong = (song: Song) => {
     const isSongInThePlaylist = this.playlist.find(
-      (elem) => elem.url === song.url,
+      (elem) => elem.audio === song.audio,
     );
     if (isSongInThePlaylist) return;
     this.playlist.push(song);
@@ -74,7 +77,7 @@ class CurrentPlaylistStore {
 
   addSongNext = (song: Song) => {
     const currentSongIndex = this.playlist.findIndex(
-      (elem) => elem.url === this.activeurl,
+      (elem) => elem.audio === this.activeurl,
     );
     this.playlist = [
       ...this.playlist.splice(0, currentSongIndex + 1),
@@ -84,15 +87,18 @@ class CurrentPlaylistStore {
   };
 
   addSongNextAndPlay = (song: Song) => {
-    this.addSongNext(song);
-    this.activeurl = song.url;
+    if (!this.isSongInPlaylist(song)) {
+      this.addSongNext(song);
+    }
+    console.log(toJS(song));
+    this.activeurl = song.audio;
     if (!this.isPlaying) {
       this.isPlaying = true;
     }
   };
 
   removeSong = (song: Song) => {
-    if (song.url === this.activeurl) {
+    if (song.audio === this.activeurl) {
       let currentSongIndex = this.currentlyPlayingSongIndex;
       if (this.playlist.length - 1 > currentSongIndex) {
         currentSongIndex++;
@@ -101,20 +107,20 @@ class CurrentPlaylistStore {
       } else {
         currentSongIndex = -1;
       }
-      this.activeurl = this.playlist[currentSongIndex]?.url || "";
+      this.activeurl = this.playlist[currentSongIndex]?.audio || "";
 
       if (this.activeurl === "") {
         this.isPlaying = false;
       }
     }
     this.playlist = this.playlist.filter(
-      (playlistSong) => playlistSong.url !== song.url,
+      (playlistSong) => playlistSong.audio !== song.audio,
     );
   };
 
   isSongInPlaylist = (song: Song): boolean => {
     return !!this.playlist.find(
-      (playlistSong) => song.url === playlistSong.url,
+      (playlistSong) => song.audio === playlistSong.audio,
     );
   };
 
@@ -123,7 +129,7 @@ class CurrentPlaylistStore {
   }
 
   get currentlyPlayingSongIndex() {
-    return this.playlist.findIndex((song) => song.url === this.activeurl);
+    return this.playlist.findIndex((song) => song.audio === this.activeurl);
   }
 
   get isCurrentlyMuted() {
@@ -135,7 +141,7 @@ class CurrentPlaylistStore {
   }
 
   get currentSong() {
-    return this.playlist.find((song) => song.url === this.activeurl);
+    return this.playlist.find((song) => song.audio === this.activeurl);
   }
 }
 

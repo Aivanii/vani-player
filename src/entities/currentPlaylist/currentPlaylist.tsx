@@ -6,9 +6,8 @@ import { useCallback, useEffect, useState } from "react";
 import type { Song } from "../../types";
 
 const CurrentPlaylist = observer(() => {
-  const { activeurl, isPlaying, togglePlay, setNewActiveurl } =
+  const { activeurl, isPlaying, playlist, togglePlay, setNewActiveurl } =
     currentPlaylistStore;
-  const { playlist } = currentPlaylistStore;
 
   //we need copyPlaylist for Drag-N-Drop
   const [copyPlaylist, setCopyPlaylist] = useState<Song[]>([]);
@@ -37,10 +36,10 @@ const CurrentPlaylist = observer(() => {
             const songWithIndex = { ...song, index: index };
             return (
               <DraggableSongElem
-                key={songWithIndex.url}
+                key={songWithIndex.audio}
                 song={songWithIndex}
                 isPlaying={isPlaying}
-                isThisSongActive={activeurl === songWithIndex.url}
+                isThisSongActive={activeurl === songWithIndex.audio}
                 index={index}
                 setNewActiveurl={setNewActiveurl}
                 togglePlay={togglePlay}

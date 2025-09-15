@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import useMusicAPI from "../../../hooks/useMusicAPI";
 import LoadingELem from "../../loadingElem/loadingElem";
-import SongElem from "./songElem";
+import { currentPlaylistStore } from "../../../stores/currentPlaylistStore/currentPlaylistStore";
+import type { Song } from "../../../types";
+import { SongElem } from "./songElem";
+import { toJS } from "mobx";
+import { observer } from "mobx-react-lite";
 
-const MusicSearch = () => {
+const MusicSearch = observer(() => {
   const [searchText, setSearchText] = useState<string>("");
   //empty = no using API at the time
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -13,7 +17,15 @@ const MusicSearch = () => {
   const { data, isLoading, error } = useMusicAPI(
     searchQuery ? `tracks/?namesearch=${encodeURIComponent(searchQuery)}` : "",
   );
-  console.log(data);
+
+  const {
+    activeurl,
+    isPlaying,
+    playlist,
+    togglePlay,
+    setNewActiveurl,
+    addSongNextAndPlay,
+  } = currentPlaylistStore;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,7 +51,10 @@ const MusicSearch = () => {
       ></input>
       <>
         {isMenuOpen && (
-          <ul className="border-standart-border shadow-standart bg-entity-bg absolute z-70 flex min-h-24 w-full flex-col gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150">
+          <ul
+            className="border-standart-border shadow-standart bg-entity-bg absolute z-70 flex min-h-24 w-full flex-col gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150"
+            hidden={!isMenuOpen}
+          >
             {isLoading ? (
               <div>
                 <LoadingELem />
@@ -47,8 +62,19 @@ const MusicSearch = () => {
             ) : (
               <>
                 {data &&
-                  data.results.map((elem) => {
-                    return <SongElem song={elem} key={elem.id} />;
+                  data.results.map((elem: Song, index: number) => {
+                    return (
+                      <SongElem
+                        song={elem}
+                        key={elem.id}
+                        isPlaying={isPlaying}
+                        isThisSongActive={activeurl === elem.url}
+                        index={index}
+                        setNewActiveurl={setNewActiveurl}
+                        togglePlay={togglePlay}
+                        addSongNextAndPlay={addSongNextAndPlay}
+                      />
+                    );
                   })}
               </>
             )}
@@ -57,6 +83,6 @@ const MusicSearch = () => {
       </>
     </div>
   );
-};
+});
 
 export default MusicSearch;

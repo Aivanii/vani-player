@@ -35,6 +35,7 @@ const AudioPlayer = observer(() => {
 
   //audio change audioDurationMS
   useEffect(() => {
+    console.log(activeurl);
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -120,7 +121,7 @@ const AudioPlayer = observer(() => {
           loop={false}
           muted={isCurrentlyMuted}
           preload="auto"
-          src={currentSong?.url}
+          src={currentSong?.audio}
           ref={audioRef}
           onEnded={setNextSong}
         ></audio>

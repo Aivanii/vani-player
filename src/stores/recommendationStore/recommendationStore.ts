@@ -6,59 +6,83 @@ import type { Song } from "../../types";
 class RecommendationStore {
   recommendations: Song[] = [
     {
+      id: "1",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "yuyoyuppe sick",
       name: "SICK Yanderu EP",
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYW2Kr2xIM4bKzgXhOyHV7XUguj2LreQRvQg&s",
-      url: "./yuyoyuppe_sick.mp3",
+      audio: "./yuyoyuppe_sick.mp3",
     },
     {
+      id: "2",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: " vocalokat",
       name: "self proclaimed angel",
       album_image:
         "https://moc.muzyet.com/images/cover/vocalokat/vocalokat-self-proclaimed-angel.jpg",
-      url: "./self_proclaimed_angel.mp3",
+      audio: "./self_proclaimed_angel.mp3",
     },
     {
+      id: "3",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "JubyPhonic",
       name: "Electric Angel",
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9t15jtwy2djQ7jti4KxHavL02xQU2_qdpRg&s",
-      url: "./electricAngel.mp3",
+      audio: "./electricAngel.mp3",
     },
     {
+      id: "4",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "Kanna Yanagi",
       name: "Speedy Speed Boy",
       album_image: "https://i.ytimg.com/vi/gqi8AWtDJ74/maxresdefault.jpg",
-      url: "./speedySpeedBoy.mp3",
+      audio: "./speedySpeedBoy.mp3",
     },
     {
+      id: "5",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "bitbreaker",
       name: "God Only Knows",
       album_image:
         "https://images.genius.com/3b7612f22a4c2a1f5dcb1032dda1aef2.300x300x1.png",
-      url: "./godOnlyKnows.mp3",
+      audio: "./godOnlyKnows.mp3",
     },
     {
+      id: "6",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "vocaCircus",
       name: "【DEX】 Misery Loves Company",
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
-      url: "./mlcc.mp3",
+      audio: "./mlcc.mp3",
     },
     {
+      id: "7",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "король и шут",
       name: "Дайте людям рому!",
       album_image:
         "https://korol-i-shut.su/images/albums/prodavets-koshmarov.jpg",
-      url: "./kisdlr.mp3",
+      audio: "./kisdlr.mp3",
     },
     {
+      id: "8",
+      artist_id: "dunno",
+      album_name: "dunno",
       artist_name: "Will Stetson",
       name: "Override",
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZUCXw9WkET76F8BPfTW4TPfA0IuIqh-jmQ&s",
-      url: "./override.mp3",
+      audio: "./override.mp3",
     },
   ];
 
