@@ -20,7 +20,9 @@ const MusicSearch = observer(() => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setSearchQuery(searchText.trim() || "");
-      setIsMenuOpen(true);
+      if (searchQuery) {
+        setIsMenuOpen(true);
+      }
     }, 500);
 
     return () => {

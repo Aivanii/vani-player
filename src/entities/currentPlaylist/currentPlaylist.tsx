@@ -28,10 +28,10 @@ const CurrentPlaylist = observer(() => {
   }, []);
 
   return (
-    <aside className="shadow-standart bg-entity-bg border-standart-border relative block h-full w-full max-w-120 self-stretch rounded-4xl border-1 p-4 backdrop-blur-sm">
+    <aside className="shadow-standart bg-entity-bg border-standart-border relative block h-full max-h-[720px] w-full max-w-120 self-stretch rounded-4xl border-1 p-4 backdrop-blur-sm">
       <h2 className="truncate text-center text-2xl font-bold">Your playlist</h2>
       <div className="pt-4">
-        <ul className="flex flex-col gap-4">
+        <ul className="shadow-t-standart-shadow scroll flex h-full max-h-218.5 flex-col gap-4 overflow-x-hidden overflow-y-auto">
           {copyPlaylist.map((song, index) => {
             const songWithIndex = { ...song, index: index };
             return (
