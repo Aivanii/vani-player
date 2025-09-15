@@ -6,6 +6,12 @@ current functionalities:
     - can add song to playlist
     - showing song's img, name, author and duration
     - stop/play btn
+  - context menu:
+    - can play song immediatelly
+    - can play next song
+    - can add song to playlist
+    - can remove song from playlist
+    - context menu closes when clicking outside
 - audio player
   - stop/play btn
   - prev/next track btn
