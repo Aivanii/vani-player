@@ -46,7 +46,7 @@ const MusicSearch = observer(() => {
       <>
         {isMenuOpen && (
           <ul
-            className="border-standart-border shadow-standart bg-entity-bg absolute z-70 flex min-h-24 w-full flex-col gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150"
+            className="border-standart-border shadow-standart bg-entity-bg absolute z-1100 flex min-h-24 w-full flex-col gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150"
             hidden={!isMenuOpen}
           >
             {isLoading ? (
@@ -72,6 +72,14 @@ const MusicSearch = observer(() => {
               </>
             )}
           </ul>
+        )}
+      </>
+      <>
+        {isMenuOpen && (
+          <div
+            className="fixed top-0 left-0 z-1000 h-full w-full"
+            onClick={() => setIsMenuOpen(false)}
+          />
         )}
       </>
     </div>
