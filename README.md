@@ -1,5 +1,11 @@
 current functionalities:
 
+- header
+  - search music elem
+    - can find music from jamendo.com
+    - can add song to playlist
+    - showing song's img, name, author and duration
+    - stop/play btn
 - audio player
   - stop/play btn
   - prev/next track btn
