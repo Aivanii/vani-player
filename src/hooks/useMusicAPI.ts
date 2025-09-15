@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useMusicAPI = (endpoint: string) => {
   const [data, setData] = useState<unknown>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
@@ -10,7 +10,6 @@ const useMusicAPI = (endpoint: string) => {
       if (!endpoint) return;
       setIsLoading(true);
       setError(null);
-
       try {
         const url = `/api/${endpoint}${endpoint.includes("?") ? "&" : "?"}client_id=01b9424c&format=jsonpretty&limit=5`;
         const response = await fetch(url);

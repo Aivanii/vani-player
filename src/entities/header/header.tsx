@@ -1,4 +1,4 @@
-import MusicSearch from "./musicSearch";
+import MusicSearch from "./musicSearch/musicSearch";
 
 const Header = () => {
   return (
