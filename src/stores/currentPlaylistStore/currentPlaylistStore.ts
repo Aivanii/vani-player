@@ -90,11 +90,7 @@ class CurrentPlaylistStore {
     if (!this.isSongInPlaylist(song)) {
       this.addSongNext(song);
     }
-    console.log(toJS(song));
     this.activeurl = song.audio;
-    if (!this.isPlaying) {
-      this.isPlaying = true;
-    }
   };
 
   removeSong = (song: Song) => {

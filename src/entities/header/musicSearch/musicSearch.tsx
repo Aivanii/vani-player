@@ -18,14 +18,8 @@ const MusicSearch = observer(() => {
     searchQuery ? `tracks/?namesearch=${encodeURIComponent(searchQuery)}` : "",
   );
 
-  const {
-    activeurl,
-    isPlaying,
-    playlist,
-    togglePlay,
-    setNewActiveurl,
-    addSongNextAndPlay,
-  } = currentPlaylistStore;
+  const { activeurl, isPlaying, togglePlay, addSongNextAndPlay } =
+    currentPlaylistStore;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -68,11 +62,10 @@ const MusicSearch = observer(() => {
                         song={elem}
                         key={elem.id}
                         isPlaying={isPlaying}
-                        isThisSongActive={activeurl === elem.url}
+                        isThisSongActive={activeurl === elem.audio}
                         index={index}
-                        setNewActiveurl={setNewActiveurl}
-                        togglePlay={togglePlay}
                         addSongNextAndPlay={addSongNextAndPlay}
+                        togglePlay={togglePlay}
                       />
                     );
                   })}

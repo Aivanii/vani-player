@@ -1,4 +1,4 @@
-import type { Song } from "../../types";
+import type { Song } from "../../../types";
 
 interface SongElemProps {
   song: Song;
@@ -6,6 +6,7 @@ interface SongElemProps {
   isThisSongActive: boolean;
   index: number;
   addSongNextAndPlay: (song: Song) => void;
+  togglePlay: () => void;
 }
 
 const SongElem = ({
@@ -13,6 +14,7 @@ const SongElem = ({
   isPlaying,
   isThisSongActive,
   addSongNextAndPlay,
+  togglePlay,
 }: SongElemProps) => {
   return (
     <li
@@ -35,6 +37,11 @@ const SongElem = ({
             className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
             onClick={() => {
               addSongNextAndPlay(song);
+              if (!isThisSongActive && !isPlaying) {
+                togglePlay();
+              } else if (isThisSongActive) {
+                togglePlay();
+              }
             }}
           >
             <img
