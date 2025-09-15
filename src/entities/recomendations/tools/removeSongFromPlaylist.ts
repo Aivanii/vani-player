@@ -13,8 +13,8 @@ const removeSongFromPlaylist = ({
 }: RemoveSongFromPlaylist): void => {
   setPlaylist(
     playlist.filter((elem) => {
-      if (elem.songUrl !== song.songUrl) return elem;
-    })
+      if (elem.url !== song.url) return elem;
+    }),
   );
 };
 

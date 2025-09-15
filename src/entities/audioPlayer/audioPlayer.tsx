@@ -11,7 +11,7 @@ import { observer } from "mobx-react-lite";
 
 const AudioPlayer = observer(() => {
   const {
-    activeSongUrl,
+    activeurl,
     currentSong,
     togglePlay,
     isPlaying,
@@ -51,7 +51,7 @@ const AudioPlayer = observer(() => {
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, [activeSongUrl]);
+  }, [activeurl]);
 
   //audio change currentAudioTimeMS by user
   useEffect(() => {
@@ -120,28 +120,28 @@ const AudioPlayer = observer(() => {
           loop={false}
           muted={isCurrentlyMuted}
           preload="auto"
-          src={currentSong?.songUrl}
+          src={currentSong?.url}
           ref={audioRef}
           onEnded={setNextSong}
         ></audio>
 
         <div className="flex flex-col items-center justify-between">
           <div className="inline-block h-52 w-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
-            {currentSong?.songThumbnail && (
+            {currentSong?.album_image && (
               <img
                 className="h-52 w-52 rounded-md object-cover"
-                src={currentSong.songThumbnail}
+                src={currentSong.album_image}
                 alt={"current song preview"}
               />
             )}
           </div>
         </div>
         <span className="w-50 truncate text-center text-2xl font-bold">
-          {currentSong?.songName}
+          {currentSong?.name}
         </span>
-        {currentSong?.authorName && (
+        {currentSong?.artist_name && (
           <span className="text-important w-50 truncate text-center">
-            by {currentSong?.authorName}
+            by {currentSong?.artist_name}
           </span>
         )}
       </div>

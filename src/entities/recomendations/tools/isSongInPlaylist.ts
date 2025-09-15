@@ -5,7 +5,7 @@ interface IsSongInPlaylist {
 }
 
 const isSongInPlaylist = ({ song, playlist }: IsSongInPlaylist): boolean => {
-  return playlist.map((s) => s.songUrl).includes(song.songUrl);
+  return playlist.map((s) => s.url).includes(song.url);
 };
 
 export { isSongInPlaylist };

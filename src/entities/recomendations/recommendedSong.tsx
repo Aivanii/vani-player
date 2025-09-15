@@ -19,25 +19,24 @@ const RecommendedSong = ({
 
   return (
     <div
-      key={song.songUrl}
-      className="rounded-2xl border-1 border-standart-border w-48 h-58 flex flex-col justify-center gap-1 items-center duration-150
-              backdrop-opacity-100 bg-draggable-elem-bg hover:shadow-standart"
+      key={song.url}
+      className="border-standart-border bg-draggable-elem-bg hover:shadow-standart flex h-58 w-48 flex-col items-center justify-center gap-1 rounded-2xl border-1 backdrop-opacity-100 duration-150"
       onContextMenu={handleContextMenu}
     >
       <img
-        src={song.songThumbnail}
-        alt={`${song.songName} thumbnail`}
-        className="aspect-square w-24 rounded-md shadow-[0_0_0_2px_#ffffff1f] object-cover"
+        src={song.album_image}
+        alt={`${song.name} thumbnail`}
+        className="aspect-square w-24 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
       />
       <span
-        className={`block overflow-ellipsis text-[1.2rem] w-full text-center line-clamp-2 px-2 h-${
-          song.songName && song.songName.length > 24 ? "14" : "6"
+        className={`line-clamp-2 block w-full px-2 text-center text-[1.2rem] overflow-ellipsis h-${
+          song.name && song.name.length > 24 ? "14" : "6"
         }`}
       >
-        {song.songName}
+        {song.name}
       </span>
-      <span className="block overflow-ellipsis text-important px-2">
-        {song.authorName}
+      <span className="text-important block px-2 overflow-ellipsis">
+        {song.artist_name}
       </span>
       {!isSongInPlaylist ? (
         <button

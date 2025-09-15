@@ -9,7 +9,7 @@ interface DraggableSongElemProps {
   isPlaying: boolean;
   isThisSongActive: boolean;
   index: number;
-  setNewActiveSongUrl: (url: string) => void;
+  setNewActiveurl: (url: string) => void;
   togglePlay: () => void;
   moveSong: (dragIndex: number, hoverIndex: number) => void;
 }
@@ -19,7 +19,7 @@ const DraggableSongElem = ({
   isPlaying,
   isThisSongActive,
   index,
-  setNewActiveSongUrl,
+  setNewActiveurl,
   togglePlay,
   moveSong,
 }: DraggableSongElemProps) => {
@@ -85,20 +85,20 @@ const DraggableSongElem = ({
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
       } ${isDragging ? "opacity-30 backdrop-blur-sm" : "opacity-100"}`}
-      data-audio-url={song.songUrl}
-      key={song.songUrl}
+      data-audio-url={song.url}
+      key={song.url}
     >
       <div className="flex flex-row gap-3">
         <div className="relative">
           <img
             className="relative aspect-square w-16 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
-            src={song.songThumbnail}
+            src={song.album_image}
             alt="img alt"
           ></img>
           <div
             className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
             onClick={() => {
-              setNewActiveSongUrl(song.songUrl);
+              setNewActiveurl(song.url);
               if (!isThisSongActive && !isPlaying) {
                 togglePlay();
               } else if (isThisSongActive) {
@@ -118,9 +118,9 @@ const DraggableSongElem = ({
           </div>
         </div>
         <div className="flex h-full w-full flex-col items-start gap-2">
-          <span className="block max-w-90 truncate">{song.songName}</span>
+          <span className="block max-w-90 truncate">{song.name}</span>
           <span className="text-important block truncate">
-            {song.authorName}
+            {song.artist_name}
           </span>
         </div>
       </div>

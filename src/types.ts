@@ -1,8 +1,11 @@
 export interface Song {
-  authorName: string | undefined;
-  songName: string | undefined;
-  songThumbnail: string | undefined;
-  songUrl: string;
+  id: string | undefined;
+  artist_name: string | undefined;
+  artist_id: string | undefined;
+  name: string | undefined;
+  album_image: string | undefined;
+  album_name: string | undefined;
+  url: string;
   index?: number;
 }
 

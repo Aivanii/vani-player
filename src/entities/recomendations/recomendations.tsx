@@ -24,7 +24,7 @@ const Recomendations = observer(() => {
           {recommendations.map((song) => {
             return (
               <RecommendedSong
-                key={song.songUrl}
+                key={song.url}
                 song={song}
                 isSongInPlaylist={isCanBeAddedIntoCurrentPlaylist(song)}
                 addSongIntoCurrentPlaylist={addSongIntoCurrentPlaylist}

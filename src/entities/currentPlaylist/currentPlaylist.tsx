@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { Song } from "../../types";
 
 const CurrentPlaylist = observer(() => {
-  const { activeSongUrl, isPlaying, togglePlay, setNewActiveSongUrl } =
+  const { activeurl, isPlaying, togglePlay, setNewActiveurl } =
     currentPlaylistStore;
   const { playlist } = currentPlaylistStore;
 
@@ -37,12 +37,12 @@ const CurrentPlaylist = observer(() => {
             const songWithIndex = { ...song, index: index };
             return (
               <DraggableSongElem
-                key={songWithIndex.songUrl}
+                key={songWithIndex.url}
                 song={songWithIndex}
                 isPlaying={isPlaying}
-                isThisSongActive={activeSongUrl === songWithIndex.songUrl}
+                isThisSongActive={activeurl === songWithIndex.url}
                 index={index}
-                setNewActiveSongUrl={setNewActiveSongUrl}
+                setNewActiveurl={setNewActiveurl}
                 togglePlay={togglePlay}
                 moveSong={moveSong}
               />
