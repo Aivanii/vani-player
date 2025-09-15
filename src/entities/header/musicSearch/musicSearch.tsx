@@ -4,20 +4,16 @@ import LoadingELem from "../../loadingElem/loadingElem";
 import { currentPlaylistStore } from "../../../stores/currentPlaylistStore/currentPlaylistStore";
 import type { Song } from "../../../types";
 import { SongElem } from "./songElem";
-import { toJS } from "mobx";
 import { observer } from "mobx-react-lite";
 
 const MusicSearch = observer(() => {
   const [searchText, setSearchText] = useState<string>("");
   //empty = no using API at the time
   const [searchQuery, setSearchQuery] = useState<string>("");
-
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
   const { data, isLoading, error } = useMusicAPI(
     searchQuery ? `tracks/?namesearch=${encodeURIComponent(searchQuery)}` : "",
   );
-
   const { activeurl, isPlaying, togglePlay, addSongNextAndPlay } =
     currentPlaylistStore;
 

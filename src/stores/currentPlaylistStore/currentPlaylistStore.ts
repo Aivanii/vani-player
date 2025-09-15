@@ -76,6 +76,9 @@ class CurrentPlaylistStore {
   };
 
   addSongNext = (song: Song) => {
+    if (this.isSongInPlaylist(song)) {
+      this.removeSong(song);
+    }
     const currentSongIndex = this.playlist.findIndex(
       (elem) => elem.audio === this.activeurl,
     );

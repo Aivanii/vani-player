@@ -1,5 +1,7 @@
 import type { Song } from "../../../types";
 
+import { useSongContextMenu } from "../../../hooks/useContextMenu";
+
 interface SongElemProps {
   song: Song;
   isPlaying: boolean;
@@ -16,6 +18,8 @@ const SongElem = ({
   addSongNextAndPlay,
   togglePlay,
 }: SongElemProps) => {
+  const handleContextMenu = useSongContextMenu(song);
+
   return (
     <li
       className={`border-standart-border hover:shadow-standart cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
@@ -25,6 +29,7 @@ const SongElem = ({
       }`}
       data-audio-url={song.id}
       key={song.id}
+      onContextMenu={handleContextMenu}
     >
       <div className="flex flex-row gap-3">
         <div className="relative">
