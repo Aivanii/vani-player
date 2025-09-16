@@ -13,6 +13,8 @@ const useKeyboardNavigation = (config: KeyboardNavigationConfig) => {
         case "ArrowRight":
           config.onRight?.();
           break;
+        case " ":
+          config.onSpace?.();
       }
     },
     [config],

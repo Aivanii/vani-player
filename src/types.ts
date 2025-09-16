@@ -18,6 +18,7 @@ export interface ContextMenuItem {
 export interface KeyboardNavigationConfig {
   onLeft?: () => void;
   onRight?: () => void;
+  onSpace?: () => void;
   preventDefault?: boolean;
   enabled?: boolean;
 }
