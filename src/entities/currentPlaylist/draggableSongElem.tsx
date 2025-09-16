@@ -4,6 +4,8 @@ import type { Song } from "../../types";
 import { useRef } from "react";
 import { dragAndDropTypes } from "../../dnd.types";
 
+import { useSongContextMenu } from "../../hooks/useContextMenu";
+
 interface DraggableSongElemProps {
   song: Song;
   isPlaying: boolean;
@@ -24,6 +26,7 @@ const DraggableSongElem = ({
   moveSong,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
+  const handleContextMenu = useSongContextMenu(song);
 
   const [, drop] = useDrop<Song, void, { handlerId: Identifier | null }>({
     accept: dragAndDropTypes.SONG,
@@ -87,6 +90,7 @@ const DraggableSongElem = ({
       } ${isDragging ? "opacity-30 backdrop-blur-sm" : "opacity-100"}`}
       data-audio-url={song.audio}
       key={song.id}
+      onContextMenu={handleContextMenu}
     >
       <div className="flex flex-row gap-3">
         <div className="relative">
