@@ -231,6 +231,16 @@ class CurrentPlaylistStore {
     );
   };
 
+  jumpSeconds = (secs: number) => {
+    this.setCurrentAudioTimeMS(this.currentAudioTimeMS + secs * 1000);
+    if (this.currentAudioTimeMS < 0) {
+      this.setCurrentAudioTimeMS(0);
+    }
+    if (this.currentAudioTimeMS > this.audioDurationMS) {
+      this.setCurrentAudioTimeMS(this.audioDurationMS);
+    }
+  };
+
   get currenturl() {
     return this.activeurl;
   }

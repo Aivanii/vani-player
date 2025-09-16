@@ -86,7 +86,7 @@ const AudioPlayer = observer(() => {
     };
   }, [audioDurationMS]);
 
-  //audio change currentAudioTimeMS when audio playing
+  //audio change currentAudioTimeMS when audio is playing
   //or change currentAudioTimeMS to 0 when there is no songs
   useEffect(() => {
     const audio = audioRef.current;
@@ -94,6 +94,7 @@ const AudioPlayer = observer(() => {
     if (!audio) return;
 
     const handleTimeChange = () => {
+      console.log("update time");
       setCurrentAudioTimeMS(audio.currentTime * 1000);
     };
 

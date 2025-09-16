@@ -2,10 +2,21 @@ import { useCallback, useEffect } from "react";
 import type { KeyboardNavigationConfig } from "../types";
 
 const useKeyboardNavigation = (config: KeyboardNavigationConfig) => {
-  const handleKeyDown = useCallback((event: KeyboardEvent) => {
-    event.preventDefault();
-    console.log(event.key);
-  }, []);
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      event.preventDefault();
+      console.log(event.key);
+      switch (event.key) {
+        case "ArrowLeft":
+          config.onLeft?.();
+          break;
+        case "ArrowRight":
+          config.onRight?.();
+          break;
+      }
+    },
+    [config],
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
