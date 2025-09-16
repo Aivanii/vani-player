@@ -9,6 +9,9 @@ import { getAudioPercentageFromClick } from "../../utils/dom/getAudioPercentageF
 
 import { observer } from "mobx-react-lite";
 
+import useKeyboardNavigation from "../../hooks/useKeyboardNavigation";
+import { getMainPageNavigationConfig } from "../../config/keyboardNavigationConfig";
+
 const AudioPlayer = observer(() => {
   const {
     activeurl,
@@ -33,9 +36,15 @@ const AudioPlayer = observer(() => {
   const audioVolumeBarStatic = useRef<HTMLDivElement>(null);
   const progressAudioStaticRef = useRef<HTMLDivElement>(null);
 
+  //keyboard navigation
+  let config = {};
+  if (audioRef.current) {
+    config = getMainPageNavigationConfig(audioRef.current);
+  }
+  useKeyboardNavigation(config);
+
   //audio change audioDurationMS
   useEffect(() => {
-    console.log(activeurl);
     const audio = audioRef.current;
     if (!audio) return;
 

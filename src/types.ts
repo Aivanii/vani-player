@@ -14,3 +14,10 @@ export interface ContextMenuItem {
   action: () => void;
   icon?: string;
 }
+
+export interface KeyboardNavigationConfig {
+  onLeft?: () => void;
+  onRight?: () => void;
+  preventDefault?: boolean;
+  enabled?: boolean;
+}
