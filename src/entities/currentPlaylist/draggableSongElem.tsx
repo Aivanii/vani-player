@@ -83,7 +83,7 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-standart-border hover:shadow-standart cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
+      className={`border-standart-border hover:shadow-standart mt-2 mr-6 mb-2 ml-5 max-w-140 cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
