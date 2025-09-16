@@ -46,8 +46,8 @@
 
   --gradient-variant-2: linear-gradient(
     35deg,
-    rgba(100, 100, 100, 0.3) 0%,
-    rgb(148, 148, 148, 0.25) 100%
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(95, 95, 95, 0.25) 100%
   );
   --gradient-variant-1: linear-gradient(
     135deg,

@@ -20,6 +20,28 @@ current functionalities:
   - audio vizualizer
   - playback progress bar
   - volume control
+  - keyboard shortcuts
+    - 🎵 Basic Controls
+      - Space Play/Pause
+      - Enter Play/Pause
+      - M Mute/Unmute
+      - ← Seek Backward
+      - → Seek Forward
+      - ↑ Volume Up
+      - ↓ Volume Down
+    - 🎮 Track Navigation
+      - , Previous Track
+      - . Next Track
+    - ⏩ Quick Seek
+      - 1 Seek to 10%
+      - 2 Seek to 20%
+      - 3 Seek to 30%
+      - 4 Seek to 40%
+      - 5 Seek to 50%
+      - 6 Seek to 60%
+      - 7 Seek to 70%
+      - 8 Seek to 80%
+      - 9 Seek to 90%
 - current playlist
   - showing songs' imgs, names, authors
   - can be changed currently playing track in audio player on click
