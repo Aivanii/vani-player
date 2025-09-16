@@ -11,6 +11,7 @@ import { observer } from "mobx-react-lite";
 
 import useKeyboardNavigation from "../../hooks/useKeyboardNavigation";
 import { getMainPageNavigationConfig } from "../../config/keyboardNavigationConfig";
+import KeyboardHelpModal from "../keyboardHelpModal/keyboardHelpModal";
 
 const AudioPlayer = observer(() => {
   const {
@@ -274,6 +275,7 @@ const AudioPlayer = observer(() => {
           <span className="text-important cursor-default">
             {formatTime(audioDurationMS)}
           </span>
+          <KeyboardHelpModal />
         </div>
       </div>
     </div>
