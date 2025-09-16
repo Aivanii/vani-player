@@ -26,10 +26,11 @@ const AudioPlayer = observer(() => {
     setIsVolumeBarOnScreen,
     toggleMute,
     isCurrentlyMuted,
+    currentAudioTimeMS,
+    setCurrentAudioTimeMS,
+    audioDurationMS,
+    setAudioDurationMS,
   } = currentPlaylistStore;
-
-  const [audioDurationMS, setAudioDurationMS] = useState<number>(0);
-  const [currentAudioTimeMS, setCurrentAudioTimeMS] = useState<number>(0);
   //[0-1]
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -61,7 +62,7 @@ const AudioPlayer = observer(() => {
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };
-  }, [activeurl]);
+  }, [activeurl, setAudioDurationMS]);
 
   //audio change currentAudioTimeMS by user
   useEffect(() => {

@@ -112,10 +112,14 @@ class CurrentPlaylistStore {
   ];
   isPlaying: boolean = false;
   activeurl: string = this.playlist[0].audio;
-  //[0-1]
-  volume: number = 1;
   isVolumeBarOnScreen: boolean = false;
   isMuted: boolean = false;
+
+  //[0-1]
+  volume: number = 1;
+
+  currentAudioTimeMS: number = 0;
+  audioDurationMS: number = 0;
 
   constructor() {
     makeAutoObservable(this);
@@ -161,6 +165,14 @@ class CurrentPlaylistStore {
 
   setVolume = (volume: number) => {
     this.volume = volume;
+  };
+
+  setCurrentAudioTimeMS = (time: number) => {
+    this.currentAudioTimeMS = time;
+  };
+
+  setAudioDurationMS = (duration: number) => {
+    this.audioDurationMS = duration;
   };
 
   addSong = (song: Song) => {
