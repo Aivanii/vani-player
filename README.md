@@ -18,6 +18,8 @@ current functionalities:
   - change sound btn
   - showing song's img, name, author and duration
   - audio vizualizer
+  - playback progress bar
+  - volume control
 - current playlist
   - showing songs' imgs, names, authors
   - can be changed currently playing track in audio player on click
