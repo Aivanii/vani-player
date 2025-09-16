@@ -5,7 +5,6 @@ const useKeyboardNavigation = (config: KeyboardNavigationConfig) => {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       event.preventDefault();
-      console.log(event.key);
       switch (event.key) {
         case "ArrowLeft":
           config.onLeft?.();

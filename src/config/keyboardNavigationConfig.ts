@@ -12,6 +12,7 @@ export const getMainPageNavigationConfig = (
     setPreviousSong,
     setNextSong,
     getCurrentAudioTimeMSByPercent,
+    setIsVolumeBarOnScreen,
   } = currentPlaylistStore;
 
   const config: KeyboardNavigationConfig = {
@@ -31,9 +32,13 @@ export const getMainPageNavigationConfig = (
     },
 
     onArrowUp: () => {
+      setIsVolumeBarOnScreen(true);
+      setTimeout(() => setIsVolumeBarOnScreen(false), 750);
       moveVolume(5);
     },
     onArrowDown: () => {
+      setIsVolumeBarOnScreen(true);
+      setTimeout(() => setIsVolumeBarOnScreen(false), 750);
       moveVolume(-5);
     },
 
