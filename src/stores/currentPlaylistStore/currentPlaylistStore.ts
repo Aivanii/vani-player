@@ -175,6 +175,10 @@ class CurrentPlaylistStore {
     this.audioDurationMS = duration;
   };
 
+  getCurrentAudioTimeMSByPercent = (percent: number) => {
+    return (this.audioDurationMS / 100) * percent;
+  };
+
   addSong = (song: Song) => {
     const isSongInThePlaylist = this.playlist.find(
       (elem) => elem.audio === song.audio,
@@ -238,6 +242,16 @@ class CurrentPlaylistStore {
     }
     if (this.currentAudioTimeMS > this.audioDurationMS) {
       this.setCurrentAudioTimeMS(this.audioDurationMS);
+    }
+  };
+
+  moveVolume = (percents: number) => {
+    this.volume += percents / 100;
+    if (this.volume > 1) {
+      this.volume = 1;
+    }
+    if (this.volume < 0) {
+      this.volume = 0;
     }
   };
 

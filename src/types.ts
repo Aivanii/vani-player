@@ -16,9 +16,24 @@ export interface ContextMenuItem {
 }
 
 export interface KeyboardNavigationConfig {
-  onLeft?: () => void;
-  onRight?: () => void;
+  onLeft?: () => void; // <-
+  onRight?: () => void; // ->
+  onArrowUp?: () => void;
+  onArrowDown?: () => void;
   onSpace?: () => void;
-  preventDefault?: boolean;
-  enabled?: boolean;
+  onEnter?: () => void;
+  onKeyM?: () => void;
+
+  onComma?: () => void; // ,
+  onPeriod?: () => void; // .
+
+  onDigit1?: () => void;
+  onDigit2?: () => void;
+  onDigit3?: () => void;
+  onDigit4?: () => void;
+  onDigit5?: () => void;
+  onDigit6?: () => void;
+  onDigit7?: () => void;
+  onDigit8?: () => void;
+  onDigit9?: () => void;
 }
