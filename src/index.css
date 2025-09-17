@@ -24,6 +24,11 @@
     rgba(97, 97, 102, 0.2) 0%,
     rgba(134, 134, 150, 0.5) 100%
   );
+  --color-bg-kbd: linear-gradient(
+    325deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(95, 95, 95, 0.15) 100%
+  );
 
   /* other */
   --color-standart-border: #4f4e53;
@@ -133,6 +138,9 @@ a:hover {
   background: var(--gradient-variant-2);
 }
 
+kbd {
+  background: var(--color-bg-kbd);
+}
 /*
 @media (prefers-color-scheme: light) {
   :root {
