@@ -65,7 +65,7 @@ body {
   margin: auto;
   min-height: 100vh;
   scroll-behavior: smooth;
-  scrollbar-color: var(--color-entity-bg) transparent;
+  scrollbar-color: var(--color-primary) transparent;
   scrollbar-width: thin;
 }
 
