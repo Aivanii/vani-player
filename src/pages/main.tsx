@@ -5,13 +5,14 @@ import { ContextMenu } from "../entities/contextMenu/contextMenuSong";
 
 function Main() {
   return (
-    <main className="w-full h-full">
-      <div className="flex justify-center items-start w-full h-full gap-6">
-        <CurrentPlaylist />
-
-        <div className="flex justify-center items-center gap-6 flex-col max-w-4xl w-full h-full">
+    <main className="flex h-full w-full items-center justify-center">
+      <div className="flex h-full min-w-min flex-col items-start justify-start gap-6 md:flex-row">
+        <div className="mx-auto flex max-h-[1080px] w-full max-w-4xl flex-col items-center justify-center gap-6">
           <AudioPlayer />
           <Recomendations />
+        </div>
+        <div className="mx-auto max-h-[1080px]">
+          <CurrentPlaylist />
         </div>
       </div>
       <ContextMenu />

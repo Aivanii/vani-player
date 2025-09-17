@@ -93,9 +93,9 @@ const DraggableSongElem = ({
       onContextMenu={handleContextMenu}
     >
       <div className="flex flex-row gap-3">
-        <div className="relative">
+        <div className="relative flex-shrink-0">
           <img
-            className="relative aspect-square w-16 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
+            className="relative block aspect-square w-16 flex-1 flex-shrink-0 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
             src={song.album_image}
             alt="img alt"
           ></img>
@@ -121,9 +121,9 @@ const DraggableSongElem = ({
             />
           </div>
         </div>
-        <div className="flex h-full w-full flex-col items-start gap-2">
-          <span className="block max-w-90 truncate">{song.name}</span>
-          <span className="text-important block truncate">
+        <div className="flex h-full w-full flex-col items-start gap-2 pr-6">
+          <span className="block max-w-84 truncate">{song.name}</span>
+          <span className="text-important block max-w-84 truncate">
             {song.artist_name}
           </span>
         </div>
