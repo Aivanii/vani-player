@@ -22,11 +22,11 @@ const KeyboardHelpModal = () => {
               <ul className="my-16 flex w-full flex-col gap-4 text-2xl">
                 <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
                   <span>Toggle play/pause</span>
-                  <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border flex items-center justify-center rounded-md border-1 px-2">
+                  <div className="flex w-1/3 items-center gap-x-2">
+                    <kbd className="border-standart-border rounded-md border-1 p-2">
                       Space
                     </kbd>
-                    ,
+                    /
                     <kbd className="border-standart-border rounded-md border-1 p-2">
                       Enter
                     </kbd>
