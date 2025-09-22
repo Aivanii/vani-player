@@ -4,6 +4,7 @@ import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentP
 import { observer } from "mobx-react-lite";
 import { useCallback, useEffect, useState } from "react";
 import type { Song } from "../../types";
+import InputFile from "./inputFile";
 
 const CurrentPlaylist = observer(() => {
   const { activeurl, isPlaying, playlist, togglePlay, setNewActiveurl } =
@@ -31,7 +32,7 @@ const CurrentPlaylist = observer(() => {
     <aside className="shadow-standart bg-entity-bg border-standart-border relative block h-full max-h-full w-full max-w-140 self-stretch rounded-4xl border-1 py-4 backdrop-blur-sm">
       <h2 className="truncate text-center text-2xl font-bold">Your playlist</h2>
       <div className="pt-4">
-        <ul className="shadow-t-standart-shadow scroll flex h-full max-h-full flex-col overflow-x-hidden overflow-y-auto">
+        <ul className="shadow-t-standart-shadow scroll flex h-full max-h-250 flex-col overflow-x-hidden overflow-y-auto">
           {copyPlaylist.map((song, index) => {
             const songWithIndex = { ...song, index: index };
             return (
@@ -47,6 +48,9 @@ const CurrentPlaylist = observer(() => {
               />
             );
           })}
+          <li className="px-18 py-4">
+            <InputFile />
+          </li>
         </ul>
       </div>
     </aside>

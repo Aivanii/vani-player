@@ -141,6 +141,9 @@ a:hover {
 kbd {
   background: var(--color-bg-kbd);
 }
+
+input[type="file"] {
+}
 /*
 @media (prefers-color-scheme: light) {
   :root {
