@@ -14,4 +14,4 @@
 14. Add animation to context and the rest of modal windows
 15. (done) Add close shortcuts window on Esc
 16. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
-17. Add tooltip for progress audio bar
+17. (done) Add tooltip for progress audio bar
