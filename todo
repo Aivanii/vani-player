@@ -13,3 +13,4 @@
 13. (done) Add animation to shortcuts modal windows
 14. Add animation to context and the rest of modal windows
 15. (done) Add close shortcuts window on Esc
+16. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
