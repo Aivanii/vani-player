@@ -84,6 +84,26 @@ class RecommendationStore {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZUCXw9WkET76F8BPfTW4TPfA0IuIqh-jmQ&s",
       audio: "./override.mp3",
     },
+    {
+      id: "9",
+      artist_id: "dunno",
+      album_name: "dunno",
+      artist_name: "Paul Owen Music",
+      name: "Butcher Vanity",
+      album_image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNBg19yyyNYJBKQ5feHB4V8yekxbCk-qASoAYH16W0g5sbnk4c0rjZqV191xIGDZ-giA4&usqp=CAU",
+      audio: "./bv.mp3",
+    },
+    {
+      id: "10",
+      artist_id: "dunno",
+      album_name: "dunno",
+      artist_name: "Anya Melfissa2",
+      name: "Chronik",
+      album_image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFLoJcCQoBT08s2RpoizUhel4SeADoKgCjzA&s",
+      audio: "./ch.mp3",
+    },
   ];
 
   constructor() {
