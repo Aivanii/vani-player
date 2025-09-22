@@ -1,13 +1,32 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const KeyboardHelpModal = () => {
   const [shouldRender, setShouldRender] = useState(false);
+  const shortcutsModal = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!shouldRender) return;
+
+    const handleClose = (event: KeyboardEvent) => {
+      console.log(event.key);
+      if (event.key === "Escape") {
+        setShouldRender(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleClose);
+    };
+  }, [shouldRender]);
 
   return (
     <>
       {createPortal(
         <div
+          ref={shortcutsModal}
           className={`fixed top-1/2 left-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-all duration-600 ${shouldRender ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
           onClick={(event) => {
             if (event.currentTarget === event.target) setShouldRender(false);
