@@ -204,6 +204,7 @@ const KeyboardHelpModal = () => {
         <button
           className="aspect-square h-12"
           onClick={() => setShouldRender(true)}
+          title="show shortcurs"
         >
           ?
         </button>

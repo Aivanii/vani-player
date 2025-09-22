@@ -169,6 +169,7 @@ const AudioPlayer = observer(() => {
           <button
             className={`aspect-square h-12 ${!isPreviousSongInPlaylist && "no-scale"}`}
             onClick={setPreviousSong}
+            title="previous"
             disabled={!isPreviousSongInPlaylist}
             style={
               !isPreviousSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }
@@ -186,6 +187,7 @@ const AudioPlayer = observer(() => {
             className="aspect-square h-16"
             id="playBtn"
             onClick={togglePlay}
+            title="play"
           >
             <img
               id="playBtnImgElem"
@@ -207,6 +209,7 @@ const AudioPlayer = observer(() => {
             style={
               !isNextSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }
             }
+            title="next"
           >
             <img
               className="invert-100"
@@ -227,7 +230,7 @@ const AudioPlayer = observer(() => {
             }}
           >
             <div className="flex flex-row items-center justify-center">
-              <button className="p-2" onClick={toggleMute}>
+              <button className="p-2" onClick={toggleMute} title="mute">
                 <img
                   className="aspect-square invert-100"
                   width="24"
@@ -274,6 +277,7 @@ const AudioPlayer = observer(() => {
           <button
             className="aspect-square h-12"
             style={isLooped ? { opacity: "1" } : { opacity: "0.5" }}
+            title="loop"
           >
             <img
               onClick={toggleLoop}
