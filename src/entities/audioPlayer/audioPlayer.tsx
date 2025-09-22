@@ -33,6 +33,8 @@ const AudioPlayer = observer(() => {
     setAudioDurationMS,
     isLooped,
     toggleLoop,
+    isNextSongInPlaylist,
+    isPreviousSongInPlaylist,
   } = currentPlaylistStore;
   //[0-1]
 
@@ -164,7 +166,14 @@ const AudioPlayer = observer(() => {
       <div className="relative mt-4 flex h-full w-full flex-col items-center justify-between gap-4">
         <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex items-center gap-6">
-          <button className="aspect-square h-12" onClick={setPreviousSong}>
+          <button
+            className={`aspect-square h-12 ${!isPreviousSongInPlaylist && "no-scale"}`}
+            onClick={setPreviousSong}
+            disabled={!isPreviousSongInPlaylist}
+            style={
+              !isPreviousSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }
+            }
+          >
             <img
               className="invert-100"
               width="32"
@@ -191,7 +200,14 @@ const AudioPlayer = observer(() => {
               alt="play button"
             />
           </button>
-          <button className="aspect-square h-12" onClick={setNextSong}>
+          <button
+            className={`aspect-square h-12 ${!isNextSongInPlaylist && "no-scale"}`}
+            onClick={setNextSong}
+            disabled={!isNextSongInPlaylist}
+            style={
+              !isNextSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }
+            }
+          >
             <img
               className="invert-100"
               width="32"
@@ -257,9 +273,8 @@ const AudioPlayer = observer(() => {
 
           <button
             className="aspect-square h-12"
-            style={isLooped ? { background: "purple" } : {}}
+            style={isLooped ? { opacity: "1" } : { opacity: "0.5" }}
           >
-            {isLooped ? <span>loop</span> : <span>isn't loop</span>}
             <img
               onClick={toggleLoop}
               className="p-1 invert-100"

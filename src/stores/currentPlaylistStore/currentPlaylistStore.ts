@@ -260,6 +260,22 @@ class CurrentPlaylistStore {
     }
   };
 
+  get isNextSongInPlaylist() {
+    const index = this.playlist.findIndex(
+      (elem) => elem.audio === this.activeurl,
+    );
+    const isNextSong = index + 1 < this.playlist.length;
+    return isNextSong;
+  }
+
+  get isPreviousSongInPlaylist() {
+    const index = this.playlist.findIndex(
+      (elem) => elem.audio === this.activeurl,
+    );
+    const isPreviosSong = index > 0;
+    return isPreviosSong;
+  }
+
   get currenturl() {
     return this.activeurl;
   }
