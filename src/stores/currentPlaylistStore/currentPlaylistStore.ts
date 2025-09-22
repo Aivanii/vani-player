@@ -114,6 +114,7 @@ class CurrentPlaylistStore {
   activeurl: string = this.playlist[0].audio;
   isVolumeBarOnScreen: boolean = false;
   isMuted: boolean = false;
+  isLooped: boolean = false;
 
   //[0-1]
   volume: number = 1;
@@ -133,6 +134,10 @@ class CurrentPlaylistStore {
 
   toggleMute = () => {
     this.isMuted = !this.isMuted;
+  };
+
+  toggleLoop = () => {
+    this.isLooped = !this.isLooped;
   };
 
   setIsVolumeBarOnScreen = (value: boolean) => {

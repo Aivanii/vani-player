@@ -31,6 +31,8 @@ const AudioPlayer = observer(() => {
     setCurrentAudioTimeMS,
     audioDurationMS,
     setAudioDurationMS,
+    isLooped,
+    toggleLoop,
   } = currentPlaylistStore;
   //[0-1]
 
@@ -130,7 +132,7 @@ const AudioPlayer = observer(() => {
       <div className="flex flex-col gap-4">
         <audio
           id="audio"
-          loop={false}
+          loop={isLooped}
           muted={isCurrentlyMuted}
           preload="auto"
           src={currentSong?.audio}
@@ -252,6 +254,21 @@ const AudioPlayer = observer(() => {
               </div>
             </div>
           </div>
+
+          <button
+            className="aspect-square h-12"
+            style={isLooped ? { background: "purple" } : {}}
+          >
+            {isLooped ? <span>loop</span> : <span>isn't loop</span>}
+            <img
+              onClick={toggleLoop}
+              className="p-1 invert-100"
+              width="32"
+              height="32"
+              src="https://img.icons8.com/?size=100&id=83204&format=png&color=000000"
+              alt="loop"
+            />
+          </button>
         </div>
         <div className="flex items-center justify-around gap-4">
           <span className="text-important cursor-default">
