@@ -1,4 +1,5 @@
 current functionalities:
+main page:
 
 - header
   - search music elem
