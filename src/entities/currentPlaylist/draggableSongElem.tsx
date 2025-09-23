@@ -111,7 +111,7 @@ const DraggableSongElem = ({
             }}
           >
             <img
-              className="z-20 invert-100"
+              className="z-20 invert"
               src={
                 isThisSongActive && isPlaying
                   ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
@@ -121,11 +121,29 @@ const DraggableSongElem = ({
             />
           </div>
         </div>
-        <div className="flex h-full w-full flex-col items-start gap-2 pr-6">
-          <span className="block max-w-84 truncate">{song.name}</span>
-          <span className="text-important block max-w-84 truncate">
-            {song.artist_name}
-          </span>
+        <div className="flex h-full w-100 min-w-0 flex-row items-center gap-2">
+          <div
+            className={`flex min-w-0 flex-1 flex-col items-start gap-2 ${song.isAddedByUser ? "max-w-[85%]" : "max-w-[100%]"}`}
+          >
+            <span className="block w-full truncate" title={song.name}>
+              {song.name}
+            </span>
+            <span
+              className="text-important block w-full truncate"
+              title={song.album_name}
+            >
+              {song.artist_name}
+            </span>
+          </div>
+          {song.isAddedByUser && (
+            <button className="ml-auto opacity-60 transition-all duration-300 hover:opacity-100">
+              <img
+                className="aspect-square w-12 rounded-md p-1 invert"
+                src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
+                alt="song added by user"
+              />
+            </button>
+          )}
         </div>
       </div>
     </li>

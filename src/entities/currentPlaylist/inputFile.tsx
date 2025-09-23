@@ -25,6 +25,7 @@ const InputFile = () => {
         name: name,
         audio: URL.createObjectURL(selectedFile),
         file: selectedFile,
+        isAddedByUser: true,
         artist_id: undefined,
         album_image: undefined,
         album_name: undefined,
@@ -44,7 +45,7 @@ const InputFile = () => {
       ></input>
       <button className="w-full p-2" onClick={handleCustomButtonClick}>
         <img
-          className="aspect-square w-6 invert-100"
+          className="aspect-square w-6 invert"
           src="https://img.icons8.com/?size=100&id=62888&format=png&color=000000"
           alt="add custom song"
           title="add custom song"

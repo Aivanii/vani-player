@@ -50,7 +50,7 @@ const SongElem = ({
             }}
           >
             <img
-              className="z-20 invert-100"
+              className="z-20 invert"
               src={
                 isThisSongActive && isPlaying
                   ? "https://img.icons8.com/sf-regular-filled/48/pause.png"

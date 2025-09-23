@@ -176,7 +176,7 @@ const AudioPlayer = observer(() => {
             }
           >
             <img
-              className="invert-100"
+              className="invert"
               width="32"
               height="32"
               src="https://img.icons8.com/ios/32/left--v1.png"
@@ -191,7 +191,7 @@ const AudioPlayer = observer(() => {
           >
             <img
               id="playBtnImgElem"
-              className="invert-100"
+              className="invert"
               width="32"
               height="32"
               src={
@@ -212,7 +212,7 @@ const AudioPlayer = observer(() => {
             title="next"
           >
             <img
-              className="invert-100"
+              className="invert"
               width="32"
               height="32"
               src="https://img.icons8.com/ios/32/right--v1.png"
@@ -232,7 +232,7 @@ const AudioPlayer = observer(() => {
             <div className="flex flex-row items-center justify-center">
               <button className="p-2" onClick={toggleMute} title="mute">
                 <img
-                  className="aspect-square invert-100"
+                  className="aspect-square invert"
                   width="24"
                   height="24"
                   src={` ${
@@ -281,7 +281,7 @@ const AudioPlayer = observer(() => {
           >
             <img
               onClick={toggleLoop}
-              className="p-1 invert-100"
+              className="p-1 invert"
               width="32"
               height="32"
               src="https://img.icons8.com/?size=100&id=83204&format=png&color=000000"
