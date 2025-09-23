@@ -15,3 +15,10 @@
 15. (done) Add close shortcuts window on Esc
 16. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
 17. (done) Add tooltip for progress audio bar
+18. Add import user's audio files
+19. Add export user's audio files
+20. Dnd for big elems (audioPlayer, currentPlaylist, recommendations)
+21. Share on social media user's playlist
+22. Add custom styles for audio visualization
+23. Add user history
+24. Adaptive light for song mood
