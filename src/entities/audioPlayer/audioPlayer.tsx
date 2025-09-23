@@ -144,10 +144,10 @@ const AudioPlayer = observer(() => {
 
         <div className="flex flex-col items-center justify-between">
           <div className="inline-block h-52 w-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
-            {currentSong?.album_image && (
+            {currentSong && (
               <img
                 className="h-52 w-52 rounded-md object-cover"
-                src={currentSong.album_image}
+                src={currentSong.album_image || "./thumbnailSongPreview.png"}
                 alt={"current song preview"}
               />
             )}

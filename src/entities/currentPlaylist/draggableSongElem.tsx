@@ -96,7 +96,7 @@ const DraggableSongElem = ({
         <div className="relative flex-shrink-0">
           <img
             className="relative block aspect-square w-16 flex-1 flex-shrink-0 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
-            src={song.album_image}
+            src={song.album_image || "./thumbnailSongPreview.png"}
             alt="img alt"
           ></img>
           <div
