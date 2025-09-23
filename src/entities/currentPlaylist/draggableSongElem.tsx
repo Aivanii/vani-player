@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { dragAndDropTypes } from "../../dnd.types";
 
 import { useSongContextMenu } from "../../hooks/useContextMenu";
+import { editSongStore } from "../../stores/editSongStore/EditSongStore";
 
 interface DraggableSongElemProps {
   song: Song;
@@ -27,6 +28,8 @@ const DraggableSongElem = ({
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
   const handleContextMenu = useSongContextMenu(song);
+
+  const { openSongEditing, isOpen, closeSongEditing } = editSongStore;
 
   const [, drop] = useDrop<Song, void, { handlerId: Identifier | null }>({
     accept: dragAndDropTypes.SONG,
@@ -136,7 +139,12 @@ const DraggableSongElem = ({
             </span>
           </div>
           {song.isAddedByUser && (
-            <button className="ml-auto opacity-60 transition-all duration-300 hover:opacity-100">
+            <button
+              className="ml-auto opacity-60 transition-all duration-300 hover:opacity-100"
+              onClick={() => {
+                openSongEditing(song);
+              }}
+            >
               <img
                 className="aspect-square w-12 rounded-md p-1 invert"
                 src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
