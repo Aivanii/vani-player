@@ -6,7 +6,7 @@ export interface Song {
   album_image: string | undefined;
   album_name: string | undefined;
   audio: string;
-  file: File;
+  file?: File;
   isAddedByUser?: boolean;
   index?: number;
 }

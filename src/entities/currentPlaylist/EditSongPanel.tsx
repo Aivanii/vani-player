@@ -18,7 +18,7 @@ const EditSongPanel = observer(() => {
 
   const setNewImgLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
-    if (!selectedFile && !song) return;
+    if (!selectedFile || !song) return;
     setSong({
       ...song,
       album_image: URL.createObjectURL(selectedFile),
