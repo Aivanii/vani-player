@@ -4,6 +4,16 @@ import type { KeyboardNavigationConfig } from "../types";
 const useKeyboardNavigation = (config: KeyboardNavigationConfig) => {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
+      const activeElem = document.activeElement;
+      const isInputFocused =
+        activeElem &&
+        (activeElem.tagName === "INPUT" ||
+          activeElem.tagName === "TEXTAREA" ||
+          (activeElem as HTMLElement).isContentEditable);
+
+      if (isInputFocused) {
+        return;
+      }
       event.preventDefault();
       switch (event.key) {
         case "ArrowLeft":
