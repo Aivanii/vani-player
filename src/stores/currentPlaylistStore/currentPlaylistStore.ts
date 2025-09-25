@@ -260,6 +260,13 @@ class CurrentPlaylistStore {
     }
   };
 
+  changeSongById = (song: Song, id: string) => {
+    const songIndex = this.playlist.findIndex((elem) => elem.id === id);
+    if (!songIndex) return;
+
+    this.playlist[songIndex] = song;
+  };
+
   get isNextSongInPlaylist() {
     const index = this.playlist.findIndex(
       (elem) => elem.audio === this.activeurl,

@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import type { Song } from "../../types";
+import { currentPlaylistStore } from "../currentPlaylistStore/currentPlaylistStore";
 
+const { changeSongById } = currentPlaylistStore;
 class EditSongStore {
   isOpen: boolean = false;
   activeSong: Song | null = null;
@@ -16,6 +18,10 @@ class EditSongStore {
 
   closeSongEditing = () => {
     this.isOpen = false;
+  };
+
+  updateSongDataById = (song: Song, id: string) => {
+    changeSongById(song, id);
   };
 }
 
