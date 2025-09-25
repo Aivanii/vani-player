@@ -29,7 +29,7 @@ const DraggableSongElem = ({
   const ref = useRef<HTMLLIElement>(null);
   const handleContextMenu = useSongContextMenu(song);
 
-  const { openSongEditing, isOpen, closeSongEditing } = editSongStore;
+  const { openSongEditing } = editSongStore;
 
   const [, drop] = useDrop<Song, void, { handlerId: Identifier | null }>({
     accept: dragAndDropTypes.SONG,

@@ -11,7 +11,7 @@ const MusicSearch = observer(() => {
   //empty = no using API at the time
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const { data, isLoading, error } = useMusicAPI(
+  const { data, isLoading } = useMusicAPI(
     searchQuery ? `tracks/?namesearch=${encodeURIComponent(searchQuery)}` : "",
   );
   const { activeurl, isPlaying, togglePlay, addSongNextAndPlay } =
@@ -54,6 +54,7 @@ const MusicSearch = observer(() => {
             ) : (
               <>
                 {data &&
+                  data?.results.length > 0 &&
                   data.results.map((elem: Song, index: number) => {
                     return (
                       <SongElem

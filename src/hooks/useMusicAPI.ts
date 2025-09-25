@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
+import type { Song } from "../types";
+
+interface MusicApiResponse {
+  results: Song[];
+}
 
 const useMusicAPI = (endpoint: string) => {
-  const [data, setData] = useState<unknown>(null);
+  const [data, setData] = useState<MusicApiResponse | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
 
