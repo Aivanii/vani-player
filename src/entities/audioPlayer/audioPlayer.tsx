@@ -35,6 +35,7 @@ const AudioPlayer = observer(() => {
     toggleLoop,
     isNextSongInPlaylist,
     isPreviousSongInPlaylist,
+    setIsPlaying,
   } = currentPlaylistStore;
   //[0-1]
 
@@ -118,11 +119,33 @@ const AudioPlayer = observer(() => {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
     if (isPlaying) {
       audio.play();
     } else {
       audio.pause();
     }
+
+    const handlePlay = () => {
+      if (!isPlaying) {
+        togglePlay();
+      }
+      setIsPlaying(true);
+    };
+    const handlePause = () => {
+      if (isPlaying) {
+        togglePlay();
+      }
+      setIsPlaying(false);
+    };
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+
+    return () => {
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+    };
   }, [isPlaying, currentSong]);
 
   //audio change volume

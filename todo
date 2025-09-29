@@ -12,7 +12,7 @@
 12. (done) Add animation to shortcuts modal windows
 13. (done) Add animation to context and the rest of modal windows
 14. (done) Add close shortcuts window on Esc
-15. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
+15. (done) Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
 16. (done) Add tooltip for progress audio bar
 17. Add import user's audio files
 18. Add export user's audio files
@@ -21,3 +21,4 @@
 21. Add custom styles for audio visualization
 22. Add user history
 23. Adaptive light for song mood
+24. Add func to stop/pause music on user's own system play/stop track (it is in the system now, but it works bad)

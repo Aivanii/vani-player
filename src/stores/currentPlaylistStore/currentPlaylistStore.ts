@@ -172,6 +172,10 @@ class CurrentPlaylistStore {
     this.volume = volume;
   };
 
+  setIsPlaying = (value: boolean) => {
+    this.isPlaying = value;
+  };
+
   setCurrentAudioTimeMS = (time: number) => {
     this.currentAudioTimeMS = time;
   };
