@@ -190,6 +190,9 @@ class CurrentPlaylistStore {
     );
     if (isSongInThePlaylist) return;
     this.playlist.push(song);
+    if (this.playlist.length === 1) {
+      this.activeurl = song.audio;
+    }
   };
 
   addSongNext = (song: Song) => {
