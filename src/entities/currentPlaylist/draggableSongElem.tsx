@@ -152,7 +152,7 @@ const DraggableSongElem = ({
               />
             </button>
           )}
-          <div className="border-standart-border flex aspect-square h-full w-16 flex-col items-center justify-center gap-2 rounded-md border-2 p-2">
+          <div className="border-standart-border mt-1 flex aspect-square h-full w-14 flex-col items-center justify-center gap-2 rounded-md border-2 p-2">
             <span className="border-standart-border block w-full border-t-3"></span>
             <span className="border-standart-border block w-full border-t-3"></span>
             <span className="border-standart-border block w-full border-t-3"></span>

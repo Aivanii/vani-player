@@ -12,7 +12,7 @@ class CurrentPlaylistStore {
       album_name: "dunno",
       audio: "./compass.mp3",
     },
-    /*    {
+    {
       id: "-2",
       artist_name: "Mili",
       artist_id: "dunno",
@@ -108,7 +108,7 @@ class CurrentPlaylistStore {
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZUCXw9WkET76F8BPfTW4TPfA0IuIqh-jmQ&s",
       audio: "./override.mp3",
-    },*/
+    },
   ];
   isPlaying: boolean = false;
   activeurl: string = this.playlist[0].audio;
