@@ -1,24 +1,28 @@
-1. (done) Add time rewind into audioPlayer on <- and -> btns
-2. (done) Remove broken progress bar when user deletes all the songs in his playlist and current playTime is not 00:00
-3. (done) Auto set currentSong when there were none and user adds new into his playlist
-4. (done) Add optimization for different screen sizes for main page
-5. Add tabindexes
-6. (done) Add loading elem into musicSearch
-7. (done) Add context menu to song in current playlist
-8. (done) Add keyboard shortcuts
-9. Add light/dark themes
-10. Add Audio equalizer
-11. (done) Add loop for music
-12. (done) Add animation to shortcuts modal windows
-13. (done) Add animation to context and the rest of modal windows
-14. (done) Add close shortcuts window on Esc
-15. (done) Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
-16. (done) Add tooltip for progress audio bar
-17. Add import user's audio files
-18. Add export user's audio files
-19. Dnd for big elems (audioPlayer, currentPlaylist, recommendations)
-20. Share on social media user's playlist
-21. Add custom styles for audio visualization
-22. Add user history
-23. Adaptive light for song mood
-24. Add func to stop/pause music on user's own system play/stop track (it is in the system now, but it works bad)
+| №   | Task                                                                 | Status  |
+| --- | -------------------------------------------------------------------- | ------- |
+| 1   | Add time rewind into audioPlayer on <- and -> btns                   | ✅ Done |
+| 2   | Remove broken progress bar when user deletes all songs in playlist   | ✅ Done |
+| 3   | Auto set currentSong when none exists and user adds new song         | ✅ Done |
+| 4   | Add optimization for different screen sizes for main page            | ✅ Done |
+| 5   | Add tabindexes                                                       | ⬜ TODO |
+| 6   | Add loading element into musicSearch                                 | ✅ Done |
+| 7   | Add context menu to song in current playlist                         | ✅ Done |
+| 8   | Add keyboard shortcuts                                               | ✅ Done |
+| 9   | Add light/dark themes                                                | ⬜ TODO |
+| 10  | Add Audio equalizer                                                  | ⬜ TODO |
+| 11  | Add loop for music                                                   | ✅ Done |
+| 12  | Add animation to shortcuts modal windows                             | ✅ Done |
+| 13  | Add animation to context and other modal windows                     | ✅ Done |
+| 14  | Add close shortcuts window on Esc                                    | ✅ Done |
+| 15  | Fix play state update when using keyboard function buttons           | ✅ Done |
+| 16  | Add tooltip for progress audio bar                                   | ✅ Done |
+| 17  | Add import user's audio files                                        | ⬜ TODO |
+| 18  | Add export user's audio files                                        | ⬜ TODO |
+| 19  | DnD for big elements (audioPlayer, currentPlaylist, recommendations) | ⬜ TODO |
+| 20  | Share on social media user's playlist                                | ⬜ TODO |
+| 21  | Add custom styles for audio visualization                            | ⬜ TODO |
+| 22  | Add user history                                                     | ⬜ TODO |
+| 23  | Adaptive light for song mood                                         | ⬜ TODO |
+| 24  | Improve system media keys integration                                | ⬜ TODO |
+| 25  | Add gradient customization for users                                 | ⬜ TODO |
+| 26  | Add animations to main background                                    | ⬜ TODO |
