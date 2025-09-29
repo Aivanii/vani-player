@@ -29,7 +29,7 @@ const MusicSearch = observer(() => {
       clearTimeout(timer);
     };
   }, [searchText]);
-
+  console.log(data);
   return (
     <div className="absolute top-0 right-0 z-50 mt-5 mr-5">
       <input
@@ -44,13 +44,11 @@ const MusicSearch = observer(() => {
       <>
         {isMenuOpen && (
           <ul
-            className="border-standart-border shadow-standart bg-entity-bg absolute z-1100 flex min-h-24 w-full flex-col gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150"
+            className="border-standart-border shadow-standart bg-entity-bg absolute z-1100 flex min-h-24 w-full flex-col items-center justify-center gap-2 rounded-2xl p-4 backdrop-blur-sm duration-150"
             hidden={!isMenuOpen}
           >
             {isLoading ? (
-              <div>
-                <LoadingELem />
-              </div>
+              <LoadingELem />
             ) : (
               <>
                 {data &&
@@ -69,6 +67,11 @@ const MusicSearch = observer(() => {
                     );
                   })}
               </>
+            )}
+            {!isLoading && !data?.results.length && searchText && (
+              <span className="relative block w-full text-center">
+                No results for your request
+              </span>
             )}
           </ul>
         )}

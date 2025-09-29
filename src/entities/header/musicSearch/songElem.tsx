@@ -22,7 +22,7 @@ const SongElem = ({
 
   return (
     <li
-      className={`border-standart-border hover:shadow-standart cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
+      className={`border-standart-border hover:shadow-standart w-full cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"

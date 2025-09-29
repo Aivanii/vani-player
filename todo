@@ -3,7 +3,7 @@
 3. (done) Auto set currentSong when there were none and user adds new into his playlist
 4. Add optimization for different screen sizes
 5. Add tabindexes
-6. Add loading elem into musicSearch
+6. (done) Add loading elem into musicSearch
 7. (done) Add context menu to song in current playlist
 8. (done) Add keyboard shortcuts
 9. Add light/dark themes
