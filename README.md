@@ -7,12 +7,12 @@ main page:
     - can add song to playlist
     - showing song's img, name, author and duration
     - stop/play btn
-  - context menu:
-    - can play song immediatelly
-    - can play next song
-    - can add song to playlist
-    - can remove song from playlist
-    - context menu closes when clicking outside
+    - context menu:
+      - can play song immediatelly
+      - can play next song
+      - can add song to playlist
+      - can remove song from playlist
+      - context menu closes when clicking outside
 - audio player
   - stop/play btn
   - prev/next track btn
@@ -22,7 +22,7 @@ main page:
   - playback progress bar
   - volume control
   - keyboard shortcuts
-    - 🎵 Basic Controls
+    - Basic Controls
       - Space Play/Pause
       - Enter Play/Pause
       - M Mute/Unmute
@@ -30,10 +30,10 @@ main page:
       - → Seek Forward
       - ↑ Volume Up
       - ↓ Volume Down
-    - 🎮 Track Navigation
+    - Track Navigation
       - , Previous Track
       - . Next Track
-    - ⏩ Quick Seek
+    - Quick Seek
       - 1 Seek to 10%
       - 2 Seek to 20%
       - 3 Seek to 30%
@@ -47,6 +47,17 @@ main page:
   - showing songs' imgs, names, authors
   - can be changed currently playing track in audio player on click
   - can change order of songs via Drag-N-Drop
+  - can add user's song
+  - user's song:
+    - can change thumbnail
+    - can change song name
+    - can change author name
+  - context menu:
+    - can play song immediatelly
+    - can play next song
+    - can add song to playlist
+    - can remove song from playlist
+    - context menu closes when clicking outside
 - recommendetions
   - showing songs' imgs, names, authors
   - can add/remove song into current playlist
