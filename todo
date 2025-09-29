@@ -1,24 +1,23 @@
 1. (done) Add time rewind into audioPlayer on <- and -> btns
 2. (done) Remove broken progress bar when user deletes all the songs in his playlist and current playTime is not 00:00
 3. (done) Auto set currentSong when there were none and user adds new into his playlist
-4. Add optimization to different screen sizes
+4. Add optimization for different screen sizes
 5. Add tabindexes
-6. Add phone optimization
-7. Add loading elem into musicSearch
-8. (done) Add context menu to song in current playlist
-9. (done) Add keyboard shortcuts
-10. Add light/dark themes
-11. Add Audio equalizer
-12. (done) Add loop for music
-13. (done) Add animation to shortcuts modal windows
-14. Add animation to context and the rest of modal windows
-15. (done) Add close shortcuts window on Esc
-16. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
-17. (done) Add tooltip for progress audio bar
-18. Add import user's audio files
-19. Add export user's audio files
-20. Dnd for big elems (audioPlayer, currentPlaylist, recommendations)
-21. Share on social media user's playlist
-22. Add custom styles for audio visualization
-23. Add user history
-24. Adaptive light for song mood
+6. Add loading elem into musicSearch
+7. (done) Add context menu to song in current playlist
+8. (done) Add keyboard shortcuts
+9. Add light/dark themes
+10. Add Audio equalizer
+11. (done) Add loop for music
+12. (done) Add animation to shortcuts modal windows
+13. Add animation to context and the rest of modal windows
+14. (done) Add close shortcuts window on Esc
+15. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
+16. (done) Add tooltip for progress audio bar
+17. Add import user's audio files
+18. Add export user's audio files
+19. Dnd for big elems (audioPlayer, currentPlaylist, recommendations)
+20. Share on social media user's playlist
+21. Add custom styles for audio visualization
+22. Add user history
+23. Adaptive light for song mood
