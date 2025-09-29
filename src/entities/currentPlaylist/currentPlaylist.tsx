@@ -37,7 +37,7 @@ const CurrentPlaylist = observer(() => {
           Your playlist
         </h2>
         <div className="pt-4">
-          <ul className="shadow-t-standart-shadow scroll flex h-full max-h-250 flex-col overflow-x-hidden overflow-y-auto">
+          <ul className="shadow-t-standart-shadow scroll flex h-full max-h-270 flex-col overflow-x-hidden overflow-y-auto">
             {copyPlaylist.map((song, index) => {
               const songWithIndex = { ...song, index: index };
               return (
