@@ -33,7 +33,7 @@ const EditSongPanel = observer(() => {
   return (
     <>
       <div
-        className={`fixed ${isOpen ? "left-0" : "-left-full"} bg-entity-bg border-standart-border shadow-standart top-0 z-20 h-full w-140 border-1 p-12 backdrop-blur-lg transition-all duration-1000`}
+        className={`fixed ${isOpen ? "left-0" : "-left-[150%]"} bg-entity-bg border-standart-border shadow-standart top-0 z-20 h-full w-140 border-1 p-12 backdrop-blur-lg transition-all duration-1000`}
         id="editSongPanel"
       >
         <div className="flex items-center justify-center">

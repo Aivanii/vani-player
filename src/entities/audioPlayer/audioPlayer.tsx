@@ -157,7 +157,7 @@ const AudioPlayer = observer(() => {
   }, [currentVolume]);
 
   return (
-    <div className="border-standart-border shadow-standart bg-entity-bg flex h-full w-full max-w-4xl flex-row items-center self-stretch rounded-4xl border-1 p-6 backdrop-blur-sm">
+    <div className="border-standart-border shadow-standart bg-entity-bg mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch rounded-4xl border-1 py-6 backdrop-blur-sm sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
       <div className="flex flex-col gap-4">
         <audio
           id="audio"
@@ -170,10 +170,10 @@ const AudioPlayer = observer(() => {
         ></audio>
 
         <div className="flex flex-col items-center justify-between">
-          <div className="inline-block h-52 w-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
+          <div className="inline-block aspect-square w-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
             {currentSong && (
               <img
-                className="h-52 w-52 rounded-md object-cover"
+                className="aspect-square w-52 rounded-md object-cover"
                 src={currentSong.album_image || "./thumbnailSongPreview.png"}
                 alt={"current song preview"}
               />
@@ -190,7 +190,7 @@ const AudioPlayer = observer(() => {
         )}
       </div>
 
-      <div className="relative mt-4 flex h-full w-full flex-col items-center justify-between gap-4">
+      <div className="relative mx-auto mt-4 flex h-full w-[320px] flex-col items-center justify-between gap-4 sm:w-full">
         <AudioVisualizer isPlaying={isPlaying} />
         <div className="inline-flex items-center gap-6">
           <button
@@ -248,7 +248,7 @@ const AudioPlayer = observer(() => {
           </button>
 
           <div
-            className="relative flex w-fit justify-start"
+            className="relative hidden w-fit justify-start sm:flex"
             onMouseOut={() => {
               setIsVolumeBarOnScreen(false);
             }}
@@ -273,7 +273,9 @@ const AudioPlayer = observer(() => {
               <div className="relative ml-4 flex h-18 w-fit items-center justify-center">
                 <div
                   className={`block duration-300 ${
-                    isVolumeBarOnScreen ? "w-32 opacity-100" : "w-0 opacity-0"
+                    isVolumeBarOnScreen
+                      ? "w-20 opacity-100 sm:w-32"
+                      : "w-0 opacity-0"
                   }`}
                 >
                   <div className="transition-300 absolute bottom-1/2 h-1 w-full translate-y-[50%] hover:h-2">
@@ -289,7 +291,7 @@ const AudioPlayer = observer(() => {
                         );
                       }}
                     />
-                    <div className="transition-300 absolute bottom-1/2 left-0 h-full w-32 translate-y-[50%]">
+                    <div className="transition-300 absolute bottom-1/2 left-0 h-full w-20 translate-y-[50%] opacity-100 sm:w-32">
                       <div
                         className={`bg-audioVolumeBar transition-300 pointer-events-none relative z-20 h-full rounded-md`}
                         style={{ width: `${100 * currentVolume}%` }}
@@ -322,7 +324,7 @@ const AudioPlayer = observer(() => {
           </span>
           <div className="transition-300 relative block h-1 hover:h-2">
             <div
-              className="bg-progressAudioGradient transition-300 relative z-10 h-full w-64 cursor-pointer rounded-md opacity-15"
+              className="bg-progressAudioGradient transition-300 relative z-10 h-full w-56 cursor-pointer rounded-md opacity-15 sm:w-64"
               ref={progressAudioStaticRef}
             ></div>
             <div

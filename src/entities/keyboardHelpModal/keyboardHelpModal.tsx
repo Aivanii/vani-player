@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const KeyboardHelpModal = () => {
@@ -198,7 +198,7 @@ const KeyboardHelpModal = () => {
         </div>,
         document.body,
       )}
-      <div className="absolute right-0 bottom-0">
+      <div className="absolute right-0 bottom-0 hidden md:block">
         <button
           className="aspect-square h-12"
           onClick={() => setShouldRender(true)}
