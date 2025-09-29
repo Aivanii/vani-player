@@ -10,7 +10,7 @@
 10. Add Audio equalizer
 11. (done) Add loop for music
 12. (done) Add animation to shortcuts modal windows
-13. Add animation to context and the rest of modal windows
+13. (done) Add animation to context and the rest of modal windows
 14. (done) Add close shortcuts window on Esc
 15. Add fix when user clicks on his keyboard to toggle play music (func btns) the play state in audioPlayer doesn't change
 16. (done) Add tooltip for progress audio bar
