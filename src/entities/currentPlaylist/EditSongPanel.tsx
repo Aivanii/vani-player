@@ -33,7 +33,7 @@ const EditSongPanel = observer(() => {
   return (
     <>
       <div
-        className={`fixed ${isOpen ? "left-0" : "-left-[150%]"} bg-entity-bg border-standart-border shadow-standart top-0 z-20 h-full w-140 border-1 p-12 backdrop-blur-lg transition-all duration-1000`}
+        className={`fixed ${isOpen ? "left-0" : "-left-[100%]"} bg-entity-bg border-standart-border shadow-standart top-0 z-200 h-full w-full max-w-140 border-1 p-12 backdrop-blur-lg transition-all duration-700`}
         id="editSongPanel"
       >
         <div className="flex items-center justify-center">
@@ -69,12 +69,12 @@ const EditSongPanel = observer(() => {
         </div>
         {song && (
           <div className="mx-auto flex w-100 flex-col gap-8 pt-20">
-            <div className="flex flex-row items-center justify-around">
-              <label htmlFor="songNameInput" className="w-full">
+            <div className="flex flex-row items-center justify-between">
+              <label htmlFor="songNameInput" className="w-32 text-left">
                 Song name:
               </label>
               <input
-                className="w-60 p-2"
+                className="mr-auto w-54 p-2"
                 id="songNameInput"
                 placeholder="Input song name"
                 value={song.name}
@@ -86,12 +86,12 @@ const EditSongPanel = observer(() => {
                 }}
               />
             </div>
-            <div className="flex flex-row items-center justify-around">
-              <label htmlFor="songAuthorInput" className="w-full">
+            <div className="flex flex-row items-center justify-between">
+              <label htmlFor="songAuthorInput" className="w-32">
                 Author:
               </label>
               <input
-                className="w-60 p-2"
+                className="mr-auto w-54 p-2"
                 id="songAuthorInput"
                 placeholder="Input author"
                 value={song.artist_name}

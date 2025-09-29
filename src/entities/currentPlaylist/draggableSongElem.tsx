@@ -86,7 +86,7 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-standart-border hover:shadow-standart mt-2 mr-6 mb-2 ml-5 max-w-140 cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
+      className={`border-standart-border hover:shadow-standart mt-2 mr-6 mb-2 ml-5 cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
@@ -124,7 +124,7 @@ const DraggableSongElem = ({
             />
           </div>
         </div>
-        <div className="flex h-full w-100 min-w-0 flex-row items-center justify-center gap-2">
+        <div className="flex h-full w-full min-w-0 flex-row items-center justify-center gap-2">
           <div
             className={`flex min-w-0 flex-1 flex-col items-start gap-2 ${song.isAddedByUser ? "max-w-[77%]" : "max-w-[88%]"}`}
           >
@@ -152,7 +152,7 @@ const DraggableSongElem = ({
               />
             </button>
           )}
-          <div className="border-standart-border flex aspect-square h-full w-[12%] flex-col items-center justify-center gap-1 rounded-md border-2 p-2">
+          <div className="border-standart-border flex aspect-square h-full w-16 flex-col items-center justify-center gap-2 rounded-md border-2 p-2">
             <span className="border-standart-border block w-full border-t-3"></span>
             <span className="border-standart-border block w-full border-t-3"></span>
             <span className="border-standart-border block w-full border-t-3"></span>
