@@ -124,9 +124,9 @@ const DraggableSongElem = ({
             />
           </div>
         </div>
-        <div className="flex h-full w-100 min-w-0 flex-row items-center gap-2">
+        <div className="flex h-full w-100 min-w-0 flex-row items-center justify-center gap-2">
           <div
-            className={`flex min-w-0 flex-1 flex-col items-start gap-2 ${song.isAddedByUser ? "max-w-[85%]" : "max-w-[100%]"}`}
+            className={`flex min-w-0 flex-1 flex-col items-start gap-2 ${song.isAddedByUser ? "max-w-[77%]" : "max-w-[88%]"}`}
           >
             <span className="block w-full truncate" title={song.name}>
               {song.name}
@@ -152,6 +152,11 @@ const DraggableSongElem = ({
               />
             </button>
           )}
+          <div className="border-standart-border flex aspect-square h-full w-[12%] flex-col items-center justify-center gap-1 rounded-md border-2 p-2">
+            <span className="border-standart-border block w-full border-t-3"></span>
+            <span className="border-standart-border block w-full border-t-3"></span>
+            <span className="border-standart-border block w-full border-t-3"></span>
+          </div>
         </div>
       </div>
     </li>

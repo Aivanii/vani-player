@@ -32,7 +32,7 @@ const CurrentPlaylist = observer(() => {
 
   return (
     <>
-      <aside className="shadow-standart bg-entity-bg border-standart-border relative block h-full max-h-full w-full max-w-140 self-stretch rounded-4xl border-1 py-4 backdrop-blur-sm">
+      <aside className="shadow-standart bg-entity-bg border-standart-border relative z-0 block h-full max-h-full w-full max-w-140 self-stretch rounded-4xl border-1 py-4 backdrop-blur-sm">
         <h2 className="truncate text-center text-2xl font-bold">
           Your playlist
         </h2>

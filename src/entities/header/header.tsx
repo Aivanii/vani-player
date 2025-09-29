@@ -3,7 +3,7 @@ import MusicSearch from "./musicSearch/musicSearch";
 const Header = () => {
   return (
     <>
-      <header className="border-standart-border shadow-standart bg-entity-bg z-50 flex items-center justify-between border-2 px-6 py-4 backdrop-blur-md">
+      <header className="border-standart-border shadow-standart bg-entity-bg relative z-100 flex items-center justify-start border-2 px-6 py-4">
         <a href="/" className="pointer">
           <div className="flex items-center gap-3">
             <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-[#41C7AD] to-[#9A868D]">
@@ -37,13 +37,13 @@ const Header = () => {
                 </defs>
               </svg>
             </span>
-            <span className="text-2xl font-bold tracking-tight text-[#F5F8FF] select-none">
+            <span className="hidden text-2xl font-bold tracking-tight text-[#F5F8FF] select-none sm:block">
               vani-player
             </span>
           </div>
         </a>
 
-        <nav className="hidden md:block">
+        <nav className="mx-auto hidden md:block">
           <ul className="flex items-center justify-between gap-6">
             <li>
               <a href="#">Browse</a>
@@ -63,12 +63,8 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className="relative z-50 mr-28 flex w-68 items-center justify-between">
-          <div className="border-standart-border h-10 w-10 rounded-full border-1 bg-[#ffffff1a]"></div>
-        </div>
+        <MusicSearch />
       </header>
-
-      <MusicSearch />
     </>
   );
 };
