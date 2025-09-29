@@ -12,7 +12,7 @@ class CurrentPlaylistStore {
       album_name: "dunno",
       audio: "./compass.mp3",
     },
-    {
+    /*    {
       id: "-2",
       artist_name: "Mili",
       artist_id: "dunno",
@@ -108,7 +108,7 @@ class CurrentPlaylistStore {
       album_image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgZUCXw9WkET76F8BPfTW4TPfA0IuIqh-jmQ&s",
       audio: "./override.mp3",
-    },
+    },*/
   ];
   isPlaying: boolean = false;
   activeurl: string = this.playlist[0].audio;
@@ -226,7 +226,10 @@ class CurrentPlaylistStore {
       this.activeurl = this.playlist[currentSongIndex]?.audio || "";
 
       if (this.activeurl === "") {
+        console.log("no songs");
         this.isPlaying = false;
+        this.currentAudioTimeMS = 0;
+        this.audioDurationMS = 0;
       }
     }
     this.playlist = this.playlist.filter(

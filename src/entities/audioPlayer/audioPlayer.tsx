@@ -98,8 +98,12 @@ const AudioPlayer = observer(() => {
 
     if (!audio) return;
 
+    if (!activeurl) {
+      setCurrentAudioTimeMS(0);
+      return;
+    }
+
     const handleTimeChange = () => {
-      console.log("update time");
       setCurrentAudioTimeMS(audio.currentTime * 1000);
     };
 
@@ -108,7 +112,7 @@ const AudioPlayer = observer(() => {
     return () => {
       audio.removeEventListener("timeupdate", handleTimeChange);
     };
-  }, []);
+  }, [activeurl]);
 
   //audio set to play/stop
   useEffect(() => {
