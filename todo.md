@@ -34,3 +34,4 @@
 | 32  | Add 3D visualization using WebGL/Three.js                            | ⬜ TODO | 🔴 Expert  |
 | 33  | Add user's statistics with charts and insights                       | ⬜ TODO | 🔴 Hard    |
 | 34  | Add this app to the browser extensions shop (Chrome Web Store)       | ⬜ TODO | 🔴 Expert  |
+| 35  | Fix white theme (invert colors, shadows, logo, background)           | ⬜ TODO | 🟡 Medium  |

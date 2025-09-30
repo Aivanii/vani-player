@@ -6,16 +6,36 @@ class settingsStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.initPersist();
+  }
 
-    makePersistable(this, {
+  private initPersist = async () => {
+    await makePersistable(this, {
       name: "vani-player-settings",
       properties: ["theme"],
       storage: window.localStorage,
     });
-  }
+
+    this.applyThemeToDOM();
+  };
+
+  private applyThemeToDOM = () => {
+    const root = document.documentElement;
+
+    let actualTheme = this.theme;
+    if (actualTheme === "auto") {
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      actualTheme = isDark ? "dark" : "light";
+    }
+
+    root.setAttribute("data-theme", actualTheme);
+
+    console.log("data-theme:", actualTheme);
+  };
 
   setTheme = (theme: "light" | "dark" | "auto") => {
     this.theme = theme;
+    this.applyThemeToDOM();
   };
 }
 

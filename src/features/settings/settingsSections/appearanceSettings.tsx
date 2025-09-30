@@ -8,16 +8,16 @@ const AppearanceSettings = observer(() => {
     <div>
       <div className="flex items-center justify-center gap-12">
         <div
-          className={`flex cursor-pointer flex-col items-center justify-center gap-2 ${theme === "light" ? "text-active" : ""}`}
-          onClick={() => setTheme("light")}
+          className={`flex cursor-pointer flex-col items-center justify-center gap-2 ${theme === "dark" ? "text-active" : ""}`}
+          onClick={() => setTheme("dark")}
         >
           <div className="border-standart-border shadow-standart aspect-square w-32 rounded-2xl border-2 bg-black" />
-          <span>Light</span>
+          <span>Dark</span>
         </div>
 
         <div
-          className={`flex cursor-pointer flex-col items-center justify-center gap-2 ${theme === "dark" ? "text-active" : ""}`}
-          onClick={() => setTheme("dark")}
+          className={`flex cursor-pointer flex-col items-center justify-center gap-2 ${theme === "light" ? "text-active" : ""}`}
+          onClick={() => setTheme("light")}
         >
           <div className="border-standart-border shadow-standart aspect-square w-32 rounded-2xl border-2 bg-white" />
           <span>Light</span>

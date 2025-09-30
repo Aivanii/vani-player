@@ -30,22 +30,6 @@
 
   /* borders */
   --color-standart-border: rgba(255, 255, 255, 0.12);
-}
-
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-size: 12px;
-
-  /*color-scheme: light dark;*/
-  color: var(--color-primary);
-  background-color: #12111a;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   --gradient-variant-1: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.25) 0%,
@@ -59,6 +43,35 @@
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.025) 100%
   );
+}
+
+/*
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+*/
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 12px;
+
+  color: var(--color-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -143,17 +156,47 @@ kbd {
 
 input[type="file"] {
 }
-/*
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+[data-theme="dark"] {
+  background-color: #12111a;
 }
-*/
+[data-theme="light"] {
+  --color-active: rgba(220, 170, 10, 0.95);
+  --color-hover: rgba(200, 150, 5, 0.9);
+  --color-important: rgba(210, 160, 0, 0.95);
+  --color-primary: rgba(25, 25, 30, 0.98);
+
+  --color-entity-bg: rgba(255, 255, 255, 0.75);
+
+  --shadow-standart:
+    0 4px 24px 0 rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    0 1px 3px 0 rgba(0, 0, 0, 0.04);
+
+  --color-draggable-elem-bg: rgba(255, 255, 255, 0.85);
+  --color-draggable-active-elem-bg: linear-gradient(
+    270deg,
+    rgba(248, 250, 252, 0.9) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  --color-bg-kbd: linear-gradient(
+    35deg,
+    rgba(248, 250, 252, 0.9) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+
+  --color-standart-border: rgba(0, 0, 0, 0.15);
+
+  background: linear-gradient(135deg, #b9b9b9 0%, #b4a7b4 100%);
+  --gradient-variant-1: linear-gradient(
+    135deg,
+    rgba(174, 193, 255, 0.95) 0%,
+    #a2cfffab 50%,
+    #abcfffd9 100%
+  );
+
+  --gradient-variant-2: linear-gradient(
+    35deg,
+    rgba(199, 233, 255, 0.9) 0%,
+    rgba(223, 242, 255, 0.85) 50%,
+    rgba(173, 226, 255, 0.8) 100%
+  );
+}
