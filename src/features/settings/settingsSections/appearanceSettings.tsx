@@ -11,7 +11,7 @@ const AppearanceSettings = observer(() => {
           className={`flex cursor-pointer flex-col items-center justify-center gap-2 ${theme === "light" ? "text-active" : ""}`}
           onClick={() => setTheme("light")}
         >
-          <div className="border-standart-border shadow-standart bg-entity-bg aspect-square w-32 rounded-2xl border-2" />
+          <div className="border-standart-border shadow-standart aspect-square w-32 rounded-2xl border-2 bg-black" />
           <span>Light</span>
         </div>
 
@@ -27,7 +27,7 @@ const AppearanceSettings = observer(() => {
           className={`flex cursor-pointer flex-col items-center justify-center gap-2 ${theme === "auto" ? "text-active" : ""}`}
           onClick={() => setTheme("auto")}
         >
-          <div className="border-standart-border shadow-standart aspect-square w-32 rounded-2xl border-2 bg-amber-700" />
+          <div className="border-standart-border shadow-standart aspect-square w-32 rounded-2xl border-2 bg-orange-200" />
           <span>Auto</span>
         </div>
       </div>
