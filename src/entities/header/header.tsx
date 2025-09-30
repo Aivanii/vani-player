@@ -46,19 +46,10 @@ const Header = () => {
         <nav className="mx-auto hidden md:block">
           <ul className="flex items-center justify-between gap-6">
             <li>
-              <a href="#">Browse</a>
+              <a href="/">Home</a>
             </li>
             <li>
-              <a href="#">Playlists</a>
-            </li>
-            <li>
-              <a href="#">Discover</a>
-            </li>
-            <li>
-              <a href="#">Radio</a>
-            </li>
-            <li>
-              <a href="#">Profile</a>
+              <a href="/settings">Settings</a>
             </li>
           </ul>
         </nav>

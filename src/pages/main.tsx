@@ -2,6 +2,7 @@ import AudioPlayer from "../entities/audioPlayer/audioPlayer";
 import CurrentPlaylist from "../entities/currentPlaylist/currentPlaylist";
 import Recomendations from "../entities/recomendations/recomendations";
 import { ContextMenu } from "../entities/contextMenu/contextMenuSong";
+import ToSettingsFixedBtn from "../entities/toSettingsFixedBtn/toSettingsFixedBtn";
 
 function Main() {
   return (
@@ -16,6 +17,7 @@ function Main() {
         </div>
       </div>
       <ContextMenu />
+      <ToSettingsFixedBtn />
     </main>
   );
 }
