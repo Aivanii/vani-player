@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
-import { editSongStore } from "../../stores/editSongStore/EditSongStore";
+import { editSongStore } from "../../app/stores/editSongStore/EditSongStore";
 import { useEffect, useRef, useState } from "react";
-import type { Song } from "../../types";
+import type { Song } from "../../app/types/types";
 
 const EditSongPanel = observer(() => {
   const { isOpen, closeSongEditing, activeSong, updateSongDataById } =

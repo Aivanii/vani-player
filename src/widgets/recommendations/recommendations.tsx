@@ -1,8 +1,8 @@
 import { RecommendedSong } from "./recommendedSong";
-import { recommendationStore } from "../../stores/recommendationStore/recommendationStore";
+import { recommendationStore } from "../../app/stores/recommendationStore/recommendationStore";
 import { observer } from "mobx-react-lite";
 
-const Recomendations = observer(() => {
+const Recommendations = observer(() => {
   const {
     recommendations,
     addSongIntoCurrentPlaylist,
@@ -34,4 +34,4 @@ const Recomendations = observer(() => {
   );
 });
 
-export default Recomendations;
+export default Recommendations;

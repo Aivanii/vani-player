@@ -1,26 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import Main from "./pages/main.tsx";
-import Settings from "./pages/settings.tsx";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import { Header } from "./entities/header/header.tsx";
-import { MainBg } from "./entities/mainBg/mainBg.tsx";
-import { Route, BrowserRouter as Router, Routes } from "react-router";
+import { Header } from "./widgets/header/header.tsx";
+import { MainBg } from "./features/mainBg/mainBg.tsx";
+import RoutesComponent from "./app/router/router.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <DndProvider backend={HTML5Backend}>
       <Header />
 
-      <Router>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </Router>
+      <RoutesComponent />
+
       <MainBg />
     </DndProvider>
   </StrictMode>,

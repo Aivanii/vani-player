@@ -1,6 +1,6 @@
 import { useRef, useId } from "react";
-import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
-import type { Song } from "../../types";
+import { currentPlaylistStore } from "../../app/stores/currentPlaylistStore/currentPlaylistStore";
+import type { Song } from "../../app/types/types";
 
 const InputFile = () => {
   const inputRef = useRef<HTMLInputElement>(null);

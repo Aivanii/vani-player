@@ -1,5 +1,5 @@
-import type { KeyboardNavigationConfig } from "../types";
-import { currentPlaylistStore } from "../stores/currentPlaylistStore/currentPlaylistStore";
+import type { KeyboardNavigationConfig } from "../app/types/types";
+import { currentPlaylistStore } from "../app/stores/currentPlaylistStore/currentPlaylistStore";
 
 export const getMainPageNavigationConfig = (
   audio: HTMLAudioElement,

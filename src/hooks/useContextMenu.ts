@@ -1,7 +1,10 @@
 import { useCallback } from "react";
-import { contextMenuStore } from "../stores/contextMenuStore/ContextMenuStore";
-import type { ContextMenuItem, Song } from "../types";
-import { menuActions,  menuTitles} from "../stores/contextMenuStore/ContextMenuActions";
+import { contextMenuStore } from "../app/stores/contextMenuStore/ContextMenuStore";
+import type { ContextMenuItem, Song } from "../app/types/types";
+import {
+  menuActions,
+  menuTitles,
+} from "../app/stores/contextMenuStore/ContextMenuActions";
 
 const useSongContextMenu = (song: Song) => {
   const settledMenuItems: ContextMenuItem[] = [
@@ -40,7 +43,7 @@ const useSongContextMenu = (song: Song) => {
       event.preventDefault();
       contextMenuStore.open(event.clientX, event.clientY, settledMenuItems);
     },
-    [song]
+    [song],
   );
   return handleContextMenu;
 };

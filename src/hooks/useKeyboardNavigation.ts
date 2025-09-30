@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import type { KeyboardNavigationConfig } from "../types";
+import type { KeyboardNavigationConfig } from "../app/types/types";
 
 const useKeyboardNavigation = (config: KeyboardNavigationConfig) => {
   const handleKeyDown = useCallback(

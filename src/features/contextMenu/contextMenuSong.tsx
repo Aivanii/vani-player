@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
-import { contextMenuStore } from "../../stores/contextMenuStore/ContextMenuStore";
-import type { ContextMenuItem } from "../../types";
+import { contextMenuStore } from "../../app/stores/contextMenuStore/ContextMenuStore";
+import type { ContextMenuItem } from "../../app/types/types";
 import { createPortal } from "react-dom";
 
 const ContextMenu = observer(() => {

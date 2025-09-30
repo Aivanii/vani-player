@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import { formatTime } from "./tools/formatTime";
-import { calculateProgressAudio } from "./tools/calculateProgressAudio";
-import { changePlayedTimeByUser } from "./tools/changePlayedTimeByUser";
+import { formatTime } from "../../utils/audio/formatTime";
+import { calculateProgressAudio } from "../../utils/audio/calculateProgressAudio";
+import { changePlayedTimeByUser } from "../../utils/audio/changePlayedTimeByUser";
 import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
-import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
+import { currentPlaylistStore } from "../../app/stores/currentPlaylistStore/currentPlaylistStore";
 
 import { getAudioPercentageFromClick } from "../../utils/dom/getAudioPercentageFromClick";
 
@@ -11,7 +11,7 @@ import { observer } from "mobx-react-lite";
 
 import useKeyboardNavigation from "../../hooks/useKeyboardNavigation";
 import { getMainPageNavigationConfig } from "../../config/keyboardNavigationConfig";
-import KeyboardHelpModal from "../keyboardHelpModal/keyboardHelpModal";
+import KeyboardHelpModal from "../../features/keyboardHelpModal/keyboardHelpModal";
 
 const AudioPlayer = observer(() => {
   const {

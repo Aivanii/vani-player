@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import useMusicAPI from "../../../hooks/useMusicAPI";
-import LoadingELem from "../../loadingElem/loadingElem";
-import { currentPlaylistStore } from "../../../stores/currentPlaylistStore/currentPlaylistStore";
-import type { Song } from "../../../types";
+import LoadingELem from "../../../features/loadingElem/loadingElem";
+import { currentPlaylistStore } from "../../../app/stores/currentPlaylistStore/currentPlaylistStore";
+import type { Song } from "../../../app/types/types";
 import { SongElem } from "./songElem";
 import { observer } from "mobx-react-lite";
 

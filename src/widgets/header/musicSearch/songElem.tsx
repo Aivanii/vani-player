@@ -1,4 +1,4 @@
-import type { Song } from "../../../types";
+import type { Song } from "../../../app/types/types";
 
 import { useSongContextMenu } from "../../../hooks/useContextMenu";
 

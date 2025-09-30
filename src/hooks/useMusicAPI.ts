@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Song } from "../types";
+import type { Song } from "../app/types/types";
 
 interface MusicApiResponse {
   results: Song[];

@@ -1,9 +1,9 @@
 import update from "immutability-helper";
 import { DraggableSongElem } from "./draggableSongElem";
-import { currentPlaylistStore } from "../../stores/currentPlaylistStore/currentPlaylistStore";
+import { currentPlaylistStore } from "../../app/stores/currentPlaylistStore/currentPlaylistStore";
 import { observer } from "mobx-react-lite";
 import { useCallback, useEffect, useState } from "react";
-import type { Song } from "../../types";
+import type { Song } from "../../app/types/types";
 import InputFile from "./inputFile";
 import { createPortal } from "react-dom";
 import EditSongPanel from "./EditSongPanel";

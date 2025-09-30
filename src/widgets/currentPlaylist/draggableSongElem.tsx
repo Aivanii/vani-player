@@ -1,11 +1,11 @@
 import type { Identifier, XYCoord } from "dnd-core";
 import { useDrag, useDrop, type DragSourceMonitor } from "react-dnd";
-import type { Song } from "../../types";
+import type { Song } from "../../app/types/types";
 import { useRef } from "react";
-import { dragAndDropTypes } from "../../dnd.types";
+import { dragAndDropTypes } from "../../app/types/dnd.types";
 
 import { useSongContextMenu } from "../../hooks/useContextMenu";
-import { editSongStore } from "../../stores/editSongStore/EditSongStore";
+import { editSongStore } from "../../app/stores/editSongStore/EditSongStore";
 
 interface DraggableSongElemProps {
   song: Song;
