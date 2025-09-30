@@ -1,5 +1,7 @@
-const Settings = () => {
-  return <main className="h-full md:max-h-dvh">settings</main>;
+import Settings from "../features/settings/settings";
+
+const SettingsPage = () => {
+  return <Settings />;
 };
 
-export default Settings;
+export default SettingsPage;
