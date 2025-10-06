@@ -7,9 +7,7 @@ const ThemesSettings = observer(() => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-center">
-        <span className="text-important border-active-border border-b-2 text-3xl">
-          Themes
-        </span>
+        <span className="text-important text-3xl">Themes</span>
       </div>
       <div className="flex flex-row flex-wrap gap-20">
         <div>
