@@ -4,7 +4,7 @@ const ToSettingsFixedBtn = () => {
       <button title="to settings page">
         <a href="settings">
           <img
-            className="aspect-square w-20 invert-100"
+            className="invert-icon aspect-square w-20"
             src="https://img.icons8.com/?size=100&id=UCX4DI82AU0H&format=png&color=000000"
             alt="to settings page"
           />

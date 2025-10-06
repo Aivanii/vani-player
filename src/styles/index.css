@@ -4,6 +4,10 @@
 @import "./themes/dark.css";
 @import "./themes/light.css";
 
+@utility invert-icon {
+  filter: var(--invert-icon-filter);
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

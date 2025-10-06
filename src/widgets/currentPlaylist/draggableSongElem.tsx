@@ -114,7 +114,7 @@ const DraggableSongElem = ({
             }}
           >
             <img
-              className="z-20 invert"
+              className="invert-icon z-20"
               src={
                 isThisSongActive && isPlaying
                   ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
@@ -146,7 +146,7 @@ const DraggableSongElem = ({
               }}
             >
               <img
-                className="aspect-square w-12 rounded-md p-1 invert"
+                className="invert-icon aspect-square w-12 rounded-md p-1"
                 src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
                 alt="song added by user"
               />

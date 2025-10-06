@@ -27,7 +27,7 @@ const SettingsSideBar = ({
             <img
               src={section.icon}
               alt={section.id}
-              className="aspect-square w-8 invert-100"
+              className="invert-icon aspect-square w-8"
             />
             <span className="relative block w-full">{section.label}</span>
           </div>

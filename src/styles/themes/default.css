@@ -38,6 +38,8 @@
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.025) 100%
   );
+
+  --invert-icon-filter: invert(100%);
 }
 :root {
   background-color: #12111a;

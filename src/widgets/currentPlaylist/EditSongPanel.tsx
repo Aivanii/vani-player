@@ -53,7 +53,7 @@ const EditSongPanel = observer(() => {
               className="absolute top-0 left-0 flex h-full w-full cursor-pointer items-center justify-center rounded-4xl bg-transparent p-2 opacity-0 transition-all duration-300 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
             >
               <img
-                className="invert-100"
+                className="invert-icon"
                 src="https://img.icons8.com/?size=100&id=99292&format=png&color=000000"
                 alt="change song thumbnail"
               />

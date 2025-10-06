@@ -2,7 +2,7 @@
   --color-primary: rgba(30, 30, 35, 0.95);
   --color-active: rgba(255, 165, 80, 0.9);
   --color-hover: rgba(255, 140, 60, 0.85);
-  --color-important: rgba(255, 190, 50, 0.9);
+  --color-important: rgba(40, 98, 255, 0.7);
 
   --color-entity-bg: rgba(255, 255, 255, 0.65);
   --color-draggable-elem-bg: rgba(248, 248, 248, 0.9);
@@ -34,6 +34,8 @@
   --shadow-standart:
     0 4px 20px 0 rgba(0, 0, 0, 0.04), inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
     0 1px 2px 0 rgba(0, 0, 0, 0.02);
+
+  --invert-icon-filter: invert(0%);
 
   background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%);
 }
