@@ -1,0 +1,25 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 12px;
+
+  color: var(--color-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 1920px;
+  margin: auto;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--color-primary) transparent;
+  scrollbar-width: thin;
+}

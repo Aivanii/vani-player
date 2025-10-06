@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { makePersistable } from "mobx-persist-store";
 
 class settingsStore {
-  theme: "light" | "dark" | "auto" = "auto";
+  theme: "light" | "dark" | "auto" | "mint" | "lavender" = "auto";
 
   constructor() {
     makeAutoObservable(this);
@@ -33,7 +33,7 @@ class settingsStore {
     console.log("data-theme:", actualTheme);
   };
 
-  setTheme = (theme: "light" | "dark" | "auto") => {
+  setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
     this.theme = theme;
     this.applyThemeToDOM();
   };

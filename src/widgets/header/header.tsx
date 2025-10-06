@@ -37,7 +37,7 @@ const Header = () => {
                 </defs>
               </svg>
             </span>
-            <span className="hidden text-2xl font-bold tracking-tight text-[#F5F8FF] select-none sm:block">
+            <span className="text-color-primary hidden text-2xl font-bold tracking-tight select-none sm:block">
               vani-player
             </span>
           </div>

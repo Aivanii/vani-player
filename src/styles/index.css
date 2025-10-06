@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@import "./variables.css";
+@import "./themes/default.css";
+@import "./themes/dark.css";
+@import "./themes/light.css";
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+input {
+  border: 1px var(--color-standart-border) solid;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition: box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+input:active,
+input:focus-visible {
+  box-shadow: var(--shadow-standart);
+}
+
+button {
+  cursor: pointer;
+  min-width: 36px;
+  border-radius: 9999px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-standart-border);
+}
+button:not(.no-scale):hover {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.15);
+}
+
+main {
+  margin-top: 36px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body button:nth-child(even) {
+  background: var(--gradient-variant-1);
+}
+
+body button:nth-child(odd) {
+  background: var(--gradient-variant-2);
+}
+
+a {
+  transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+  color: var(--color-hover);
+}
+
+.draggable-active-elem {
+  background: var(--color-draggable-active-elem-bg);
+}
+.bg-progressAudioGradient {
+  background: var(--gradient-variant-1);
+}
+.bg-audioVolumeBar {
+  background: var(--gradient-variant-2);
+}
+
+kbd {
+  background: var(--color-bg-kbd);
+}
+
+input[type="file"] {
+}
