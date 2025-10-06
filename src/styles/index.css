@@ -3,9 +3,12 @@
 @import "./themes/default.css";
 @import "./themes/dark.css";
 @import "./themes/light.css";
+@import "./themes/mint.css";
+@import "./themes/lavender.css";
 
 @utility invert-icon {
   filter: var(--invert-icon-filter);
+  transition: all 0.3s ease-in-out;
 }
 
 h1 {
