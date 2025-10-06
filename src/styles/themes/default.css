@@ -40,7 +40,7 @@
   );
 
   --invert-icon-filter: invert(100%);
-  --color-active-border: #ffffff;
+  --color-active-border: rgba(255, 215, 0, 0.9);
 }
 :root {
   background-color: #12111a;

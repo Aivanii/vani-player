@@ -7,7 +7,9 @@ const AppearanceSettings = observer(() => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-center">
-        <span className="text-important text-3xl">Themes</span>
+        <span className="text-important border-active-border border-b-2 text-3xl">
+          Appearance
+        </span>
       </div>
       <div>
         <div className="flex items-center justify-center">
@@ -61,6 +63,9 @@ const AppearanceSettings = observer(() => {
             <span>Mint</span>
           </div>
         </div>
+      </div>
+      <div className="flex items-center justify-center">
+        <span className="text-important text-3xl">something</span>
       </div>
     </div>
   );
