@@ -1,4 +1,4 @@
-import AppearanceSettings from "./appearanceSettings";
+import ThemesSettings from "./themesSettings";
 import GeneralSettings from "./generalSettings";
 import type { SettingSection } from "./settingSection.type";
 
@@ -13,9 +13,9 @@ const settingsSections: SettingSection[] = [
     id: "appearance",
     label: "Appearance",
     icon: "https://img.icons8.com/?size=100&id=1058&format=png&color=000000",
-    component: AppearanceSettings,
+    component: ThemesSettings,
   },
 ];
 
-export { AppearanceSettings, GeneralSettings, settingsSections };
+export { ThemesSettings, GeneralSettings, settingsSections };
 export type { SettingSection };
