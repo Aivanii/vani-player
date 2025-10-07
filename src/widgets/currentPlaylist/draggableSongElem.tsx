@@ -86,7 +86,7 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-standart-border hover:shadow-standart backdrop-blur-dynamic rounded-dynamic border-size-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer p-2 transition duration-150 hover:scale-105 ${
+      className={`border-standart-border inner-glow hover:hover:hover-glow-enhanced backdrop-blur-dynamic rounded-dynamic border-size-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer p-2 transition-all duration-300 hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-size-dynamic"
           : "bg-draggable-elem-bg"
@@ -152,7 +152,7 @@ const DraggableSongElem = ({
               />
             </button>
           )}
-          <div className="border-standart-border rounded-dynamic border-size-dynamic mt-1 flex aspect-square h-full w-14 flex-col items-center justify-center gap-2 p-2">
+          <div className="inner-glow border-standart-border rounded-dynamic border-size-dynamic mt-1 flex aspect-square h-full w-14 flex-col items-center justify-center gap-2 p-2">
             <span className="border-standart-border border-size-dynamic block w-full"></span>
             <span className="border-standart-border border-size-dynamic block w-full"></span>
             <span className="border-standart-border border-size-dynamic block w-full"></span>

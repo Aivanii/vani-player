@@ -20,7 +20,7 @@ const RecommendedSong = ({
   return (
     <div
       key={song.id}
-      className="border-standart-border bg-draggable-elem-bg hover:shadow-standart rounded-dynamic border-size-dynamic flex h-58 w-48 flex-col items-center justify-center gap-1 backdrop-opacity-100 duration-150"
+      className="inner-glow border-standart-border bg-draggable-elem-bg hover:hover-glow-enhanced rounded-dynamic border-size-dynamic flex h-58 w-48 flex-col items-center justify-center gap-1 backdrop-opacity-100 transition-all duration-300 hover:scale-105"
       onContextMenu={handleContextMenu}
     >
       <img
