@@ -11,7 +11,7 @@ const SettingsContent = ({ activeSection }: SettingsContent) => {
   );
 
   return (
-    <div className="border-standart-border relative flex h-full w-dvw max-w-[960px] items-center justify-center self-stretch border-l-1">
+    <div className="relative flex h-full w-dvw max-w-[960px] items-center justify-center self-stretch">
       {section && <section.component />}
     </div>
   );

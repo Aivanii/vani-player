@@ -3,7 +3,7 @@ import MusicSearch from "./musicSearch/musicSearch";
 const Header = () => {
   return (
     <>
-      <header className="border-standart-border shadow-standart bg-entity-bg relative z-100 flex items-center justify-start border-2 px-6 py-4">
+      <header className="border-standart-border shadow-standart bg-entity-bg border-size-dynamic relative z-100 flex items-center justify-start px-6 py-4">
         <a href="/" className="pointer">
           <div className="flex items-center gap-3">
             <span className="rounded-dynamic flex h-8 w-8 items-center justify-center bg-gradient-to-tr from-[#41C7AD] to-[#9A868D]">

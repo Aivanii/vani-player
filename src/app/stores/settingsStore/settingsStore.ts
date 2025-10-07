@@ -5,6 +5,7 @@ class settingsStore {
   theme: "light" | "dark" | "auto" | "mint" | "lavender" = "auto";
   activeBlur: string = "16";
   activeRounding: string = "40";
+  activeBorderSize: string = "1";
 
   constructor() {
     makeAutoObservable(this);
@@ -14,7 +15,7 @@ class settingsStore {
   private initPersist = async () => {
     await makePersistable(this, {
       name: "vani-player-settings",
-      properties: ["theme", "activeBlur", "activeRounding"],
+      properties: ["theme", "activeBlur", "activeRounding", "activeBorderSize"],
       storage: window.localStorage,
     });
     this.applyAllStylesToDOM();
@@ -24,6 +25,7 @@ class settingsStore {
     this.applyThemeToDOM();
     this.applyActiveBlurToDOM();
     this.applyActiveRoundingToDOM();
+    this.applyActiveBorderSize();
   };
 
   private applyThemeToDOM = () => {
@@ -46,6 +48,13 @@ class settingsStore {
       `${this.activeRounding}px`,
     );
   };
+  private applyActiveBorderSize = () => {
+    const root = document.documentElement;
+    root.style.setProperty(
+      "--data-active-border-size",
+      `${this.activeBorderSize}px`,
+    );
+  };
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
     this.theme = theme;
@@ -60,6 +69,11 @@ class settingsStore {
   setActiveRounding = (activeRounding: string) => {
     this.activeRounding = activeRounding;
     this.applyActiveRoundingToDOM();
+  };
+
+  setActiveBorderSize = (activeBorderSize: string) => {
+    this.activeBorderSize = activeBorderSize;
+    this.applyActiveBorderSize();
   };
 }
 

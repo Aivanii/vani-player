@@ -12,14 +12,14 @@ const SettingsSideBar = ({
   setActiveSection,
 }: SettingsSideBar) => {
   return (
-    <ul className="border-standart-border flex h-full w-dvw max-w-[260px] flex-col gap-4 self-stretch border-r-1 px-8">
+    <ul className="border-standart-border border-r-size-dynamic flex h-full w-dvw max-w-[260px] flex-col gap-4 self-stretch px-8">
       {settingsSections.map((section) => (
         <li className="py-1" key={section.id}>
           <div
             onClick={() => setActiveSection(section)}
-            className={`border-standart-border hover:shadow-standart bg-draggable-elem-bg backdrop-blur-dynamic rounded-dynamic flex w-full cursor-pointer items-center justify-start gap-2 border-1 p-2 px-12 text-left opacity-100 transition-all duration-150 hover:scale-105 ${
+            className={`border-standart-border hover:shadow-standart bg-draggable-elem-bg backdrop-blur-dynamic rounded-dynamic border-size-dynamic flex w-full cursor-pointer items-center justify-start gap-2 p-2 px-12 text-left opacity-100 transition-all duration-150 hover:scale-105 ${
               activeSection.id === section.id
-                ? "shadow-standart draggable-active-elem border-2"
+                ? "shadow-standart draggable-active-elem border-size-dynamic"
                 : "bg-draggable-elem-bg"
             }`}
             key={section.id}

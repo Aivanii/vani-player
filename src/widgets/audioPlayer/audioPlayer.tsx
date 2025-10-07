@@ -157,7 +157,7 @@ const AudioPlayer = observer(() => {
   }, [currentVolume]);
 
   return (
-    <div className="border-standart-border shadow-standart bg-entity-bg backdrop-blur-dynamic rounded-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch border-1 py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
+    <div className="border-standart-border shadow-standart bg-entity-bg backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
       <div className="flex flex-col gap-4">
         <audio
           id="audio"

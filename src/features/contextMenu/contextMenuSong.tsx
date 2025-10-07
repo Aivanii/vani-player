@@ -17,7 +17,7 @@ const ContextMenu = observer(() => {
           ></div>
 
           <div
-            className={`border-standart-border shadow-standart backdrop-blur-dynamic rounded-dynamic fixed z-10000 border-1 p-4 backdrop-opacity-100 transition-all duration-500 ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+            className={`border-standart-border shadow-standart backdrop-blur-dynamic rounded-dynamic border-size-dynamic fixed z-10000 p-4 backdrop-opacity-100 transition-all duration-500 ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
             style={{ top: y, left: x, transitionDelay: isOpen ? "0s" : "0.1s" }}
           >
             {items.map((item: ContextMenuItem, index: number) => {

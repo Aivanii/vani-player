@@ -19,6 +19,22 @@
   border-radius: var(--data-active-rounding, 40px);
 }
 
+@utility border-size-dynamic {
+  border-width: var(--data-active-border-size, 1px);
+}
+@utility border-b-size-dynamic {
+  border-bottom-width: var(--data-active-border-size, 1px);
+}
+@utility border-t-size-dynamic {
+  border-top-width: var(--data-active-border-size, 1px);
+}
+@utility border-r-size-dynamic {
+  border-right-width: var(--data-active-border-size, 1px);
+}
+@utility border-l-size-dynamic {
+  border-left-width: var(--data-active-border-size, 1px);
+}
+
 [data-active-blur] {
   backdrop-filter: blur(var(--active-blur));
 }
@@ -29,7 +45,7 @@ h1 {
 }
 
 input {
-  border: 1px var(--color-standart-border) solid;
+  border: var(--data-active-border-size) var(--color-standart-border) solid;
   border-radius: var(--data-active-rounding);
   background: rgba(255, 255, 255, 0.1);
   outline: none;
@@ -48,7 +64,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--color-standart-border);
+  border: var(--data-active-border-size) solid var(--color-standart-border);
 }
 button:not(.no-scale):hover {
   transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);

@@ -33,13 +33,13 @@ const EditSongPanel = observer(() => {
   return (
     <>
       <div
-        className={`fixed ${isOpen ? "left-0" : "-left-[100%]"} bg-entity-bg border-standart-border shadow-standart backdrop-blur-dynamic top-0 z-200 h-full w-full max-w-140 border-1 p-12 transition-all duration-700`}
+        className={`fixed ${isOpen ? "left-0" : "-left-[100%]"} bg-entity-bg border-standart-border shadow-standart backdrop-blur-dynamic border-size-dynamic top-0 z-200 h-full w-full max-w-140 p-12 transition-all duration-700`}
         id="editSongPanel"
       >
         <div className="flex items-center justify-center">
           <div className="relative block">
             <img
-              className="border-standart-border rounded-dynamic relative block aspect-square w-100 border-2 object-cover"
+              className="border-standart-border rounded-dynamic border-size-dynamic relative block aspect-square w-100 object-cover"
               src={song?.album_image || "./thumbnailSongPreview.png"}
               alt="custom audio thumbnail"
             />

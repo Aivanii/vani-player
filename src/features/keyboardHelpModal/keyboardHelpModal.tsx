@@ -31,61 +31,61 @@ const KeyboardHelpModal = () => {
           }}
         >
           <div
-            className={`bg-entity-bg border-standart-border shadow-standart rounded-dynamic flex h-[80vh] max-h-320 w-[80vw] max-w-7xl flex-col items-center justify-center border-1 px-12 transition-all duration-150 ${shouldRender ? "backdrop-blur-dynamic" : "backdrop-blur-none"}`}
+            className={`bg-entity-bg border-standart-border shadow-standart rounded-dynamic border-b-size-dynamic flex h-[80vh] max-h-320 w-[80vw] max-w-7xl flex-col items-center justify-center px-12 transition-all duration-150 ${shouldRender ? "backdrop-blur-dynamic" : "backdrop-blur-none"}`}
           >
             <span className="py-8 text-3xl">Keyboard shortcuts</span>
             <div className="h-[80vh] max-h-320 w-[80vw] max-w-7xl overflow-y-auto px-12">
               <span className="text-3xl font-semibold">Playback</span>
               <ul className="my-16 flex w-full flex-col gap-4 text-2xl">
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Toggle play/pause</span>
                   <div className="flex w-1/3 items-center gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic border-1 p-2">
+                    <kbd className="border-standart-border rounded-dynamic mb-2 p-2">
                       Space
                     </kbd>
                     /
-                    <kbd className="border-standart-border rounded-dynamic border-1 p-2">
+                    <kbd className="border-standart-border rounded-dynamic mb-2 p-2">
                       Enter
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Toggle mute</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       m
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Rewind 5 seconds</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       ←
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Fast forward 5 seconds</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       →
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Increase volume</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       ↑
                     </kbd>
                   </div>
                 </li>
 
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Decrease volume</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       ↓
                     </kbd>
                   </div>
@@ -93,18 +93,18 @@ const KeyboardHelpModal = () => {
               </ul>
               <span className="text-3xl font-semibold">Track Navigation</span>
               <ul className="my-16 flex w-full flex-col gap-4 text-2xl">
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Prevous track</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       ,
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Next track</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       .
                     </kbd>
                   </div>
@@ -112,74 +112,74 @@ const KeyboardHelpModal = () => {
               </ul>
               <span className="text-3xl font-semibold">Quick Seek</span>
               <ul className="my-16 flex w-full flex-col gap-4 text-2xl">
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 10%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       1
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 20%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start px-2">
                       2
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 30%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       3
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 40%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       4
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 50%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       5
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 60%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       6
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 70%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       7
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 80%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       8
                     </kbd>
                   </div>
                 </li>
-                <li className="border-color-primary flex w-full items-center justify-between border-t-1 px-4 pt-4">
+                <li className="border-color-primary border-b-size-dynamic flex w-full items-center justify-between px-4 pt-4">
                   <span>Seek to 90%</span>
                   <div className="flex w-1/3 gap-x-2">
-                    <kbd className="border-standart-border rounded-dynamic mr-auto flex min-w-min items-center justify-start border-1 px-2">
+                    <kbd className="border-standart-border rounded-dynamic mr-auto mb-2 flex min-w-min items-center justify-start px-2">
                       9
                     </kbd>
                   </div>
