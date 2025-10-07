@@ -59,7 +59,7 @@ const AppearanceSettings = observer(() => {
           <span className="col-span-1 col-start-4">{activeRounding}px</span>
           <button
             className="col-span-3 col-start-1 px-8 py-2"
-            onClick={() => setActiveRounding("6")}
+            onClick={() => setActiveRounding("40")}
           >
             reset
           </button>

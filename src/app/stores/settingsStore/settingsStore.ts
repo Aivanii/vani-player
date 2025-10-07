@@ -4,7 +4,7 @@ import { makePersistable } from "mobx-persist-store";
 class settingsStore {
   theme: "light" | "dark" | "auto" | "mint" | "lavender" = "auto";
   activeBlur: string = "16";
-  activeRounding: string = "6";
+  activeRounding: string = "40";
 
   constructor() {
     makeAutoObservable(this);

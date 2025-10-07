@@ -16,7 +16,7 @@
 }
 
 @utility rounded-dynamic {
-  border-radius: var(--data-active-rounding, 6px);
+  border-radius: var(--data-active-rounding, 40px);
 }
 
 [data-active-blur] {
@@ -30,7 +30,7 @@ h1 {
 
 input {
   border: 1px var(--color-standart-border) solid;
-  border-radius: 9999px;
+  border-radius: var(--data-active-rounding);
   background: rgba(255, 255, 255, 0.1);
   outline: none;
   transition: box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -43,7 +43,7 @@ input:focus-visible {
 button {
   cursor: pointer;
   min-width: 36px;
-  border-radius: 9999px;
+  border-radius: var(--data-active-rounding);
   outline: none;
   display: flex;
   justify-content: center;
