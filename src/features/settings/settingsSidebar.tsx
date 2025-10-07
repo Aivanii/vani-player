@@ -17,7 +17,7 @@ const SettingsSideBar = ({
         <li className="py-1" key={section.id}>
           <div
             onClick={() => setActiveSection(section)}
-            className={`border-standart-border hover:shadow-standart bg-draggable-elem-bg flex w-full cursor-pointer items-center justify-start gap-2 rounded-2xl border-1 p-2 px-12 text-left opacity-100 backdrop-blur-sm transition-all duration-150 hover:scale-105 ${
+            className={`border-standart-border hover:shadow-standart bg-draggable-elem-bg backdrop-blur-dynamic flex w-full cursor-pointer items-center justify-start gap-2 rounded-2xl border-1 p-2 px-12 text-left opacity-100 transition-all duration-150 hover:scale-105 ${
               activeSection.id === section.id
                 ? "shadow-standart draggable-active-elem border-2"
                 : "bg-draggable-elem-bg"

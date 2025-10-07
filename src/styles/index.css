@@ -11,6 +11,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+@utility backdrop-blur-dynamic {
+  backdrop-filter: blur(var(--data-active-blur, 16px));
+}
+
 [data-active-blur] {
   backdrop-filter: blur(var(--active-blur));
 }

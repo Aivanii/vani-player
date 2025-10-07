@@ -31,7 +31,7 @@ const KeyboardHelpModal = () => {
           }}
         >
           <div
-            className={`bg-entity-bg border-standart-border shadow-standart flex h-[80vh] max-h-320 w-[80vw] max-w-7xl flex-col items-center justify-center rounded-4xl border-1 px-12 transition-all duration-150 ${shouldRender ? "backdrop-blur-lg" : "backdrop-blur-none"}`}
+            className={`bg-entity-bg border-standart-border shadow-standart flex h-[80vh] max-h-320 w-[80vw] max-w-7xl flex-col items-center justify-center rounded-4xl border-1 px-12 transition-all duration-150 ${shouldRender ? "backdrop-blur-dynamic" : "backdrop-blur-none"}`}
           >
             <span className="py-8 text-3xl">Keyboard shortcuts</span>
             <div className="h-[80vh] max-h-320 w-[80vw] max-w-7xl overflow-y-auto px-12">

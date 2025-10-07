@@ -39,7 +39,7 @@ const SongElem = ({
             alt="img alt"
           ></img>
           <div
-            className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
+            className="hover:backdrop-blur-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             onClick={() => {
               addSongNextAndPlay(song);
               if (!isThisSongActive && !isPlaying) {

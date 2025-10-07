@@ -86,11 +86,11 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-standart-border hover:shadow-standart mt-2 mr-6 mb-2 ml-5 cursor-pointer rounded-2xl border-1 p-2 backdrop-blur-sm transition duration-150 hover:scale-105 ${
+      className={`border-standart-border hover:shadow-standart backdrop-blur-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer rounded-2xl border-1 p-2 transition duration-150 hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
-      } ${isDragging ? "opacity-30 backdrop-blur-sm" : "opacity-100"}`}
+      } ${isDragging ? "backdrop-blur-dynamic opacity-30" : "opacity-100"}`}
       data-audio-url={song.audio}
       key={song.id}
       onContextMenu={handleContextMenu}
@@ -103,7 +103,7 @@ const DraggableSongElem = ({
             alt="img alt"
           ></img>
           <div
-            className="absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
+            className="hover:backdrop-blur-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             onClick={() => {
               setNewActiveurl(song.audio);
               if (!isThisSongActive && !isPlaying) {

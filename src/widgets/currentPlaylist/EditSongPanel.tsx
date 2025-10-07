@@ -33,7 +33,7 @@ const EditSongPanel = observer(() => {
   return (
     <>
       <div
-        className={`fixed ${isOpen ? "left-0" : "-left-[100%]"} bg-entity-bg border-standart-border shadow-standart top-0 z-200 h-full w-full max-w-140 border-1 p-12 backdrop-blur-lg transition-all duration-700`}
+        className={`fixed ${isOpen ? "left-0" : "-left-[100%]"} bg-entity-bg border-standart-border shadow-standart backdrop-blur-dynamic top-0 z-200 h-full w-full max-w-140 border-1 p-12 transition-all duration-700`}
         id="editSongPanel"
       >
         <div className="flex items-center justify-center">
@@ -50,7 +50,7 @@ const EditSongPanel = observer(() => {
                   changeImgInputRef.current.click();
                 }
               }}
-              className="absolute top-0 left-0 flex h-full w-full cursor-pointer items-center justify-center rounded-4xl bg-transparent p-2 opacity-0 transition-all duration-300 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100 hover:backdrop-blur-[2px]"
+              className="hover:backdrop-blur-dynamic absolute top-0 left-0 flex h-full w-full cursor-pointer items-center justify-center rounded-4xl bg-transparent p-2 opacity-0 transition-all duration-300 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             >
               <img
                 className="invert-icon"

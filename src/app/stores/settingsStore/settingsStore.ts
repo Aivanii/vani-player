@@ -35,7 +35,7 @@ class settingsStore {
   };
   private applyActiveBlurToDOM = () => {
     const root = document.documentElement;
-    root.setAttribute("data-active-blur", `${this.activeBlur}px`);
+    root.style.setProperty("--data-active-blur", `${this.activeBlur}px`);
   };
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {

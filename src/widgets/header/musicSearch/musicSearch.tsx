@@ -44,7 +44,7 @@ const MusicSearch = observer(() => {
       ></input>
       {isMenuOpen && (
         <>
-          <div className="shadow-standart border-standart-border bg-entity-bg absolute top-full left-0 z-1100 w-full rounded-2xl border-1 p-4 backdrop-blur-md backdrop-opacity-100">
+          <div className="shadow-standart border-standart-border bg-entity-bg backdrop-blur-dynamic absolute top-full left-0 z-1100 w-full rounded-2xl border-1 p-4 backdrop-opacity-100">
             <ul
               className="z-1100 flex min-h-24 w-full flex-col items-center justify-center gap-2 duration-150"
               hidden={!isMenuOpen}
