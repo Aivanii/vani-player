@@ -14,7 +14,7 @@ class settingsStore {
   private initPersist = async () => {
     await makePersistable(this, {
       name: "vani-player-settings",
-      properties: ["theme"],
+      properties: ["theme", "activeBlur", "activeRounding"],
       storage: window.localStorage,
     });
     this.applyAllStylesToDOM();
