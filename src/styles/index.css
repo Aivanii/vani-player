@@ -15,6 +15,10 @@
   backdrop-filter: blur(var(--data-active-blur, 16px));
 }
 
+@utility rounded-dynamic {
+  border-radius: var(--data-active-rounding, 6px);
+}
+
 [data-active-blur] {
   backdrop-filter: blur(var(--active-blur));
 }

@@ -20,13 +20,13 @@ const RecommendedSong = ({
   return (
     <div
       key={song.id}
-      className="border-standart-border bg-draggable-elem-bg hover:shadow-standart flex h-58 w-48 flex-col items-center justify-center gap-1 rounded-2xl border-1 backdrop-opacity-100 duration-150"
+      className="border-standart-border bg-draggable-elem-bg hover:shadow-standart rounded-dynamic flex h-58 w-48 flex-col items-center justify-center gap-1 border-1 backdrop-opacity-100 duration-150"
       onContextMenu={handleContextMenu}
     >
       <img
         src={song.album_image}
         alt={`${song.name} thumbnail`}
-        className="aspect-square w-24 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
+        className="rounded-dynamic aspect-square w-24 object-cover shadow-[0_0_0_2px_#ffffff1f]"
       />
       <span
         className={`line-clamp-2 block w-full px-2 text-center text-[1.2rem] overflow-ellipsis h-${

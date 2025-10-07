@@ -39,7 +39,7 @@ const EditSongPanel = observer(() => {
         <div className="flex items-center justify-center">
           <div className="relative block">
             <img
-              className="border-standart-border relative block aspect-square w-100 rounded-4xl border-2 object-cover"
+              className="border-standart-border rounded-dynamic relative block aspect-square w-100 border-2 object-cover"
               src={song?.album_image || "./thumbnailSongPreview.png"}
               alt="custom audio thumbnail"
             />
@@ -50,7 +50,7 @@ const EditSongPanel = observer(() => {
                   changeImgInputRef.current.click();
                 }
               }}
-              className="hover:backdrop-blur-dynamic absolute top-0 left-0 flex h-full w-full cursor-pointer items-center justify-center rounded-4xl bg-transparent p-2 opacity-0 transition-all duration-300 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
+              className="hover:backdrop-blur-dynamic rounded-dynamic absolute top-0 left-0 flex h-full w-full cursor-pointer items-center justify-center bg-transparent p-2 opacity-0 transition-all duration-300 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             >
               <img
                 className="invert-icon"

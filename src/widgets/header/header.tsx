@@ -6,7 +6,7 @@ const Header = () => {
       <header className="border-standart-border shadow-standart bg-entity-bg relative z-100 flex items-center justify-start border-2 px-6 py-4">
         <a href="/" className="pointer">
           <div className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-[#41C7AD] to-[#9A868D]">
+            <span className="rounded-dynamic flex h-8 w-8 items-center justify-center bg-gradient-to-tr from-[#41C7AD] to-[#9A868D]">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                 <circle
                   cx="14"

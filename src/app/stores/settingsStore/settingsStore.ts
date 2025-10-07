@@ -4,6 +4,7 @@ import { makePersistable } from "mobx-persist-store";
 class settingsStore {
   theme: "light" | "dark" | "auto" | "mint" | "lavender" = "auto";
   activeBlur: string = "16";
+  activeRounding: string = "6";
 
   constructor() {
     makeAutoObservable(this);
@@ -22,6 +23,7 @@ class settingsStore {
   private applyAllStylesToDOM = () => {
     this.applyThemeToDOM();
     this.applyActiveBlurToDOM();
+    this.applyActiveRoundingToDOM();
   };
 
   private applyThemeToDOM = () => {
@@ -37,6 +39,13 @@ class settingsStore {
     const root = document.documentElement;
     root.style.setProperty("--data-active-blur", `${this.activeBlur}px`);
   };
+  private applyActiveRoundingToDOM = () => {
+    const root = document.documentElement;
+    root.style.setProperty(
+      "--data-active-rounding",
+      `${this.activeRounding}px`,
+    );
+  };
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
     this.theme = theme;
@@ -46,6 +55,11 @@ class settingsStore {
   setActiveBlur = (activeBlur: string) => {
     this.activeBlur = activeBlur;
     this.applyActiveBlurToDOM();
+  };
+
+  setActiveRounding = (activeRounding: string) => {
+    this.activeRounding = activeRounding;
+    this.applyActiveRoundingToDOM();
   };
 }
 

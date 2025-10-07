@@ -45,6 +45,8 @@
   /* not theme settings */
   --data-active-blur: initial;
   --color-backdrop-blur: var(--data-active-blur, 16px);
+
+  --data-active-rounding: initial;
 }
 :root {
   background-color: #12111a;

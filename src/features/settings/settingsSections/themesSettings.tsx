@@ -20,7 +20,7 @@ const ThemesSettings = observer(() => {
               onClick={() => setTheme("dark")}
             >
               <div
-                className={`shadow-standart aspect-square w-32 rounded-2xl bg-[#100F17] ${theme === "dark" ? "border-active-border border-4" : "border-standart-border border-2"}`}
+                className={`shadow-standart rounded-dynamic aspect-square w-32 bg-[#100F17] ${theme === "dark" ? "border-active-border border-4" : "border-standart-border border-2"}`}
               />
               <span>Dark</span>
             </div>
@@ -29,7 +29,7 @@ const ThemesSettings = observer(() => {
               onClick={() => setTheme("lavender")}
             >
               <div
-                className={`shadow-standart aspect-square w-32 rounded-2xl bg-[#291F34] ${theme === "lavender" ? "border-active-border border-4" : "border-standart-border border-2"}`}
+                className={`shadow-standart rounded-dynamic aspect-square w-32 bg-[#291F34] ${theme === "lavender" ? "border-active-border border-4" : "border-standart-border border-2"}`}
               />
               <span>Lavender</span>
             </div>
@@ -47,7 +47,7 @@ const ThemesSettings = observer(() => {
               onClick={() => setTheme("light")}
             >
               <div
-                className={`shadow-standart aspect-square w-32 rounded-2xl bg-[#F6F7F8] ${theme === "light" ? "border-active-border border-4" : "border-standart-border border-2"}`}
+                className={`shadow-standart rounded-dynamic aspect-square w-32 bg-[#F6F7F8] ${theme === "light" ? "border-active-border border-4" : "border-standart-border border-2"}`}
               />
               <span>Light</span>
             </div>
@@ -57,7 +57,7 @@ const ThemesSettings = observer(() => {
               onClick={() => setTheme("mint")}
             >
               <div
-                className={`shadow-standart aspect-square w-32 rounded-2xl bg-[#D2EBE6] ${theme === "mint" ? "border-important border-4" : "border-standart-border border-2"}`}
+                className={`shadow-standart rounded-dynamic aspect-square w-32 bg-[#D2EBE6] ${theme === "mint" ? "border-important border-4" : "border-standart-border border-2"}`}
               />
               <span>Mint</span>
             </div>

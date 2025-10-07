@@ -86,7 +86,7 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-standart-border hover:shadow-standart backdrop-blur-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer rounded-2xl border-1 p-2 transition duration-150 hover:scale-105 ${
+      className={`border-standart-border hover:shadow-standart backdrop-blur-dynamic rounded-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer border-1 p-2 transition duration-150 hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-2"
           : "bg-draggable-elem-bg"
@@ -98,12 +98,12 @@ const DraggableSongElem = ({
       <div className="flex flex-row gap-3">
         <div className="relative flex-shrink-0">
           <img
-            className="relative block aspect-square w-16 flex-1 flex-shrink-0 rounded-md object-cover shadow-[0_0_0_2px_#ffffff1f]"
+            className="rounded-dynamic relative block aspect-square w-16 flex-1 flex-shrink-0 object-cover shadow-[0_0_0_2px_#ffffff1f]"
             src={song.album_image || "./thumbnailSongPreview.png"}
             alt="img alt"
           ></img>
           <div
-            className="hover:backdrop-blur-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full rounded-md bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
+            className="hover:backdrop-blur-dynamic rounded-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             onClick={() => {
               setNewActiveurl(song.audio);
               if (!isThisSongActive && !isPlaying) {
@@ -146,13 +146,13 @@ const DraggableSongElem = ({
               }}
             >
               <img
-                className="invert-icon aspect-square w-12 rounded-md p-1"
+                className="invert-icon rounded-dynamic aspect-square w-12 p-1"
                 src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
                 alt="song added by user"
               />
             </button>
           )}
-          <div className="border-standart-border mt-1 flex aspect-square h-full w-14 flex-col items-center justify-center gap-2 rounded-md border-2 p-2">
+          <div className="border-standart-border rounded-dynamic mt-1 flex aspect-square h-full w-14 flex-col items-center justify-center gap-2 border-2 p-2">
             <span className="border-standart-border block w-full border-t-3"></span>
             <span className="border-standart-border block w-full border-t-3"></span>
             <span className="border-standart-border block w-full border-t-3"></span>

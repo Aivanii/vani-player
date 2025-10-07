@@ -157,7 +157,7 @@ const AudioPlayer = observer(() => {
   }, [currentVolume]);
 
   return (
-    <div className="border-standart-border shadow-standart bg-entity-bg backdrop-blur-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch rounded-4xl border-1 py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
+    <div className="border-standart-border shadow-standart bg-entity-bg backdrop-blur-dynamic rounded-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch border-1 py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
       <div className="flex flex-col gap-4">
         <audio
           id="audio"
@@ -170,10 +170,10 @@ const AudioPlayer = observer(() => {
         ></audio>
 
         <div className="flex flex-col items-center justify-between">
-          <div className="inline-block aspect-square w-52 rounded-md shadow-[0_0_0_4px_#ffffff1f]">
+          <div className="rounded-dynamic inline-block aspect-square w-52 shadow-[0_0_0_4px_#ffffff1f]">
             {currentSong && (
               <img
-                className="aspect-square w-52 rounded-md object-cover"
+                className="rounded-dynamic aspect-square w-52 object-cover"
                 src={currentSong.album_image || "./thumbnailSongPreview.png"}
                 alt={"current song preview"}
               />
@@ -280,7 +280,7 @@ const AudioPlayer = observer(() => {
                 >
                   <div className="transition-300 absolute bottom-1/2 h-1 w-full translate-y-[50%] hover:h-2">
                     <div
-                      className="bg-audioVolumeBar transition-300 relative z-10 h-full w-full cursor-pointer rounded-md opacity-15"
+                      className="bg-audioVolumeBar transition-300 rounded-dynamic relative z-10 h-full w-full cursor-pointer opacity-15"
                       ref={audioVolumeBarStatic}
                       onClick={(event) => {
                         setVolume(
@@ -293,7 +293,7 @@ const AudioPlayer = observer(() => {
                     />
                     <div className="transition-300 absolute bottom-1/2 left-0 h-full w-20 translate-y-[50%] opacity-100 sm:w-32">
                       <div
-                        className={`bg-audioVolumeBar transition-300 pointer-events-none relative z-20 h-full rounded-md`}
+                        className={`bg-audioVolumeBar transition-300 rounded-dynamic pointer-events-none relative z-20 h-full`}
                         style={{ width: `${100 * currentVolume}%` }}
                       ></div>
                     </div>
@@ -324,11 +324,11 @@ const AudioPlayer = observer(() => {
           </span>
           <div className="transition-300 relative block h-1 hover:h-2">
             <div
-              className="bg-progressAudioGradient transition-300 relative z-10 h-full w-56 cursor-pointer rounded-md opacity-15 sm:w-64"
+              className="bg-progressAudioGradient transition-300 rounded-dynamic relative z-10 h-full w-56 cursor-pointer opacity-15 sm:w-64"
               ref={progressAudioStaticRef}
             ></div>
             <div
-              className={`bg-progressAudioGradient transition-300 pointer-events-none absolute top-0 left-0 z-20 h-full rounded-md`}
+              className={`bg-progressAudioGradient transition-300 rounded-dynamic pointer-events-none absolute top-0 left-0 z-20 h-full`}
               style={{
                 width: calculateProgressAudio(
                   currentAudioTimeMS,
