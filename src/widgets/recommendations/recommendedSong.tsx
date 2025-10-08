@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import type { Song } from "../../app/types/types";
 
 import { useSongContextMenu } from "../../hooks/useContextMenu";
@@ -16,6 +17,73 @@ const RecommendedSong = ({
   removeSongFromCurrentPlaylist,
 }: RecommendedSong) => {
   const handleContextMenu = useSongContextMenu(song);
+  const [isNameHovering, setIsNameHovering] = useState<boolean>(false);
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const scrollInterval = useRef<NodeJS.Timeout | null>(null);
+  const scrollFrameDuration = useRef(5);
+
+  const scrollToEnd = (scrollStep: number) => {
+    if (!spanRef.current) return;
+    const elem = spanRef.current;
+
+    if (scrollInterval.current) {
+      clearInterval(scrollInterval.current);
+    }
+
+    if (elem.scrollWidth <= elem.clientWidth) {
+      return;
+    }
+
+    scrollInterval.current = setInterval(() => {
+      if (!spanRef.current) return;
+
+      let currentScroll = spanRef.current.scrollLeft;
+      const maxScroll =
+        spanRef.current.scrollWidth - spanRef.current.clientWidth;
+
+      spanRef.current.scrollLeft += scrollStep;
+      currentScroll += scrollStep;
+      if (currentScroll >= maxScroll) {
+        if (scrollInterval.current) {
+          clearInterval(scrollInterval.current);
+          scrollInterval.current = null;
+        }
+      }
+    }, scrollFrameDuration.current);
+  };
+
+  const scrollToStart = (scrollStep: number) => {
+    if (!spanRef.current) return;
+    const elem = spanRef.current;
+
+    if (scrollInterval.current) {
+      clearInterval(scrollInterval.current);
+    }
+    if (elem.scrollWidth <= elem.clientWidth) {
+      return;
+    }
+
+    scrollInterval.current = setInterval(() => {
+      if (!spanRef.current) return;
+
+      spanRef.current.scrollLeft -= scrollStep;
+      const currentScroll = spanRef.current.scrollLeft;
+
+      if (currentScroll <= 0) {
+        if (scrollInterval.current) {
+          clearInterval(scrollInterval.current);
+          scrollInterval.current = null;
+        }
+      }
+    }, scrollFrameDuration.current);
+  };
+  useEffect(() => {
+    if (isNameHovering) {
+      scrollToEnd(2);
+    } else {
+      scrollToStart(4);
+    }
+  }, [isNameHovering]);
 
   return (
     <div
@@ -29,9 +97,11 @@ const RecommendedSong = ({
         className="rounded-dynamic aspect-square w-24 object-cover shadow-[0_0_0_2px_#ffffff1f]"
       />
       <span
-        className={`line-clamp-2 block w-full px-2 text-center text-[1.2rem] overflow-ellipsis h-${
-          song.name && song.name.length > 24 ? "14" : "6"
-        }`}
+        className={`line-clamp-1 block w-full overflow-hidden scroll-smooth px-2 text-center whitespace-nowrap ${isNameHovering ? "overflow-x-auto" : "text-ellipsis"}`}
+        style={{ scrollbarWidth: "none" }}
+        onMouseEnter={() => setIsNameHovering(true)}
+        onMouseLeave={() => setIsNameHovering(false)}
+        ref={spanRef}
       >
         {song.name}
       </span>
