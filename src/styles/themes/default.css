@@ -39,7 +39,10 @@
   --invert-icon-filter: invert(100%);
   --color-active-border: rgba(255, 215, 0, 0.9);
 
-  --shadow-inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+  --shadow-inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+  --shadow-inner-glow-hovered:
+    inset 0 0 20px rgba(255, 255, 255, 0.3), 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
   --shadow-standart:
     0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
     0 1px 4px 0 rgba(0, 0, 0, 0.2), var(--shadow-inner-glow);

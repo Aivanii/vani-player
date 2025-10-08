@@ -95,15 +95,15 @@ const DraggableSongElem = ({
       key={song.id}
       onContextMenu={handleContextMenu}
     >
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row">
         <div className="relative flex-shrink-0">
           <img
-            className="rounded-dynamic relative block aspect-square w-16 flex-1 flex-shrink-0 object-cover shadow-[0_0_0_2px_#ffffff1f]"
+            className="rounded-dynamic relative block aspect-square w-16 flex-1 flex-shrink-0 object-cover p-1 shadow-[0_0_0_2px_#ffffff1f]"
             src={song.album_image || "./thumbnailSongPreview.png"}
-            alt="img alt"
+            alt={`${song.album_name} song preview`}
           ></img>
           <div
-            className="hover:backdrop-blur-dynamic rounded-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full bg-transparent p-2 opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
+            className="hover:backdrop-blur-dynamic rounded-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full bg-transparent opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             onClick={() => {
               setNewActiveurl(song.audio);
               if (!isThisSongActive && !isPlaying) {
@@ -114,7 +114,7 @@ const DraggableSongElem = ({
             }}
           >
             <img
-              className="invert-icon z-20"
+              className="invert-icon absolute top-1/2 left-1/2 z-20 -translate-1/2"
               src={
                 isThisSongActive && isPlaying
                   ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
@@ -124,7 +124,7 @@ const DraggableSongElem = ({
             />
           </div>
         </div>
-        <div className="flex h-full w-full min-w-0 flex-row items-center justify-center gap-2">
+        <div className="flex h-full w-full min-w-0 flex-row items-center justify-center gap-4 md:ml-4">
           <div
             className={`flex min-w-0 flex-1 flex-col items-start gap-2 ${song.isAddedByUser ? "max-w-[77%]" : "max-w-[88%]"}`}
           >
@@ -138,24 +138,26 @@ const DraggableSongElem = ({
               {song.artist_name}
             </span>
           </div>
-          {song.isAddedByUser && (
-            <button
-              className="ml-auto opacity-60 transition-all duration-300 hover:opacity-100"
-              onClick={() => {
-                openSongEditing(song);
-              }}
-            >
-              <img
-                className="invert-icon rounded-dynamic aspect-square w-12 p-1"
-                src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
-                alt="song added by user"
-              />
-            </button>
-          )}
-          <div className="inner-glow border-standart-border rounded-dynamic border-size-dynamic mt-1 flex aspect-square h-full w-14 flex-col items-center justify-center gap-2 p-2">
-            <span className="border-standart-border border-size-dynamic block w-full"></span>
-            <span className="border-standart-border border-size-dynamic block w-full"></span>
-            <span className="border-standart-border border-size-dynamic block w-full"></span>
+          <div className="flex gap-2">
+            {song.isAddedByUser && (
+              <button
+                className="ml-auto opacity-60 transition-all duration-300 hover:opacity-100"
+                onClick={() => {
+                  openSongEditing(song);
+                }}
+              >
+                <img
+                  className="invert-icon rounded-dynamic aspect-square w-16 p-1"
+                  src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
+                  alt="song added by user"
+                />
+              </button>
+            )}
+            <div className="inner-glow border-standart-border rounded-dynamic border-size-dynamic flex aspect-square h-full w-16 flex-col items-center justify-center gap-2 p-2">
+              <span className="border-standart-border border-size-dynamic block w-full"></span>
+              <span className="border-standart-border border-size-dynamic block w-full"></span>
+              <span className="border-standart-border border-size-dynamic block w-full"></span>
+            </div>
           </div>
         </div>
       </div>
