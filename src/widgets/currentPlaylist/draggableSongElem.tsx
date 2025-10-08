@@ -154,9 +154,9 @@ const DraggableSongElem = ({
               </button>
             )}
             <div className="inner-glow border-standart-border rounded-dynamic border-size-dynamic flex aspect-square h-full w-16 flex-col items-center justify-center gap-2 p-2">
-              <span className="border-standart-border border-size-dynamic block w-full"></span>
-              <span className="border-standart-border border-size-dynamic block w-full"></span>
-              <span className="border-standart-border border-size-dynamic block w-full"></span>
+              <span className="border-standart-border rounded-dynamic block w-full border-2"></span>
+              <span className="border-standart-border rounded-dynamic block w-full border-2"></span>
+              <span className="border-standart-border rounded-dynamic block w-full border-2"></span>
             </div>
           </div>
         </div>

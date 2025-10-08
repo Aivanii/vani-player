@@ -38,14 +38,13 @@
 
   --invert-icon-filter: invert(100%);
   --color-active-border: rgba(255, 215, 0, 0.9);
-
-  --shadow-inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+  --shadow-inner-glow: inset 0 0 30px rgba(255, 255, 255, 0.18);
   --shadow-inner-glow-hovered:
-    inset 0 0 20px rgba(255, 255, 255, 0.3), 0 8px 32px 0 rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+    inset 0 0 40px rgba(255, 255, 255, 0.5), 0 14px 44px 0 rgba(0, 0, 0, 0.6),
+    inset 0 2px 0 0 rgba(255, 255, 255, 0.4), 0 2px 10px 0 rgba(0, 0, 0, 0.5);
   --shadow-standart:
-    0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
-    0 1px 4px 0 rgba(0, 0, 0, 0.2), var(--shadow-inner-glow);
+    0 14px 44px 0 rgba(0, 0, 0, 0.6), inset 0 0px 0 0 rgba(255, 255, 255, 0.2),
+    0 2px 10px 0 rgba(0, 0, 0, 0.5), var(--shadow-inner-glow);
   /* not theme settings */
   --data-active-blur: initial;
   --color-backdrop-blur: var(--data-active-blur, 16px);
@@ -54,5 +53,5 @@
   --data-active-border-size: initial;
 }
 :root {
-  background-color: #12111a;
+  background-color: black;
 }
