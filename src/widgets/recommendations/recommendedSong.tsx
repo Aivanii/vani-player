@@ -94,10 +94,10 @@ const RecommendedSong = ({
       <img
         src={song.album_image}
         alt={`${song.name} thumbnail`}
-        className="rounded-dynamic aspect-square w-24 object-cover shadow-[0_0_0_2px_#ffffff1f]"
+        className="rounded-dynamic aspect-square w-24 object-cover p-1 shadow-[0_0_0_2px_#ffffff1f]"
       />
       <span
-        className={`line-clamp-1 block w-full overflow-hidden scroll-smooth px-2 text-center whitespace-nowrap ${isNameHovering ? "overflow-x-auto" : "text-ellipsis"}`}
+        className={`mt-2 line-clamp-1 block w-full overflow-hidden scroll-smooth px-2 text-center whitespace-nowrap ${isNameHovering ? "overflow-x-auto" : "text-ellipsis"}`}
         style={{ scrollbarWidth: "none" }}
         onMouseEnter={() => setIsNameHovering(true)}
         onMouseLeave={() => setIsNameHovering(false)}
@@ -110,14 +110,14 @@ const RecommendedSong = ({
       </span>
       {!isSongInPlaylist ? (
         <button
-          className="px-6 py-1"
+          className="mt-2 w-1/2 py-1"
           onClick={() => addSongIntoCurrentPlaylist(song)}
         >
           Add
         </button>
       ) : (
         <button
-          className="px-6 py-1"
+          className="mt-2 w-1/2 py-1"
           onClick={() => removeSongFromCurrentPlaylist(song)}
         >
           Remove
