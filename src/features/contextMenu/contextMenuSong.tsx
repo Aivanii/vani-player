@@ -17,12 +17,13 @@ const ContextMenu = observer(() => {
           ></div>
 
           <div
-            className={`border-standart-border shadow-standart backdrop-blur-dynamic rounded-dynamic border-size-dynamic fixed z-10000 p-4 backdrop-opacity-100 transition-all duration-500 ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+            className={`border-standart-border shadow-standart backdrop-blur-dynamic rounded-dynamic border-size-dynamic fixed z-10000 flex flex-col overflow-hidden backdrop-opacity-100 transition-all duration-500 ${isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
             style={{ top: y, left: x, transitionDelay: isOpen ? "0s" : "0.1s" }}
           >
             {items.map((item: ContextMenuItem, index: number) => {
               return (
                 <button
+                  style={{ borderRadius: "0" }}
                   className="h-10 w-46"
                   key={index}
                   onClick={() => {
