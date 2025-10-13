@@ -1,40 +1,85 @@
-@keyframes pulse-slow {
+@keyframes levitate-slow {
   0%,
   100% {
-    opacity: 0.2;
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    opacity: 0.3;
+    transform: translateY(-30px) rotate(5deg);
   }
 }
 
-@keyframes pulse-medium {
+@keyframes levitate-medium {
   0%,
   100% {
-    opacity: 0.18;
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    opacity: 0.25;
+    transform: translateY(-20px) rotate(-3deg);
   }
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 8s ease-in-out infinite;
+@keyframes levitate-fast {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
-.animate-pulse-medium {
-  animation: pulse-medium 6s ease-in-out infinite;
+@keyframes levitate-rotate {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-25px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
 }
 
-/* Анимации для пузырей остаются прежними */
-.animate-float-slow {
-  animation: float-slow 12s ease-in-out infinite;
+@keyframes levitate-rotate-delayed {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(-90deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(-180deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-270deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-360deg);
+  }
 }
 
-.animate-float-medium {
-  animation: float-medium 8s ease-in-out infinite;
+.animate-levitate-slow {
+  animation: levitate-slow 8s ease-in-out infinite;
 }
 
-.animate-float-fast {
-  animation: float-fast 6s ease-in-out infinite;
+.animate-levitate-medium {
+  animation: levitate-medium 6s ease-in-out infinite;
+}
+
+.animate-levitate-fast {
+  animation: levitate-fast 4s ease-in-out infinite;
+}
+
+.animate-levitate-rotate {
+  animation: levitate-rotate 12s linear infinite;
+}
+
+.animate-levitate-rotate-delayed {
+  animation: levitate-rotate-delayed 15s linear infinite;
 }
