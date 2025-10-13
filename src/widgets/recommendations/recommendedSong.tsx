@@ -92,7 +92,7 @@ const RecommendedSong = ({
       key={song.id}
       className={`inner-glow border-standart-border bg-draggable-elem-bg hover:hover-glow-enhanced rounded-dynamic border-size-dynamic backdrop-opacity-100 transition-all duration-300 hover:scale-105 ${
         recsStyle === "vertical"
-          ? "flex h-24 w-47/50 items-center gap-4 self-center pr-2"
+          ? "flex h-18 w-47/50 items-center gap-4 self-center pr-2"
           : "flex h-58 w-48 flex-col items-center justify-center gap-2 py-4"
       }`}
       onContextMenu={handleContextMenu}
