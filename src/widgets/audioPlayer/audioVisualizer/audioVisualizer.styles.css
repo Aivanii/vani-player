@@ -10,8 +10,7 @@
 .wave-bar {
   width: 4px;
   background: var(--gradient-variant-1);
-  border-radius: 2px;
-  height: 10px; /* начальная высота */
+  height: 10px;
   transition: height 0.3s ease;
 }
 

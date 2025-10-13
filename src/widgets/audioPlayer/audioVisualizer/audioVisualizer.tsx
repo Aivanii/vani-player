@@ -7,7 +7,7 @@ const AudioVisualizer = observer(({ isPlaying }: { isPlaying: boolean }) => {
       {[...Array(14)].map((_, index) => (
         <span
           key={index}
-          className="wave-bar"
+          className="wave-bar rounded-dynamic"
           style={{
             animationDelay: `${index * 0.1}s`,
             animation: isPlaying
