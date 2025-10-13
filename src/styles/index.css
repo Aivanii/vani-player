@@ -16,7 +16,7 @@
 }
 
 @utility rounded-dynamic {
-  border-radius: var(--data-active-rounding, 20px);
+  border-radius: var(--data-active-rounding, 28px);
 }
 
 @utility border-size-dynamic {

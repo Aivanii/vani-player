@@ -40,12 +40,12 @@
   --color-active-border: rgba(255, 215, 0, 0.9);
   --shadow-inner-glow: inset 0 0 30px rgba(255, 255, 255, 0.18);
   --shadow-inner-glow-hovered:
-    inset 0 0 40px rgba(255, 255, 255, 0.5), 0 14px 44px 0 rgba(0, 0, 0, 0.6),
-    inset 0 2px 0 0 rgba(255, 255, 255, 0.4), 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+    inset 0 0 40px rgba(255, 255, 255, 0.3), 0 14px 44px 0 rgba(0, 0, 0, 0.6),
+    0 2px 10px 0 rgba(0, 0, 0, 0.5);
   --shadow-standart:
     0 14px 44px 0 rgba(0, 0, 0, 0.6), inset 0 0px 0 0 rgba(255, 255, 255, 0.2),
     0 2px 10px 0 rgba(0, 0, 0, 0.5), var(--shadow-inner-glow);
-  /* not theme settings */
+
   --data-active-blur: initial;
   --color-backdrop-blur: var(--data-active-blur, 16px);
 
