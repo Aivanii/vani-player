@@ -110,10 +110,12 @@ a:hover {
 .draggable-active-elem {
   background: var(--color-draggable-active-elem-bg);
 }
-.bg-progressAudioGradient {
+.bg-progressAudioGradient,
+.gradientBg1 {
   background: var(--gradient-variant-1);
 }
-.bg-audioVolumeBar {
+.bg-audioVolumeBar,
+.gradientBg2 {
   background: var(--gradient-variant-2);
 }
 

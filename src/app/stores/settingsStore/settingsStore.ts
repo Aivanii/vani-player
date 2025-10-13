@@ -7,6 +7,8 @@ class settingsStore {
   activeRounding: string = "40";
   activeBorderSize: string = "1";
 
+  recsStyle: "horizontal" | "vertical" = "horizontal";
+
   constructor() {
     makeAutoObservable(this);
     this.initPersist();
@@ -15,7 +17,13 @@ class settingsStore {
   private initPersist = async () => {
     await makePersistable(this, {
       name: "vani-player-settings",
-      properties: ["theme", "activeBlur", "activeRounding", "activeBorderSize"],
+      properties: [
+        "theme",
+        "activeBlur",
+        "activeRounding",
+        "activeBorderSize",
+        "recsStyle",
+      ],
       storage: window.localStorage,
     });
     this.applyAllStylesToDOM();
@@ -26,6 +34,7 @@ class settingsStore {
     this.applyActiveBlurToDOM();
     this.applyActiveRoundingToDOM();
     this.applyActiveBorderSize();
+    this.applyRecsStyleToDOM();
   };
 
   private applyThemeToDOM = () => {
@@ -55,10 +64,18 @@ class settingsStore {
       `${this.activeBorderSize}px`,
     );
   };
+  private applyRecsStyleToDOM = () => {
+    const root = document.documentElement;
+    root.style.setProperty("--data-active-recs-style", this.recsStyle);
+  };
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
     this.theme = theme;
     this.applyThemeToDOM();
+  };
+  setRecsStyle = (recsStyle: "horizontal" | "vertical") => {
+    this.recsStyle = recsStyle;
+    this.applyRecsStyleToDOM();
   };
 
   setActiveBlur = (activeBlur: string) => {
