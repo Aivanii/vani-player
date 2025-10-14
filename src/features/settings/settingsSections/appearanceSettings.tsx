@@ -8,6 +8,8 @@ const AppearanceSettings = observer(() => {
   const { recsStyle, setRecsStyle } = SettingsStore;
   const { activeAnimSpeedMs, setActiveAnimSpeedMs } = SettingsStore;
 
+  const { resetToDefaults } = SettingsStore;
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-center">
@@ -167,6 +169,15 @@ const AppearanceSettings = observer(() => {
               <label htmlFor="recsStyleVertical">Vertical</label>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col flex-wrap items-center justify-center gap-2">
+          <button
+            className="col-span-3 col-start-1 px-8 py-2"
+            onClick={resetToDefaults}
+          >
+            reset all
+          </button>
         </div>
       </div>
     </div>

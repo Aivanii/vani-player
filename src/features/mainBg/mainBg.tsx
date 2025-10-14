@@ -7,9 +7,9 @@ const MainBg = observer(() => {
   const { theme } = SettingsStore;
 
   let bgContent;
-
   switch (theme) {
     case "dark":
+    case "auto":
       bgContent = <DarkThemeBg />;
       break;
     case "lavender":

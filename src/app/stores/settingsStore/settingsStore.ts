@@ -79,6 +79,14 @@ class settingsStore {
     );
   };
 
+  private getDefaultValuesForReset = () => ({
+    activeBlur: "16",
+    activeRounding: "28",
+    activeBorderSize: "1",
+    activeAnimSpeedMs: "200",
+    recsStyle: "horizontal",
+  });
+
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
     this.theme = theme;
     this.applyThemeToDOM();
@@ -106,6 +114,11 @@ class settingsStore {
   setActiveAnimSpeedMs = (speed: string) => {
     this.activeAnimSpeedMs = speed;
     this.applyActiveAnimSpeedMsToDOM();
+  };
+
+  resetToDefaults = () => {
+    Object.assign(this, this.getDefaultValuesForReset());
+    this.applyActiveBorderSize();
   };
 }
 
