@@ -1,43 +1,58 @@
 [data-theme="lavender"] {
-  /* Основные цвета текста и акцентов */
   --color-primary: rgba(255, 255, 255, 0.95);
-  --color-active: rgba(180, 160, 220, 0.9);
-  --color-hover: rgba(160, 140, 200, 0.85);
-  --color-important: rgba(200, 180, 230, 0.8);
+  --color-active: rgba(200, 180, 240, 0.9);
+  --color-hover: rgba(180, 160, 220, 0.85);
+  --color-important: rgba(220, 200, 250, 0.8);
 
-  --color-entity-bg: rgba(40, 30, 50, 0.8);
-  --color-draggable-elem-bg: rgba(50, 40, 60, 0.7);
-  --color-standart-border: rgba(180, 160, 220, 0.2);
-  --color-active-border: rgba(200, 180, 230, 0.8);
+  --color-entity-bg: rgba(45, 35, 65, 0.7);
+  --color-draggable-elem-bg: rgba(55, 45, 75, 0.6);
+  --color-standart-border: rgba(200, 180, 240, 0.25);
+  --color-active-border: rgba(220, 200, 250, 0.6);
 
   --color-draggable-active-elem-bg: linear-gradient(
     270deg,
-    rgba(70, 60, 90, 0.8) 0%,
-    rgba(90, 80, 110, 0.9) 100%
+    rgba(75, 65, 95, 0.7) 0%,
+    rgba(95, 85, 115, 0.8) 100%
   );
   --color-bg-kbd: linear-gradient(
     35deg,
-    rgba(60, 50, 80, 0.7) 0%,
-    rgba(80, 70, 100, 0.9) 100%
+    rgba(65, 55, 85, 0.6) 0%,
+    rgba(85, 75, 105, 0.8) 100%
   );
   --gradient-variant-1: linear-gradient(
     135deg,
-    rgba(150, 130, 190, 0.2) 0%,
-    rgba(130, 110, 170, 0.15) 50%,
-    rgba(110, 90, 150, 0.4) 100%
+    rgba(160, 140, 210, 0.25) 0%,
+    rgba(140, 120, 190, 0.2) 50%,
+    rgba(120, 100, 170, 0.35) 100%
   );
   --gradient-variant-2: linear-gradient(
     35deg,
-    rgba(160, 140, 200, 0.2) 0%,
-    rgba(140, 120, 180, 0.15) 50%,
-    rgba(120, 100, 160, 0.4) 100%
+    rgba(170, 150, 210, 0.25) 0%,
+    rgba(150, 130, 190, 0.2) 50%,
+    rgba(130, 110, 170, 0.35) 100%
   );
 
   --shadow-standart:
-    0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
-    0 1px 4px 0 rgba(0, 0, 0, 0.3);
+    0 14px 44px 0 rgba(0, 0, 0, 0.35),
+    inset 0 0px 0 0 rgba(255, 255, 255, 0.15), 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+
+  --shadow-inner-glow: inset 0 0 30px rgba(200, 180, 240, 0.15);
+  --shadow-inner-glow-hovered:
+    inset 0 0 40px rgba(200, 180, 240, 0.25), 0 14px 44px 0 rgba(0, 0, 0, 0.4),
+    0 2px 10px 0 rgba(0, 0, 0, 0.3);
 
   --invert-icon-filter: invert(100%);
+  --color-backdrop-blur: var(--data-active-blur, 16px);
+
+  --data-active-rounding: initial;
+  --data-active-border-size: initial;
 
   background: linear-gradient(135deg, #2a2438 0%, #352f4f 100%);
+}
+
+[data-theme="lavender"] {
+  --shadow-standart:
+    0 14px 44px 0 rgba(0, 0, 0, 0.35),
+    inset 0 0px 0 0 rgba(255, 255, 255, 0.15), 0 2px 10px 0 rgba(0, 0, 0, 0.25),
+    var(--shadow-inner-glow);
 }
