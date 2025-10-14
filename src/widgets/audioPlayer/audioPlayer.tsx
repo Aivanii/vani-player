@@ -272,15 +272,15 @@ const AudioPlayer = observer(() => {
               </button>
               <div className="relative ml-4 flex h-18 w-fit items-center justify-center">
                 <div
-                  className={`block duration-300 ${
+                  className={`duration-dynamic block transition-all ${
                     isVolumeBarOnScreen
                       ? "w-20 opacity-100 sm:w-32"
                       : "w-0 opacity-0"
                   }`}
                 >
-                  <div className="transition-300 absolute bottom-1/2 h-1 w-full translate-y-[50%] hover:h-2">
+                  <div className="duration-dynamic absolute bottom-1/2 h-1 w-full translate-y-[50%] transition-all hover:h-2">
                     <div
-                      className="bg-audioVolumeBar transition-300 rounded-dynamic relative z-10 h-full w-full cursor-pointer opacity-15"
+                      className="bg-audioVolumeBar duration-dynamic rounded-dynamic relative z-10 h-full w-full cursor-pointer opacity-15 transition-all"
                       ref={audioVolumeBarStatic}
                       onClick={(event) => {
                         setVolume(
@@ -291,9 +291,9 @@ const AudioPlayer = observer(() => {
                         );
                       }}
                     />
-                    <div className="transition-300 absolute bottom-1/2 left-0 h-full w-20 translate-y-[50%] opacity-100 sm:w-32">
+                    <div className="duration-dynamic absolute bottom-1/2 left-0 h-full w-20 translate-y-[50%] opacity-100 transition-all sm:w-32">
                       <div
-                        className={`bg-audioVolumeBar transition-300 rounded-dynamic pointer-events-none relative z-20 h-full`}
+                        className={`bg-audioVolumeBar duration-dynamic rounded-dynamic pointer-events-none relative z-20 h-full transition-all`}
                         style={{ width: `${100 * currentVolume}%` }}
                       ></div>
                     </div>

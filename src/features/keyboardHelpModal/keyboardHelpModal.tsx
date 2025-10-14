@@ -25,7 +25,7 @@ const KeyboardHelpModal = () => {
     <>
       {createPortal(
         <div
-          className={`fixed top-1/2 left-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-all duration-600 ${shouldRender ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
+          className={`long-duration-dynamic fixed top-1/2 left-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-all ${shouldRender ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
           onClick={(event) => {
             if (event.currentTarget === event.target) setShouldRender(false);
           }}

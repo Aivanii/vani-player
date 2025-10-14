@@ -6,6 +6,7 @@ class settingsStore {
   activeBlur: string = "16";
   activeRounding: string = "28";
   activeBorderSize: string = "1";
+  activeAnimSpeedMs: string = "200";
 
   recsStyle: "horizontal" | "vertical" = "horizontal";
 
@@ -23,6 +24,7 @@ class settingsStore {
         "activeRounding",
         "activeBorderSize",
         "recsStyle",
+        "activeAnimSpeedMs",
       ],
       storage: window.localStorage,
     });
@@ -35,6 +37,7 @@ class settingsStore {
     this.applyActiveRoundingToDOM();
     this.applyActiveBorderSize();
     this.applyRecsStyleToDOM();
+    this.applyActiveAnimSpeedMsToDOM();
   };
 
   private applyThemeToDOM = () => {
@@ -68,6 +71,13 @@ class settingsStore {
     const root = document.documentElement;
     root.style.setProperty("--data-active-recs-style", this.recsStyle);
   };
+  private applyActiveAnimSpeedMsToDOM = () => {
+    const root = document.documentElement;
+    root.style.setProperty(
+      "--data-active-anim-speed",
+      `${this.activeAnimSpeedMs}ms`,
+    );
+  };
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
     this.theme = theme;
@@ -91,6 +101,11 @@ class settingsStore {
   setActiveBorderSize = (activeBorderSize: string) => {
     this.activeBorderSize = activeBorderSize;
     this.applyActiveBorderSize();
+  };
+
+  setActiveAnimSpeedMs = (speed: string) => {
+    this.activeAnimSpeedMs = speed;
+    this.applyActiveAnimSpeedMsToDOM();
   };
 }
 

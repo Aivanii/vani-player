@@ -6,6 +6,7 @@ const AppearanceSettings = observer(() => {
   const { activeRounding, setActiveRounding } = SettingsStore;
   const { activeBorderSize, setActiveBorderSize } = SettingsStore;
   const { recsStyle, setRecsStyle } = SettingsStore;
+  const { activeAnimSpeedMs, setActiveAnimSpeedMs } = SettingsStore;
 
   return (
     <div className="flex flex-col gap-8">
@@ -97,6 +98,37 @@ const AppearanceSettings = observer(() => {
           </div>
         </div>
 
+        <div className="flex flex-row flex-wrap items-center justify-center">
+          <div className="grid grid-cols-4 gap-2">
+            <label
+              htmlFor="speedAnimInput"
+              className="col-span-3 col-start-1 text-center font-bold"
+            >
+              Animations speed
+            </label>
+            <input
+              className="accent-important col-span-3 col-start-1 h-4 cursor-pointer appearance-none"
+              id="speedAnimInput"
+              name="speedAnimInput"
+              value={activeAnimSpeedMs}
+              min={0}
+              step={50}
+              max={900}
+              type="range"
+              onChange={(event) => setActiveAnimSpeedMs(event.target.value)}
+            />
+            <span className="col-span-1 col-start-4">
+              {activeAnimSpeedMs} ms
+            </span>
+            <button
+              className="col-span-3 col-start-1 px-8 py-2"
+              onClick={() => setActiveAnimSpeedMs("200")}
+            >
+              reset
+            </button>
+          </div>
+        </div>
+
         <div className="flex flex-col flex-wrap items-center justify-center gap-2">
           <div className="grid grid-cols-4 gap-2">
             <span className="col-span-4 col-start-1 text-center font-bold">
@@ -104,7 +136,7 @@ const AppearanceSettings = observer(() => {
             </span>
             <div className="col-span-2 col-start-1 flex items-center justify-center gap-2">
               <div
-                className={`rounded-dynamic bg-active border-size-dynamic aspect-square h-8 w-8 cursor-pointer transition-all duration-200 ${recsStyle === "horizontal" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${recsStyle === "horizontal" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
                 onClick={() => setRecsStyle("horizontal")}
               ></div>
               <input
@@ -120,7 +152,7 @@ const AppearanceSettings = observer(() => {
             </div>
             <div className="col-span-2 col-start-3 flex items-center justify-center gap-2">
               <div
-                className={`rounded-dynamic bg-active border-size-dynamic aspect-square h-8 w-8 cursor-pointer transition-all duration-200 ${recsStyle === "vertical" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${recsStyle === "vertical" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
                 onClick={() => setRecsStyle("vertical")}
               ></div>
               <input

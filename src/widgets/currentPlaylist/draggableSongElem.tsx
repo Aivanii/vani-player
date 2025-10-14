@@ -86,7 +86,7 @@ const DraggableSongElem = ({
   return (
     <li
       ref={ref}
-      className={`border-standart-border inner-glow hover:hover:hover-glow-enhanced backdrop-blur-dynamic rounded-dynamic border-size-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer p-2 transition-all duration-300 hover:scale-105 ${
+      className={`border-standart-border inner-glow hover:hover:hover-glow-enhanced backdrop-blur-dynamic rounded-dynamic border-size-dynamic duration-dynamic mt-2 mr-6 mb-2 ml-5 cursor-pointer p-2 transition-all hover:scale-105 ${
         isThisSongActive
           ? "shadow-standart draggable-active-elem border-size-dynamic"
           : "bg-draggable-elem-bg"
@@ -103,7 +103,7 @@ const DraggableSongElem = ({
             alt={`${song.album_name} song preview`}
           ></img>
           <div
-            className="hover:backdrop-blur-dynamic rounded-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full bg-transparent opacity-0 transition duration-150 hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
+            className="hover:backdrop-blur-dynamic rounded-dynamic duration-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full bg-transparent opacity-0 transition-all hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             onClick={() => {
               setNewActiveurl(song.audio);
               if (!isThisSongActive && !isPlaying) {
@@ -141,7 +141,7 @@ const DraggableSongElem = ({
           <div className="flex gap-2">
             {song.isAddedByUser && (
               <button
-                className="ml-auto opacity-60 transition-all duration-300 hover:opacity-100"
+                className="duration-dynamic ml-auto opacity-60 transition-all hover:opacity-100"
                 onClick={() => {
                   openSongEditing(song);
                 }}
