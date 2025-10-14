@@ -3,12 +3,13 @@ import { makePersistable } from "mobx-persist-store";
 
 class settingsStore {
   theme: "light" | "dark" | "auto" | "mint" | "lavender" = "auto";
-  activeBlur: string = "16";
-  activeRounding: string = "28";
+  activeBlur: string = "8";
+  activeRounding: string = "40";
   activeBorderSize: string = "1";
   activeAnimSpeedMs: string = "200";
 
   recsStyle: "horizontal" | "vertical" = "horizontal";
+  visualizerStyle: "standart" | "fancy" = "standart";
 
   constructor() {
     makeAutoObservable(this);
@@ -25,6 +26,7 @@ class settingsStore {
         "activeBorderSize",
         "recsStyle",
         "activeAnimSpeedMs",
+        "visualizerStyle",
       ],
       storage: window.localStorage,
     });
@@ -38,6 +40,7 @@ class settingsStore {
     this.applyActiveBorderSize();
     this.applyRecsStyleToDOM();
     this.applyActiveAnimSpeedMsToDOM();
+    this.applyVisualizerStyle();
   };
 
   private applyThemeToDOM = () => {
@@ -79,12 +82,18 @@ class settingsStore {
     );
   };
 
+  private applyVisualizerStyle = () => {
+    const root = document.documentElement;
+    root.style.setProperty("--data-visualizer-style", this.activeAnimSpeedMs);
+  };
+
   private getDefaultValuesForReset = () => ({
-    activeBlur: "16",
-    activeRounding: "28",
+    activeBlur: "8",
+    activeRounding: "40",
     activeBorderSize: "1",
     activeAnimSpeedMs: "200",
     recsStyle: "horizontal",
+    visualizerStyle: "standart",
   });
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
@@ -114,6 +123,11 @@ class settingsStore {
   setActiveAnimSpeedMs = (speed: string) => {
     this.activeAnimSpeedMs = speed;
     this.applyActiveAnimSpeedMsToDOM();
+  };
+
+  setVisualizerStyle = (visualizerStyle: "standart" | "fancy") => {
+    this.visualizerStyle = visualizerStyle;
+    this.applyVisualizerStyle();
   };
 
   resetToDefaults = () => {

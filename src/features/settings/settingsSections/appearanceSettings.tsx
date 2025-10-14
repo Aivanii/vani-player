@@ -7,6 +7,7 @@ const AppearanceSettings = observer(() => {
   const { activeBorderSize, setActiveBorderSize } = SettingsStore;
   const { recsStyle, setRecsStyle } = SettingsStore;
   const { activeAnimSpeedMs, setActiveAnimSpeedMs } = SettingsStore;
+  const { visualizerStyle, setVisualizerStyle } = SettingsStore;
 
   const { resetToDefaults } = SettingsStore;
 
@@ -167,6 +168,46 @@ const AppearanceSettings = observer(() => {
                 onChange={() => setRecsStyle("vertical")}
               />
               <label htmlFor="recsStyleVertical">Vertical</label>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col flex-wrap items-center justify-center gap-2">
+          <div className="grid grid-cols-4 gap-2">
+            <span className="col-span-4 col-start-1 text-center font-bold">
+              Audio Visualizer Style
+            </span>
+            <div className="col-span-2 col-start-1 flex items-center justify-center gap-2">
+              <div
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${visualizerStyle === "standart" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                onClick={() => setVisualizerStyle("standart")}
+              ></div>
+              <input
+                className="hidden"
+                type="radio"
+                id="recsStyleHorizontal"
+                name="recsStyleHorizontal"
+                value="horizontal"
+                checked={visualizerStyle === "standart"}
+                onChange={() => setVisualizerStyle("standart")}
+              />
+              <label htmlFor="recsStyleHorizontal">Standart</label>
+            </div>
+            <div className="col-span-2 col-start-3 flex items-center justify-center gap-2">
+              <div
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${visualizerStyle === "fancy" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                onClick={() => setVisualizerStyle("fancy")}
+              ></div>
+              <input
+                className="hidden"
+                type="radio"
+                id="recsStyleVertical"
+                name="recsStyleVertical"
+                value="vertical"
+                checked={recsStyle === "vertical"}
+                onChange={() => setVisualizerStyle("fancy")}
+              />
+              <label htmlFor="recsStyleVertical">Fancy</label>
             </div>
           </div>
         </div>
