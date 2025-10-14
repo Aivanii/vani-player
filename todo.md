@@ -11,14 +11,14 @@
 | 9   | Add loading element into musicSearch                                 | ✅ Done | 🟢 Easy    |
 | 10  | Add context menu to song in current playlist                         | ✅ Done | 🟡 Medium  |
 | 11  | Add keyboard shortcuts                                               | ✅ Done | 🟡 Medium  |
-| 12  | Add light/dark themes with system preference detection               | ⬜ TODO | 🟡 Medium  |
+| 12  | Add light/dark themes with system preference detection               | ✅ Done | 🟡 Medium  |
 | 13  | Add loop for music                                                   | ✅ Done | 🟢 Easy    |
 | 14  | Add animation to shortcuts modal windows                             | ✅ Done | 🟡 Medium  |
 | 15  | Add animation to context and other modal windows                     | ✅ Done | 🟡 Medium  |
 | 16  | Add close shortcuts window on Esc                                    | ✅ Done | 🟢 Easy    |
 | 17  | Fix play state update when using keyboard function buttons           | ✅ Done | 🟡 Medium  |
 | 18  | Add tooltip for progress audio bar                                   | ✅ Done | 🟢 Easy    |
-| 19  | Add import user's audio files with drag & drop and file validation   | ⬜ TODO | 🟡 Medium  |
+| 19  | Add import user's audio music                                        | ✅ Done | 🟡 Medium  |
 | 20  | Add export user's audio files with metadata preservation             | ⬜ TODO | 🔴 Hard    |
 | 21  | DnD for big elements (audioPlayer, currentPlaylist, recommendations) | ⬜ TODO | 🔴 Hard    |
 | 22  | Share on social media user's playlist with custom images             | ⬜ TODO | 🟡 Medium  |
