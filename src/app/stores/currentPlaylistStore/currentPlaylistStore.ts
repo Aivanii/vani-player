@@ -24,7 +24,14 @@ class CurrentPlaylistStore {
   private initPersist = async () => {
     await makePersistable(this, {
       name: "current-playlist",
-      properties: ["playlist"],
+      properties: [
+        "playlist",
+        "activeurl",
+        "isMuted",
+        "isLooped",
+        "volume",
+        "currentAudioTimeMS",
+      ],
       storage: window.localStorage,
     });
   };
