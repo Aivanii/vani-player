@@ -338,7 +338,7 @@ const AudioPlayer = observer(() => {
               ref={progressAudioStaticRef}
             ></div>
             <div
-              className={`bg-progressAudioGradient transition-300 rounded-dynamic border-size-dynamic border-standart-border pointer-events-none absolute top-0 left-0 z-20 h-full`}
+              className={`bg-progressAudioGradient transition-300 rounded-dynamic border-size-dynamic border-standart-border pointer-events-none absolute top-0 left-0 z-20 h-full max-w-56`}
               style={{
                 width: calculateProgressAudio(
                   currentAudioTimeMS,
