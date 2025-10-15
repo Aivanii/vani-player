@@ -5,7 +5,7 @@ import { makePersistable } from "mobx-persist-store";
 class CurrentPlaylistStore {
   playlist: Song[] = [];
   isPlaying: boolean = false;
-  activeurl: string = this.playlist[0].audio;
+  activeurl: string | null = this?.playlist[0]?.audio || null;
   isVolumeBarOnScreen: boolean = false;
   isMuted: boolean = false;
   isLooped: boolean = false;
