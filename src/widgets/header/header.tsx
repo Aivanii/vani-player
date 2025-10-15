@@ -51,6 +51,9 @@ const Header = () => {
             <li>
               <a href="/settings">Settings</a>
             </li>
+            <li>
+              <a href="/playlists">Playlists</a>
+            </li>
           </ul>
         </nav>
 
