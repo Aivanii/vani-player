@@ -38,3 +38,4 @@
 | 36  | Add this app to the browser extensions shop (Chrome Web Store)       | ⬜ TODO |
 | 37  | Fix white theme (invert colors, shadows, logo, background)           | ⬜ TODO |
 | 38  | Add 404 page                                                         | ⬜ TODO |
+| 39  | Add func for deleting user's song                                    | ⬜ TODO |
