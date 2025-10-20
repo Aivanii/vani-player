@@ -98,7 +98,7 @@ const RecommendedSong = ({
       onContextMenu={handleContextMenu}
     >
       <img
-        src={song.album_image}
+        src={song.album_image || "./thumbnailSongPreview.png"}
         alt={`${song.name} thumbnail`}
         className={`rounded-dynamic aspect-square object-cover p-1 shadow-[0_0_0_2px_#ffffff1f] ${
           recsStyle === "vertical" ? "h-16 w-16 flex-shrink-0" : "h-26 w-26"
