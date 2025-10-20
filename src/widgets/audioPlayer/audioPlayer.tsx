@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { formatTime } from "../../utils/audio/formatTime";
 import { calculateProgressAudio } from "../../utils/audio/calculateProgressAudio";
-import { changePlayedTimeByUser } from "../../utils/audio/changePlayedTimeByUser";
 import { AudioVisualizer } from "./audioVisualizer/audioVisualizer";
 import { currentPlaylistStore } from "../../app/stores/currentPlaylistStore/currentPlaylistStore";
 
