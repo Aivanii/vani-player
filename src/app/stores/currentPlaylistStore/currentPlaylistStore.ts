@@ -31,6 +31,7 @@ class CurrentPlaylistStore {
         "isLooped",
         "volume",
         "currentAudioTimeMS",
+        "isPlaying",
       ],
       storage: window.localStorage,
     });
