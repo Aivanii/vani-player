@@ -14,6 +14,7 @@ import { getMainPageNavigationConfig } from "../../config/keyboardNavigationConf
 import KeyboardHelpModal from "../../features/keyboardHelpModal/keyboardHelpModal";
 import { SettingsStore } from "../../app/stores/settingsStore/settingsStore";
 import FancyAudioVisualizer from "./audioVisualizer/fancyAudioVisualizer";
+import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
 
 const AudioPlayer = observer(() => {
   const {
@@ -75,26 +76,7 @@ const AudioPlayer = observer(() => {
   }, [activeurl, setAudioDurationMS]);
 
   //audio change currentAudioTimeMS by user
-  useEffect(() => {
-    const audioBarStatic = progressAudioStaticRef.current;
-    const audio = audioRef.current;
-
-    if (!audioBarStatic || !audio) return;
-
-    const handleChangingTimeByUser = changePlayedTimeByUser(
-      audioBarStatic,
-      audioDurationMS,
-      audio,
-    );
-
-    if (!handleChangingTimeByUser) return;
-
-    audioBarStatic.addEventListener("click", handleChangingTimeByUser);
-
-    return () => {
-      audioBarStatic.removeEventListener("click", handleChangingTimeByUser);
-    };
-  }, [audioDurationMS]);
+  useAudioChangeTimeByUser(progressAudioStaticRef, audioRef, audioDurationMS);
 
   //audio change currentAudioTimeMS when audio is playing
   //or change currentAudioTimeMS to 0 when there is no songs
