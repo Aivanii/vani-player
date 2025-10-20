@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { formatTime } from "../../utils/audio/formatTime";
 import { calculateProgressAudio } from "../../utils/audio/calculateProgressAudio";
-import { changePlayedTimeByUser } from "../../utils/audio/changePlayedTimeByUser";
 import { currentPlaylistStore } from "../../app/stores/currentPlaylistStore/currentPlaylistStore";
 
 import { getAudioPercentageFromClick } from "../../utils/dom/getAudioPercentageFromClick";
@@ -11,6 +10,7 @@ import { observer } from "mobx-react-lite";
 import useKeyboardNavigation from "../../hooks/useKeyboardNavigation";
 import { getMainPageNavigationConfig } from "../../config/keyboardNavigationConfig";
 import useAudioPlayback from "../../hooks/useAudioPlayback";
+import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
 
 const GlobalAudioPlayer = observer(() => {
   const {
@@ -66,26 +66,7 @@ const GlobalAudioPlayer = observer(() => {
   }, [activeurl, setAudioDurationMS]);
 
   //audio change currentAudioTimeMS by user
-  useEffect(() => {
-    const audioBarStatic = progressAudioStaticRef.current;
-    const audio = audioRef.current;
-
-    if (!audioBarStatic || !audio) return;
-
-    const handleChangingTimeByUser = changePlayedTimeByUser(
-      audioBarStatic,
-      audioDurationMS,
-      audio,
-    );
-
-    if (!handleChangingTimeByUser) return;
-
-    audioBarStatic.addEventListener("click", handleChangingTimeByUser);
-
-    return () => {
-      audioBarStatic.removeEventListener("click", handleChangingTimeByUser);
-    };
-  }, [audioDurationMS]);
+  useAudioChangeTimeByUser(progressAudioStaticRef, audioRef, audioDurationMS);
 
   //audio change currentAudioTimeMS when audio is playing
   //or change currentAudioTimeMS to 0 when there is no songs
@@ -110,7 +91,6 @@ const GlobalAudioPlayer = observer(() => {
     };
   }, [activeurl]);
 
-  //audio set to play/stop
   useAudioPlayback(audioRef, isPlaying, currentSong, togglePlay, setIsPlaying);
 
   //audio change volume

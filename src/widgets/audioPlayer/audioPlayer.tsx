@@ -15,6 +15,7 @@ import KeyboardHelpModal from "../../features/keyboardHelpModal/keyboardHelpModa
 import { SettingsStore } from "../../app/stores/settingsStore/settingsStore";
 import FancyAudioVisualizer from "./audioVisualizer/fancyAudioVisualizer";
 import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
+import useAudioPlayback from "../../hooks/useAudioPlayback";
 
 const AudioPlayer = observer(() => {
   const {
@@ -48,12 +49,9 @@ const AudioPlayer = observer(() => {
 
   const { visualizerStyle } = SettingsStore;
 
-  //keyboard navigation
-  let config = {};
-  if (audioRef.current) {
-    config = getMainPageNavigationConfig(audioRef.current);
-  }
-  useKeyboardNavigation(config);
+  useKeyboardNavigation(
+    audioRef.current ? getMainPageNavigationConfig(audioRef.current) : {},
+  );
 
   //audio change audioDurationMS
   useEffect(() => {
@@ -101,38 +99,7 @@ const AudioPlayer = observer(() => {
     };
   }, [activeurl]);
 
-  //audio set to play/stop
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (isPlaying) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-
-    const handlePlay = () => {
-      if (!isPlaying) {
-        togglePlay();
-      }
-      setIsPlaying(true);
-    };
-    const handlePause = () => {
-      if (isPlaying) {
-        togglePlay();
-      }
-      setIsPlaying(false);
-    };
-
-    audio.addEventListener("play", handlePlay);
-    audio.addEventListener("pause", handlePause);
-
-    return () => {
-      audio.removeEventListener("play", handlePlay);
-      audio.removeEventListener("pause", handlePause);
-    };
-  }, [isPlaying, currentSong]);
+  useAudioPlayback(audioRef, isPlaying, currentSong, togglePlay, setIsPlaying);
 
   //audio change volume
   useEffect(() => {
