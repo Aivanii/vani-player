@@ -16,6 +16,7 @@ import FancyAudioVisualizer from "./audioVisualizer/fancyAudioVisualizer";
 import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
 import useAudioPlayback from "../../hooks/useAudioPlayback";
 import useAudioDuration from "../../hooks/useAudioDuration";
+import useAudioTime from "../../hooks/useAudioTime";
 
 const AudioPlayer = observer(() => {
   const {
@@ -41,7 +42,6 @@ const AudioPlayer = observer(() => {
     isPreviousSongInPlaylist,
     setIsPlaying,
   } = currentPlaylistStore;
-  //[0-1]
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioVolumeBarStatic = useRef<HTMLDivElement>(null);
@@ -52,61 +52,11 @@ const AudioPlayer = observer(() => {
   useKeyboardNavigation(
     audioRef.current ? getMainPageNavigationConfig(audioRef.current) : {},
   );
-
-  //audio change audioDurationMS
   useAudioDuration(audioRef, currentAudioTimeMS, activeurl, setAudioDurationMS);
-  // useEffect(() => {
-  //   const audio = audioRef.current;
-  //   if (!audio) return;
-
-  //   const handleLoadedMetadata = () => {
-  //     setAudioDurationMS(audio.duration * 1000);
-  //   };
-
-  //   if (currentAudioTimeMS > 0) {
-  //     audio.currentTime = currentAudioTimeMS / 1000;
-  //   }
-
-  //   audio.addEventListener("loadedmetadata", handleLoadedMetadata);
-
-  //   if (audio.duration > 0) {
-  //     setAudioDurationMS(audio.duration);
-  //   }
-
-  //   return () => {
-  //     audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-  //   };
-  // }, [activeurl, setAudioDurationMS]);
-
-  //audio change currentAudioTimeMS by user
   useAudioChangeTimeByUser(progressAudioStaticRef, audioRef, audioDurationMS);
-
-  //audio change currentAudioTimeMS when audio is playing
-  //or change currentAudioTimeMS to 0 when there is no songs
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    if (!audio) return;
-
-    if (!activeurl) {
-      setCurrentAudioTimeMS(0);
-      return;
-    }
-
-    const handleTimeChange = () => {
-      setCurrentAudioTimeMS(audio.currentTime * 1000);
-    };
-
-    audio.addEventListener("timeupdate", handleTimeChange);
-
-    return () => {
-      audio.removeEventListener("timeupdate", handleTimeChange);
-    };
-  }, [activeurl]);
-
+  useAudioTime(audioRef, activeurl, setCurrentAudioTimeMS);
   useAudioPlayback(audioRef, isPlaying, currentSong, togglePlay, setIsPlaying);
 
-  //audio change volume
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
