@@ -7,6 +7,10 @@ import { MainBg } from "./features/mainBg/mainBg.tsx";
 import RoutesComponent from "./app/router/router.tsx";
 import { useLocation } from "react-router";
 import GlobalAudioPlayer from "./widgets/audioPlayer/globalAudioPlayer.tsx";
+import { memo } from "react";
+import { AudioProvider } from "./providers/AudioProvider.tsx";
+
+const MemoizedGlobalAudioPlayer = memo(GlobalAudioPlayer);
 
 const App = () => {
   const location = useLocation();
@@ -14,7 +18,7 @@ const App = () => {
     <DndProvider backend={HTML5Backend}>
       <Header />
       <RoutesComponent />
-      {location.pathname !== "/" && <GlobalAudioPlayer />}
+      <MemoizedGlobalAudioPlayer isMainPage={location.pathname === "/"} />
       <MainBg />
     </DndProvider>
   );

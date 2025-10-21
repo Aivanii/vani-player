@@ -17,6 +17,7 @@ import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
 import useAudioPlayback from "../../hooks/useAudioPlayback";
 import useAudioDuration from "../../hooks/useAudioDuration";
 import useAudioTime from "../../hooks/useAudioTime";
+import { useAudio } from "../../hooks/useAudio";
 
 const AudioPlayer = observer(() => {
   const {
@@ -43,26 +44,10 @@ const AudioPlayer = observer(() => {
     setIsPlaying,
   } = currentPlaylistStore;
 
-  const audioRef = useRef<HTMLAudioElement>(null);
   const audioVolumeBarStatic = useRef<HTMLDivElement>(null);
   const progressAudioStaticRef = useRef<HTMLDivElement>(null);
 
   const { visualizerStyle } = SettingsStore;
-
-  useKeyboardNavigation(
-    audioRef.current ? getMainPageNavigationConfig(audioRef.current) : {},
-  );
-  useAudioDuration(audioRef, currentAudioTimeMS, activeurl, setAudioDurationMS);
-  useAudioChangeTimeByUser(progressAudioStaticRef, audioRef, audioDurationMS);
-  useAudioTime(audioRef, activeurl, setCurrentAudioTimeMS);
-  useAudioPlayback(audioRef, isPlaying, currentSong, togglePlay, setIsPlaying);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    audio.volume = currentVolume;
-  }, [currentVolume]);
 
   return (
     <div className="border-standart-border inner-glow shadow-standart bg-entity-bg backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
@@ -70,21 +55,6 @@ const AudioPlayer = observer(() => {
         <FancyAudioVisualizer isPlaying={isPlaying} />
       )}
       <div className="z-10 flex flex-col gap-4">
-        <audio
-          id="audio"
-          loop={isLooped}
-          muted={isCurrentlyMuted}
-          preload="auto"
-          src={currentSong?.audio}
-          ref={audioRef}
-          onEnded={() => {
-            if (isNextSongInPlaylist) {
-              setCurrentAudioTimeMS(0);
-            }
-            setNextSong();
-          }}
-        ></audio>
-
         <div className="flex flex-col items-center justify-between">
           <div className="rounded-dynamic inline-block aspect-square w-52 shadow-[0_0_0_4px_#ffffff1f]">
             {currentSong && (
