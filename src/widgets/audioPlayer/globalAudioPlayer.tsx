@@ -11,6 +11,8 @@ import useKeyboardNavigation from "../../hooks/useKeyboardNavigation";
 import { getMainPageNavigationConfig } from "../../config/keyboardNavigationConfig";
 import useAudioPlayback from "../../hooks/useAudioPlayback";
 import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
+import useAudioDuration from "../../hooks/useAudioDuration";
+import useAudioTime from "../../hooks/useAudioTime";
 
 const GlobalAudioPlayer = observer(() => {
   const {
@@ -36,7 +38,7 @@ const GlobalAudioPlayer = observer(() => {
     isPreviousSongInPlaylist,
     setIsPlaying,
   } = currentPlaylistStore;
-  //[0-1]
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const audioVolumeBarStatic = useRef<HTMLDivElement>(null);
   const progressAudioStaticRef = useRef<HTMLDivElement>(null);
@@ -44,60 +46,11 @@ const GlobalAudioPlayer = observer(() => {
   useKeyboardNavigation(
     audioRef.current ? getMainPageNavigationConfig(audioRef.current) : {},
   );
-
-  //audio change audioDurationMS
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const handleLoadedMetadata = () => {
-      setAudioDurationMS(audio.duration * 1000);
-    };
-
-    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
-
-    if (audio.duration > 0) {
-      setAudioDurationMS(audio.duration);
-    }
-
-    return () => {
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-    };
-  }, [activeurl, setAudioDurationMS]);
-
-  //audio change currentAudioTimeMS by user
+  useAudioDuration(audioRef, currentAudioTimeMS, activeurl, setAudioDurationMS);
   useAudioChangeTimeByUser(progressAudioStaticRef, audioRef, audioDurationMS);
-
-  //audio change currentAudioTimeMS when audio is playing
-  //or change currentAudioTimeMS to 0 when there is no songs
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    if (!audio) return;
-
-    if (!activeurl) {
-      setCurrentAudioTimeMS(0);
-      return;
-    }
-
-    const handleTimeChange = () => {
-      setCurrentAudioTimeMS(audio.currentTime * 1000);
-    };
-
-    if (audio.duration > 0) {
-      setAudioDurationMS(audio.duration);
-    }
-
-    audio.addEventListener("timeupdate", handleTimeChange);
-
-    return () => {
-      audio.removeEventListener("timeupdate", handleTimeChange);
-    };
-  }, [activeurl]);
-
+  useAudioTime(audioRef, activeurl, setCurrentAudioTimeMS);
   useAudioPlayback(audioRef, isPlaying, currentSong, togglePlay, setIsPlaying);
 
-  //audio change volume
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -124,7 +77,10 @@ const GlobalAudioPlayer = observer(() => {
           <div className="ml-auto inline-flex w-fit items-center justify-center gap-4 sm:mr-auto sm:gap-6">
             <button
               className={`aspect-square h-12 ${!isPreviousSongInPlaylist && "no-scale"}`}
-              onClick={setPreviousSong}
+              onClick={() => {
+                setCurrentAudioTimeMS(0);
+                setPreviousSong();
+              }}
               title="previous"
               disabled={!isPreviousSongInPlaylist}
               style={
@@ -162,7 +118,10 @@ const GlobalAudioPlayer = observer(() => {
             </button>
             <button
               className={`aspect-square h-12 ${!isNextSongInPlaylist && "no-scale"}`}
-              onClick={setNextSong}
+              onClick={() => {
+                setCurrentAudioTimeMS(0);
+                setNextSong();
+              }}
               disabled={!isNextSongInPlaylist}
               style={
                 !isNextSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }
