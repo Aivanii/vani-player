@@ -61,6 +61,10 @@ const AudioPlayer = observer(() => {
       setAudioDurationMS(audio.duration * 1000);
     };
 
+    if (currentAudioTimeMS > 0) {
+      audio.currentTime = currentAudioTimeMS / 1000;
+    }
+
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
 
     if (audio.duration > 0) {
@@ -121,7 +125,12 @@ const AudioPlayer = observer(() => {
           preload="auto"
           src={currentSong?.audio}
           ref={audioRef}
-          onEnded={setNextSong}
+          onEnded={() => {
+            if (isNextSongInPlaylist) {
+              setCurrentAudioTimeMS(0);
+            }
+            setNextSong();
+          }}
         ></audio>
 
         <div className="flex flex-col items-center justify-between">
@@ -153,7 +162,10 @@ const AudioPlayer = observer(() => {
         <div className="inline-flex items-center gap-6">
           <button
             className={`aspect-square h-12 ${!isPreviousSongInPlaylist && "no-scale"}`}
-            onClick={setPreviousSong}
+            onClick={() => {
+              setCurrentAudioTimeMS(0);
+              setPreviousSong();
+            }}
             title="previous"
             disabled={!isPreviousSongInPlaylist}
             style={
@@ -189,7 +201,10 @@ const AudioPlayer = observer(() => {
           </button>
           <button
             className={`aspect-square h-12 ${!isNextSongInPlaylist && "no-scale"}`}
-            onClick={setNextSong}
+            onClick={() => {
+              setCurrentAudioTimeMS(0);
+              setNextSong();
+            }}
             disabled={!isNextSongInPlaylist}
             style={
               !isNextSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }

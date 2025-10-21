@@ -84,6 +84,10 @@ const GlobalAudioPlayer = observer(() => {
       setCurrentAudioTimeMS(audio.currentTime * 1000);
     };
 
+    if (audio.duration > 0) {
+      setAudioDurationMS(audio.duration);
+    }
+
     audio.addEventListener("timeupdate", handleTimeChange);
 
     return () => {
