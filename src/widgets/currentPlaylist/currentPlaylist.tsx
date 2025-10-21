@@ -9,8 +9,14 @@ import { createPortal } from "react-dom";
 import EditSongPanel from "./EditSongPanel";
 
 const CurrentPlaylist = observer(() => {
-  const { activeurl, isPlaying, playlist, togglePlay, setNewActiveurl } =
-    currentPlaylistStore;
+  const {
+    activeurl,
+    isPlaying,
+    playlist,
+    togglePlay,
+    setNewActiveurl,
+    setCurrentAudioTimeMS,
+  } = currentPlaylistStore;
 
   //we need copyPlaylist for Drag-N-Drop
   const [copyPlaylist, setCopyPlaylist] = useState<Song[]>([]);
@@ -50,6 +56,7 @@ const CurrentPlaylist = observer(() => {
                   setNewActiveurl={setNewActiveurl}
                   togglePlay={togglePlay}
                   moveSong={moveSong}
+                  setCurrentAudioTimeMS={setCurrentAudioTimeMS}
                 />
               );
             })}

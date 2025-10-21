@@ -15,6 +15,7 @@ interface DraggableSongElemProps {
   setNewActiveurl: (url: string) => void;
   togglePlay: () => void;
   moveSong: (dragIndex: number, hoverIndex: number) => void;
+  setCurrentAudioTimeMS: (currentTimeMs: number) => void;
 }
 
 const DraggableSongElem = ({
@@ -25,6 +26,7 @@ const DraggableSongElem = ({
   setNewActiveurl,
   togglePlay,
   moveSong,
+  setCurrentAudioTimeMS,
 }: DraggableSongElemProps) => {
   const ref = useRef<HTMLLIElement>(null);
   const handleContextMenu = useSongContextMenu(song);
@@ -106,9 +108,12 @@ const DraggableSongElem = ({
             className="hover:backdrop-blur-dynamic rounded-dynamic duration-dynamic absolute top-0 left-0 z-10 aspect-square h-full w-full bg-transparent opacity-0 transition-all hover:bg-[rgba(0,0,0,0.5)] hover:opacity-100"
             onClick={() => {
               setNewActiveurl(song.audio);
-              if (!isThisSongActive && !isPlaying) {
-                togglePlay();
-              } else if (isThisSongActive) {
+              if (!isThisSongActive) {
+                setCurrentAudioTimeMS(0);
+                if (!isPlaying) {
+                  togglePlay();
+                }
+              } else {
                 togglePlay();
               }
             }}
