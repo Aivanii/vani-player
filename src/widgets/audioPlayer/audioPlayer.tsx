@@ -15,6 +15,7 @@ import { SettingsStore } from "../../app/stores/settingsStore/settingsStore";
 import FancyAudioVisualizer from "./audioVisualizer/fancyAudioVisualizer";
 import useAudioChangeTimeByUser from "../../hooks/useAudioChangeTimeByUser";
 import useAudioPlayback from "../../hooks/useAudioPlayback";
+import useAudioDuration from "../../hooks/useAudioDuration";
 
 const AudioPlayer = observer(() => {
   const {
@@ -53,28 +54,29 @@ const AudioPlayer = observer(() => {
   );
 
   //audio change audioDurationMS
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+  useAudioDuration(audioRef, currentAudioTimeMS, activeurl, setAudioDurationMS);
+  // useEffect(() => {
+  //   const audio = audioRef.current;
+  //   if (!audio) return;
 
-    const handleLoadedMetadata = () => {
-      setAudioDurationMS(audio.duration * 1000);
-    };
+  //   const handleLoadedMetadata = () => {
+  //     setAudioDurationMS(audio.duration * 1000);
+  //   };
 
-    if (currentAudioTimeMS > 0) {
-      audio.currentTime = currentAudioTimeMS / 1000;
-    }
+  //   if (currentAudioTimeMS > 0) {
+  //     audio.currentTime = currentAudioTimeMS / 1000;
+  //   }
 
-    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+  //   audio.addEventListener("loadedmetadata", handleLoadedMetadata);
 
-    if (audio.duration > 0) {
-      setAudioDurationMS(audio.duration);
-    }
+  //   if (audio.duration > 0) {
+  //     setAudioDurationMS(audio.duration);
+  //   }
 
-    return () => {
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-    };
-  }, [activeurl, setAudioDurationMS]);
+  //   return () => {
+  //     audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+  //   };
+  // }, [activeurl, setAudioDurationMS]);
 
   //audio change currentAudioTimeMS by user
   useAudioChangeTimeByUser(progressAudioStaticRef, audioRef, audioDurationMS);
