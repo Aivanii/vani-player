@@ -167,6 +167,8 @@ const AudioPlayer = observer(() => {
               </button>
               <div className="relative ml-4 flex h-18 w-fit items-center justify-center">
                 <div
+                  data-testid="audioVolumeBar"
+                  id="audioVolumeBar"
                   className={`duration-dynamic block transition-all ${
                     isVolumeBarOnScreen
                       ? "w-20 opacity-100 sm:w-32"
