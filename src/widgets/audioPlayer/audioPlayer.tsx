@@ -105,6 +105,7 @@ const AudioPlayer = observer(() => {
           <button
             className="aspect-square h-16"
             id="playBtn"
+            data-testid="playBtn"
             onClick={togglePlay}
             title="play"
           >
