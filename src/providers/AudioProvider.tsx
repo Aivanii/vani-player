@@ -73,6 +73,7 @@ export const AudioProvider = observer(
         <audio
           className="hidden"
           id="audio"
+          data-testid="audio"
           loop={isLooped}
           muted={isCurrentlyMuted}
           preload="auto"

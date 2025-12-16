@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react";
-import AudioPlayer from "../../widgets/audioPlayer/audioPlayer";
-import { currentPlaylistStore } from "../../app/stores/currentPlaylistStore/currentPlaylistStore";
+import { cleanup, render, screen } from "@testing-library/react";
+import AudioPlayer from "../../../widgets/audioPlayer/audioPlayer";
+import { currentPlaylistStore } from "../../../app/stores/currentPlaylistStore/currentPlaylistStore";
 import { runInAction } from "mobx";
 
-describe("AudioPlayer Volume", () => {
+describe("AudioPlayerBar rendering", () => {
   let originalIsVolumeBarOnScreen: boolean =
     currentPlaylistStore.isVolumeBarOnScreen;
   let originalVolume: number = currentPlaylistStore.volume;
@@ -15,6 +15,7 @@ describe("AudioPlayer Volume", () => {
   });
 
   afterEach(() => {
+    cleanup();
     runInAction(() => {
       currentPlaylistStore.isVolumeBarOnScreen = originalIsVolumeBarOnScreen;
       currentPlaylistStore.volume = originalVolume;
