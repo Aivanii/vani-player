@@ -177,6 +177,8 @@ const AudioPlayer = observer(() => {
                 >
                   <div className="duration-dynamic border-size-dynamic border-standart-border rounded-dynamic absolute bottom-1/2 h-2 w-full translate-y-[50%] transition-all hover:h-3">
                     <div
+                      id="clickableAudioVolumeBar"
+                      data-testid="clickableAudioVolumeBar"
                       className="bg-audioVolumeBar duration-dynamic rounded-dynamic relative z-10 h-full w-full cursor-pointer opacity-15 transition-all"
                       ref={audioVolumeBarStatic}
                       onClick={(event) => {

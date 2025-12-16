@@ -1,9 +1,9 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import AudioPlayer from "../../../widgets/audioPlayer/audioPlayer";
 import { currentPlaylistStore } from "../../../app/stores/currentPlaylistStore/currentPlaylistStore";
 import { runInAction } from "mobx";
 
-describe("AudioPlayerBar rendering", () => {
+describe("AudioPlayerBar", () => {
   let originalIsVolumeBarOnScreen: boolean =
     currentPlaylistStore.isVolumeBarOnScreen;
   let originalVolume: number = currentPlaylistStore.volume;
@@ -47,5 +47,50 @@ describe("AudioPlayerBar rendering", () => {
     const audioVolumeBar = screen.getByTestId("audioVolumeBar");
     expect(currentPlaylistStore.isVolumeBarOnScreen).toBe(true);
     expect(audioVolumeBar).not.toHaveClass("hidden");
+  });
+
+  it("volume changes proportionally to the click position along the audio bar's horizontal axis", () => {
+    runInAction(() => {
+      currentPlaylistStore.volume = 1;
+      currentPlaylistStore.isVolumeBarOnScreen = true;
+    });
+    render(<AudioPlayer />);
+    const audioClickableVolumeBar = screen.getByTestId(
+      "clickableAudioVolumeBar",
+    );
+    audioClickableVolumeBar.style.width = "100px";
+    audioClickableVolumeBar.style.height = "2px";
+
+    audioClickableVolumeBar.getBoundingClientRect = jest.fn(
+      () =>
+        ({
+          left: 100,
+          top: 200,
+          width: 100,
+          height: 2,
+          right: 200,
+          bottom: 202,
+          x: 100,
+          y: 200,
+        }) as DOMRect,
+    );
+
+    const rect = audioClickableVolumeBar.getBoundingClientRect();
+    const clickX = rect.left + 30;
+    const clickY = rect.top + 1;
+
+    fireEvent.click(audioClickableVolumeBar, {
+      clientX: clickX,
+      clientY: clickY,
+    });
+
+    console.log(
+      audioClickableVolumeBar.clientWidth,
+      clickX,
+      clickY,
+      currentPlaylistStore.volume,
+    );
+
+    expect(currentPlaylistStore.volume).toBe(0.3);
   });
 });
