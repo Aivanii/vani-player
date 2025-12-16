@@ -171,8 +171,8 @@ const AudioPlayer = observer(() => {
                   id="audioVolumeBar"
                   className={`duration-dynamic block transition-all ${
                     isVolumeBarOnScreen
-                      ? "w-20 opacity-100 sm:w-32"
-                      : "w-0 opacity-0"
+                      ? "block w-20 opacity-100 sm:w-32"
+                      : "hidden w-0 opacity-0"
                   }`}
                 >
                   <div className="duration-dynamic border-size-dynamic border-standart-border rounded-dynamic absolute bottom-1/2 h-2 w-full translate-y-[50%] transition-all hover:h-3">

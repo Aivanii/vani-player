@@ -14,7 +14,7 @@ interface AudioContext {
 export const AudioContext = createContext<AudioContext | null>(null);
 
 export const AudioProvider = observer(
-  ({ children }: { children: React.ReactNode }) => {
+  ({ children }: { children?: React.ReactNode }) => {
     const {
       activeurl,
       currentSong,
