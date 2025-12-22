@@ -34,10 +34,10 @@ describe("loop button", () => {
           id: "1",
           artist_id: "-",
           album_name: "-",
-          artist_name: " vocalokat",
-          name: "self proclaimed angel",
-          album_image: "./thumbnails/spa.jpeg",
-          audio: "./self_proclaimed_angel.mp3",
+          artist_name: "-",
+          name: "-",
+          album_image: "-",
+          audio: "-",
         },
       ];
       currentPlaylistStore.isLooped = true;

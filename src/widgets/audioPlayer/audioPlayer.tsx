@@ -59,6 +59,8 @@ const AudioPlayer = observer(() => {
           <div className="rounded-dynamic inline-block aspect-square w-52 shadow-[0_0_0_4px_#ffffff1f]">
             {currentSong && (
               <img
+                id="currentSongThumbnail"
+                data-testid="currentSongThumbnail"
                 className="rounded-dynamic aspect-square w-52 object-cover"
                 src={currentSong.album_image || "./thumbnailSongPreview.png"}
                 alt={"current song preview"}
