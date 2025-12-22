@@ -88,6 +88,8 @@ const AudioPlayer = observer(() => {
               setCurrentAudioTimeMS(0);
               setPreviousSong();
             }}
+            id="previousSongBtn"
+            data-testid="previousSongBtn"
             title="previous"
             disabled={!isPreviousSongInPlaylist}
             style={
@@ -132,6 +134,8 @@ const AudioPlayer = observer(() => {
             style={
               !isNextSongInPlaylist ? { opacity: "0.5" } : { opacity: "1" }
             }
+            id="nextSongBtn"
+            data-testid="nextSongBtn"
             title="next"
           >
             <img

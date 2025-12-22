@@ -4,11 +4,6 @@ import AudioPlayer from "../../../widgets/audioPlayer/audioPlayer";
 import { runInAction } from "mobx";
 
 describe("clicks on audioPlayer buttons", () => {
-  beforeEach(() => {
-    jest.clearAllMocks;
-  });
-  afterEach(() => {});
-
   it("toggle play button", async () => {
     runInAction(() => {
       currentPlaylistStore.activeurl = "some-url";
