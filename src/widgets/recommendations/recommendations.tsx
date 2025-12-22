@@ -14,7 +14,7 @@ const Recommendations = observer(() => {
   const { recsStyle } = SettingsStore;
 
   return (
-    <div className="shadow-standart inner-glow bg-entity-bg border-standart-border backdrop-blur-dynamic rounded-dynamic border-size-dynamic relative z-0 mx-auto mb-2 block h-max w-dvw self-stretch px-2 py-6 sm:w-full sm:px-6 md:max-h-[540px]">
+    <div className="shadow-standard inner-glow bg-entity-bg border-standard-border backdrop-blur-dynamic rounded-dynamic border-size-dynamic relative z-0 mx-auto mb-2 block h-max w-dvw self-stretch px-2 py-6 sm:w-full sm:px-6 md:max-h-[540px]">
       <div className="pb-4">
         <h3
           className={`truncate text-2xl font-bold ${recsStyle === "horizontal" ? "" : "ml-6"}`}

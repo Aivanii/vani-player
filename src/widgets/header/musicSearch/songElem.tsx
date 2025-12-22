@@ -22,9 +22,9 @@ const SongElem = ({
 
   return (
     <li
-      className={`border-standart-border hover:shadow-standart rounded-dynamic border-size-dynamic duration-dynamic w-full cursor-pointer p-2 transition-all hover:scale-105 ${
+      className={`border-standard-border hover:shadow-standard rounded-dynamic border-size-dynamic duration-dynamic w-full cursor-pointer p-2 transition-all hover:scale-105 ${
         isThisSongActive
-          ? "shadow-standart draggable-active-elem border-size-dynamic"
+          ? "shadow-standard draggable-active-elem border-size-dynamic"
           : "bg-draggable-elem-bg"
       }`}
       data-audio-url={song.id}

@@ -139,7 +139,7 @@ const AppearanceSettings = observer(() => {
             </span>
             <div className="col-span-2 col-start-1 flex items-center justify-center gap-2">
               <div
-                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${recsStyle === "horizontal" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${recsStyle === "horizontal" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standard-border border-1"}`}
                 onClick={() => setRecsStyle("horizontal")}
               ></div>
               <input
@@ -155,7 +155,7 @@ const AppearanceSettings = observer(() => {
             </div>
             <div className="col-span-2 col-start-3 flex items-center justify-center gap-2">
               <div
-                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${recsStyle === "vertical" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${recsStyle === "vertical" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standard-border border-1"}`}
                 onClick={() => setRecsStyle("vertical")}
               ></div>
               <input
@@ -179,8 +179,8 @@ const AppearanceSettings = observer(() => {
             </span>
             <div className="col-span-2 col-start-1 flex items-center justify-center gap-2">
               <div
-                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${visualizerStyle === "standart" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
-                onClick={() => setVisualizerStyle("standart")}
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${visualizerStyle === "standard" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standard-border border-1"}`}
+                onClick={() => setVisualizerStyle("standard")}
               ></div>
               <input
                 className="hidden"
@@ -188,14 +188,14 @@ const AppearanceSettings = observer(() => {
                 id="recsStyleHorizontal"
                 name="recsStyleHorizontal"
                 value="horizontal"
-                checked={visualizerStyle === "standart"}
-                onChange={() => setVisualizerStyle("standart")}
+                checked={visualizerStyle === "standard"}
+                onChange={() => setVisualizerStyle("standard")}
               />
-              <label htmlFor="recsStyleHorizontal">Standart</label>
+              <label htmlFor="recsStyleHorizontal">standard</label>
             </div>
             <div className="col-span-2 col-start-3 flex items-center justify-center gap-2">
               <div
-                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${visualizerStyle === "fancy" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standart-border border-1"}`}
+                className={`rounded-dynamic bg-active border-size-dynamic duration-dynamic aspect-square h-8 w-8 cursor-pointer transition-all ${visualizerStyle === "fancy" ? "gradientBg1 border-active-border border-2" : "gradientBg2 border-standard-border border-1"}`}
                 onClick={() => setVisualizerStyle("fancy")}
               ></div>
               <input

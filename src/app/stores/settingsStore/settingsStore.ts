@@ -9,7 +9,7 @@ class settingsStore {
   activeAnimSpeedMs: string = "200";
 
   recsStyle: "horizontal" | "vertical" = "horizontal";
-  visualizerStyle: "standart" | "fancy" = "standart";
+  visualizerStyle: "standard" | "fancy" = "standard";
 
   constructor() {
     makeAutoObservable(this);
@@ -93,7 +93,7 @@ class settingsStore {
     activeBorderSize: "1",
     activeAnimSpeedMs: "200",
     recsStyle: "horizontal",
-    visualizerStyle: "standart",
+    visualizerStyle: "standard",
   });
 
   setTheme = (theme: "light" | "dark" | "auto" | "mint" | "lavender") => {
@@ -125,7 +125,7 @@ class settingsStore {
     this.applyActiveAnimSpeedMsToDOM();
   };
 
-  setVisualizerStyle = (visualizerStyle: "standart" | "fancy") => {
+  setVisualizerStyle = (visualizerStyle: "standard" | "fancy") => {
     this.visualizerStyle = visualizerStyle;
     this.applyVisualizerStyle();
   };

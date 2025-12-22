@@ -98,7 +98,7 @@ const Playlists = () => {
     },
   ];
   return (
-    <main className="bg-entity-bg border-standart-border shadow-standart backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto h-full max-w-7xl self-stretch p-6 py-6 md:max-h-dvh">
+    <main className="bg-entity-bg border-standard-border shadow-standard backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto h-full max-w-7xl self-stretch p-6 py-6 md:max-h-dvh">
       <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(220px,1fr))] place-items-center items-center gap-4">
         {playlists.map((playlist) => (
           <PlaylistComponent

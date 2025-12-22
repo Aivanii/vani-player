@@ -50,7 +50,7 @@ const AudioPlayer = observer(() => {
   const { visualizerStyle } = SettingsStore;
 
   return (
-    <div className="border-standart-border inner-glow shadow-standart bg-entity-bg backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
+    <div className="border-standard-border inner-glow shadow-standard bg-entity-bg backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto flex h-full w-dvw min-w-[320px] flex-col items-center self-stretch py-6 sm:w-full sm:max-w-4xl sm:flex-row sm:px-6">
       {visualizerStyle === "fancy" && (
         <FancyAudioVisualizer isPlaying={isPlaying} />
       )}
@@ -77,7 +77,7 @@ const AudioPlayer = observer(() => {
       </div>
 
       <div className="relative z-10 mx-auto mt-4 flex h-full w-[320px] flex-col items-center justify-between gap-4 sm:w-full">
-        {visualizerStyle === "standart" && (
+        {visualizerStyle === "standard" && (
           <AudioVisualizer isPlaying={isPlaying} />
         )}
 
@@ -182,7 +182,7 @@ const AudioPlayer = observer(() => {
                       : "hidden w-0 opacity-0"
                   }`}
                 >
-                  <div className="duration-dynamic border-size-dynamic border-standart-border rounded-dynamic absolute bottom-1/2 h-2 w-full translate-y-[50%] transition-all hover:h-3">
+                  <div className="duration-dynamic border-size-dynamic border-standard-border rounded-dynamic absolute bottom-1/2 h-2 w-full translate-y-[50%] transition-all hover:h-3">
                     <div
                       id="clickableAudioVolumeBar"
                       data-testid="clickableAudioVolumeBar"
@@ -199,7 +199,7 @@ const AudioPlayer = observer(() => {
                     />
                     <div className="duration-dynamic absolute bottom-1/2 left-0 h-full w-20 translate-y-[50%] opacity-100 transition-all sm:w-32">
                       <div
-                        className={`bg-audioVolumeBar duration-dynamic rounded-dynamic border-size-dynamic border-standart-border pointer-events-none relative z-20 h-full transition-all`}
+                        className={`bg-audioVolumeBar duration-dynamic rounded-dynamic border-size-dynamic border-standard-border pointer-events-none relative z-20 h-full transition-all`}
                         style={{ width: `${100 * currentVolume}%` }}
                       ></div>
                     </div>
@@ -230,13 +230,13 @@ const AudioPlayer = observer(() => {
           <span className="text-important cursor-default">
             {formatTime(currentAudioTimeMS)}
           </span>
-          <div className="transition-300 border-size-dynamic border-standart-border rounded-dynamic relative block h-2 hover:h-3">
+          <div className="transition-300 border-size-dynamic border-standard-border rounded-dynamic relative block h-2 hover:h-3">
             <div
               className="bg-progressAudioGradient transition-300 rounded-dynamic relative z-10 h-full w-56 cursor-pointer opacity-15 sm:w-64"
               ref={progressAudioStaticRef}
             ></div>
             <div
-              className={`bg-progressAudioGradient transition-300 rounded-dynamic border-size-dynamic border-standart-border pointer-events-none absolute top-0 left-0 z-20 h-full max-w-56`}
+              className={`bg-progressAudioGradient transition-300 rounded-dynamic border-size-dynamic border-standard-border pointer-events-none absolute top-0 left-0 z-20 h-full max-w-56`}
               style={{
                 width: calculateProgressAudio(
                   currentAudioTimeMS,

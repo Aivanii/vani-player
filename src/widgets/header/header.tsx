@@ -3,13 +3,13 @@ import MusicSearch from "./musicSearch/musicSearch";
 const Header = () => {
   return (
     <>
-      <header className="border-standart-border shadow-standart bg-entity-bg border-size-dynamic relative z-100 flex items-center justify-start px-6 py-4">
+      <header className="border-standard-border shadow-standard bg-entity-bg border-size-dynamic relative z-100 flex items-center justify-start px-6 py-4">
         <a href="/" className="pointer">
           <div className="flex items-center gap-3">
             <img
               src="./favicon.svg"
               alt="site logo"
-              className="border-size-dynamic border-standart-border aspect-square w-10 rounded-full"
+              className="border-size-dynamic border-standard-border aspect-square w-10 rounded-full"
             />
             <span className="text-color-primary hidden text-2xl font-bold tracking-tight select-none sm:block">
               vani-player

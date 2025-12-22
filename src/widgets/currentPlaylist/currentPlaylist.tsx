@@ -38,12 +38,12 @@ const CurrentPlaylist = observer(() => {
 
   return (
     <>
-      <aside className="inner-glow shadow-standart bg-entity-bg border-standart-border backdrop-blur-dynamic rounded-dynamic border-size-dynamic relative z-0 block h-full w-dvw max-w-4xl self-stretch py-4 md:max-h-[820px] md:w-sm lg:w-md">
+      <aside className="inner-glow shadow-standard bg-entity-bg border-standard-border backdrop-blur-dynamic rounded-dynamic border-size-dynamic relative z-0 block h-full w-dvw max-w-4xl self-stretch py-4 md:max-h-[820px] md:w-sm lg:w-md">
         <h2 className="truncate text-center text-2xl font-bold">
           Your playlist
         </h2>
         <div className="py-4">
-          <ul className="shadow-standart-shadow scroll flex h-full w-full flex-col overflow-x-hidden overflow-y-auto md:max-h-[750px]">
+          <ul className="shadow-standard-shadow scroll flex h-full w-full flex-col overflow-x-hidden overflow-y-auto md:max-h-[750px]">
             {copyPlaylist.map((song, index) => {
               const songWithIndex = { ...song, index: index };
               return (

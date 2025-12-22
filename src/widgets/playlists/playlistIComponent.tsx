@@ -16,7 +16,7 @@ const PlaylistComponent = ({
   return (
     <div className="w-64">
       <div
-        className={`border-standart-border inner-glow hover:hover:hover-glow-enhanced backdrop-blur-dynamic rounded-dynamic border-size-dynamic duration-dynamic relative flex aspect-square w-full cursor-pointer flex-col gap-2 p-2 transition-all hover:scale-105`}
+        className={`border-standard-border inner-glow hover:hover:hover-glow-enhanced backdrop-blur-dynamic rounded-dynamic border-size-dynamic duration-dynamic relative flex aspect-square w-full cursor-pointer flex-col gap-2 p-2 transition-all hover:scale-105`}
       >
         <img
           className="rounded-dynamic aspect-square w-full object-cover"

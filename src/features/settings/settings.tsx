@@ -11,7 +11,7 @@ const Settings = () => {
   );
 
   return (
-    <main className="bg-entity-bg border-standart-border shadow-standart backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto h-full max-w-7xl self-stretch py-6 md:max-h-dvh">
+    <main className="bg-entity-bg border-standard-border shadow-standard backdrop-blur-dynamic rounded-dynamic border-size-dynamic mx-auto h-full max-w-7xl self-stretch py-6 md:max-h-dvh">
       <div className="flex items-start justify-between">
         <SettingsSideBar
           activeSection={activeSection}

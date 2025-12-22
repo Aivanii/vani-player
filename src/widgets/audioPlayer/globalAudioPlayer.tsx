@@ -65,15 +65,15 @@ const GlobalAudioPlayer = observer(
 
     return (
       <div
-        className={`bg-entity-bg inner-glow shadow-standart border-standart-border backdrop-blur-dynamic border-size-dynamic fixed right-0 bottom-0 left-0 flex h-28 w-full ${isMainPage ? "pointer-none opacity-0" : ""}`}
+        className={`bg-entity-bg inner-glow shadow-standard border-standard-border backdrop-blur-dynamic border-size-dynamic fixed right-0 bottom-0 left-0 flex h-28 w-full ${isMainPage ? "pointer-none opacity-0" : ""}`}
       >
-        <div className="border-size-dynamic border-standart-border rounded-dynamic absolute block h-2 w-full hover:h-3">
+        <div className="border-size-dynamic border-standard-border rounded-dynamic absolute block h-2 w-full hover:h-3">
           <div
             className="bg-progressAudioGradient rounded-dynamic relative z-10 h-full w-full cursor-pointer opacity-15 sm:w-64"
             ref={progressAudioStaticRef}
           ></div>
           <div
-            className={`bg-progressAudioGradient rounded-dynamic border-size-dynamic border-standart-border pointer-events-none absolute top-0 left-0 z-20 h-full max-w-full`}
+            className={`bg-progressAudioGradient rounded-dynamic border-size-dynamic border-standard-border pointer-events-none absolute top-0 left-0 z-20 h-full max-w-full`}
             style={{
               width: calculateProgressAudio(
                 currentAudioTimeMS,
@@ -227,7 +227,7 @@ const GlobalAudioPlayer = observer(
                       : "w-0 opacity-0"
                   }`}
                 >
-                  <div className="duration-dynamic border-size-dynamic border-standart-border rounded-dynamic duration-all absolute bottom-1/2 h-2 w-full translate-y-[50%] hover:h-3">
+                  <div className="duration-dynamic border-size-dynamic border-standard-border rounded-dynamic duration-all absolute bottom-1/2 h-2 w-full translate-y-[50%] hover:h-3">
                     <div
                       className="bg-audioVolumeBar duration-dynamic rounded-dynamic duration-all relative z-10 h-full w-full cursor-pointer opacity-15"
                       ref={audioVolumeBarStatic}
@@ -242,7 +242,7 @@ const GlobalAudioPlayer = observer(
                     />
                     <div className="duration-dynamic duration-all absolute bottom-1/2 left-0 h-full w-20 translate-y-[50%] opacity-100 sm:w-32">
                       <div
-                        className={`bg-audioVolumeBar duration-dynamic rounded-dynamic border-size-dynamic border-standart-border duration-all pointer-events-none relative z-20 h-full`}
+                        className={`bg-audioVolumeBar duration-dynamic rounded-dynamic border-size-dynamic border-standard-border duration-all pointer-events-none relative z-20 h-full`}
                         style={{ width: `${100 * currentVolume}%` }}
                       ></div>
                     </div>
