@@ -3,7 +3,11 @@ import { observer } from "mobx-react-lite";
 
 const AudioVisualizer = observer(({ isPlaying }: { isPlaying: boolean }) => {
   return (
-    <div className="wave-container">
+    <div
+      className="wave-container"
+      id="standardAudioVisualizer"
+      data-testid="standardAudioVisualizer"
+    >
       {[...Array(14)].map((_, index) => (
         <span
           key={index}

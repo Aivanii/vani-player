@@ -12,7 +12,11 @@ const FancyAudioVisualizer = memo(({ isPlaying }: { isPlaying: boolean }) => {
   }, []);
 
   return (
-    <div className="rounded-dynamic gradientBg2 pointer-events-none absolute bottom-0 z-0 -ml-6 grid h-full w-full grid-cols-60 gap-1 overflow-hidden opacity-70 backdrop-blur-sm">
+    <div
+      id="fancyAudioVisualizer"
+      data-testid="fancyAudioVisualizer"
+      className="rounded-dynamic gradientBg2 pointer-events-none absolute bottom-0 z-0 -ml-6 grid h-full w-full grid-cols-60 gap-1 overflow-hidden opacity-70 backdrop-blur-sm"
+    >
       {bars.map((bar) => (
         <div
           key={bar.id}
