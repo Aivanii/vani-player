@@ -211,6 +211,8 @@ const AudioPlayer = observer(() => {
             className="aspect-square h-12"
             style={isLooped ? { opacity: "1" } : { opacity: "0.5" }}
             title="loop"
+            id="loopBtn"
+            data-testid="loopBtn"
           >
             <img
               onClick={toggleLoop}
