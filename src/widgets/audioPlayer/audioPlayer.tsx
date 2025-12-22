@@ -68,9 +68,16 @@ const AudioPlayer = observer(() => {
             )}
           </div>
         </div>
-        <span className="w-50 truncate text-center text-2xl font-bold">
-          {currentSong?.name}
-        </span>
+
+        {currentSong?.name && (
+          <span
+            className="w-50 truncate text-center text-2xl font-bold"
+            id="currentSongName"
+            data-testid="currentSongName"
+          >
+            {currentSong?.name}
+          </span>
+        )}
         {currentSong?.artist_name && (
           <span className="text-important w-50 truncate text-center">
             by {currentSong?.artist_name}
