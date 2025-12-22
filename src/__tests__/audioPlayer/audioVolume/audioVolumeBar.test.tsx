@@ -84,13 +84,6 @@ describe("AudioPlayerBar", () => {
       clientY: clickY,
     });
 
-    console.log(
-      audioClickableVolumeBar.clientWidth,
-      clickX,
-      clickY,
-      currentPlaylistStore.volume,
-    );
-
     expect(currentPlaylistStore.volume).toBe(0.3);
   });
 });

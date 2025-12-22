@@ -28,12 +28,6 @@ describe("clicks on audioPlayer buttons", () => {
     });
     const playStatusAfterSecondClick = currentPlaylistStore.isPlaying;
 
-    console.log(
-      playStatusBeforeTests,
-      playStatusAfterOneClick,
-      playStatusAfterSecondClick,
-    );
-
     expect(playStatusBeforeTests).toBe(playStatusAfterSecondClick);
     expect(playStatusBeforeTests).not.toBe(playStatusAfterOneClick);
   });
