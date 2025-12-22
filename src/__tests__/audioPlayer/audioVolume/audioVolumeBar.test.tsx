@@ -49,6 +49,20 @@ describe("AudioPlayerBar", () => {
     expect(audioVolumeBar).not.toHaveClass("hidden");
   });
 
+  it("volume bar changes its visibility depending on mouse hovering", () => {
+    runInAction(() => {
+      currentPlaylistStore.isVolumeBarOnScreen = false;
+    });
+    render(<AudioPlayer />);
+    const hoverableElem = screen.getByTestId("hoverableVolumeBarVisualizer");
+
+    fireEvent.mouseEnter(hoverableElem);
+    expect(currentPlaylistStore.isVolumeBarOnScreen).toBe(true);
+
+    fireEvent.mouseLeave(hoverableElem);
+    expect(currentPlaylistStore.isVolumeBarOnScreen).not.toBe(true);
+  });
+
   it("volume changes proportionally to the click position along the audio bar's horizontal axis", () => {
     runInAction(() => {
       currentPlaylistStore.volume = 1;

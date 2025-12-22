@@ -148,6 +148,8 @@ const AudioPlayer = observer(() => {
           </button>
 
           <div
+            id="hoverableVolumeBarVisualizer"
+            data-testid="hoverableVolumeBarVisualizer"
             className="relative hidden w-fit justify-start sm:flex"
             onMouseOut={() => {
               setIsVolumeBarOnScreen(false);
