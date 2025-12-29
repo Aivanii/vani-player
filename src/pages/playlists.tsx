@@ -11,8 +11,7 @@ const Playlists = () => {
           album_name: "dunno",
           artist_name: "vocaCircus",
           name: "【DEX】 Misery Loves Company",
-          album_image:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFnZSjAaKI99uKBZ3-nLEawDVmovGlDjBUw&s",
+          album_image: "./thumbnails/mlc.jpeg",
           audio: "./mlcc.mp3",
         },
       ],

@@ -122,8 +122,8 @@ const DraggableSongElem = ({
               className="invert-icon absolute top-1/2 left-1/2 z-20 -translate-1/2"
               src={
                 isThisSongActive && isPlaying
-                  ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
-                  : "https://img.icons8.com/puffy/32/play.png"
+                  ? "./icons/pause.png"
+                  : "./icons/play.png"
               }
               alt="play this song"
             />
@@ -153,7 +153,7 @@ const DraggableSongElem = ({
               >
                 <img
                   className="invert-icon rounded-dynamic aspect-square w-16 p-1"
-                  src="https://img.icons8.com/?size=100&id=14311&format=png&color=000000"
+                  src="./icons/addedByUser.png"
                   alt="song added by user"
                 />
               </button>

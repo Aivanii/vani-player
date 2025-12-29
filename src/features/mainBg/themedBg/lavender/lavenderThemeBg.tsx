@@ -5,7 +5,7 @@ const LavenderThemeBg = () => {
     <div className="fixed top-0 left-0 -z-10 h-full w-full">
       <img
         className="h-full w-full object-cover blur-md"
-        src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FcJRR7LE.jpg&f=1&nofb=1&ipt=f23961f4feb9106e2cae973ed73129ec6b4f9888a6d57c88ba135409d433d1aa"
+        src="./labenderBg.jpg"
         alt="lavender theme bg"
       />
 

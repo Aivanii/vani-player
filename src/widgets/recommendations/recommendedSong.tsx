@@ -134,7 +134,7 @@ const RecommendedSong = ({
           {recsStyle === "vertical" ? (
             <img
               className="invert-icon aspect-square w-12"
-              src="https://img.icons8.com/?size=100&id=85479&format=png&color=000000"
+              src="./icons/addSongPlaylist.png"
               alt={`add ${song.name} song to playlist`}
             />
           ) : (
@@ -151,8 +151,8 @@ const RecommendedSong = ({
           {recsStyle === "vertical" ? (
             <img
               className="invert-icon aspect-square w-12"
-              src="https://img.icons8.com/?size=100&id=nMbf3MBxBxG7&format=png&color=000000"
-              alt={`add ${song.name} song to playlist`}
+              src="./icons/removeSongPlaylist.png"
+              alt={`remove ${song.name} song from playlist`}
             />
           ) : (
             "Remove"

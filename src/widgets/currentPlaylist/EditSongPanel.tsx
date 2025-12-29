@@ -54,7 +54,7 @@ const EditSongPanel = observer(() => {
             >
               <img
                 className="invert-icon"
-                src="https://img.icons8.com/?size=100&id=99292&format=png&color=000000"
+                src="./icons/changeThumbnail.png"
                 alt="change song thumbnail"
               />
               <input
