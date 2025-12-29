@@ -172,15 +172,21 @@ const AudioPlayer = observer(() => {
             }}
           >
             <div className="flex flex-row items-center justify-center">
-              <button className="p-2" onClick={toggleMute} title="mute">
+              <button
+                className="p-2"
+                onClick={toggleMute}
+                title="mute"
+                id="muteBtn"
+                data-testid="muteBtn"
+              >
                 <img
+                  id="muteBtnImg"
+                  data-testid="muteBtnImg"
                   className="invert-icon aspect-square"
                   width="24"
                   height="24"
                   src={` ${
-                    isCurrentlyMuted
-                      ? "https://img.icons8.com/ios-filled/100/no-audio--v1.png"
-                      : "https://img.icons8.com/ios-filled/100/high-volume--v1.png"
+                    isCurrentlyMuted ? "./volumeOff.png" : "./volumeOn.png"
                   }`}
                   alt="sound changing button"
                 />
