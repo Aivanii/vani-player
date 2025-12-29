@@ -38,4 +38,26 @@ describe("audioPlayer song's name render", () => {
       screen.getByTestId("currentSongName");
     expect(currentSongNameSpan).toHaveTextContent("self proclaimed angel");
   });
+
+  it("no rendering when there is a song but no active artist", () => {
+    runInAction(() => {
+      currentPlaylistStore.playlist = [
+        {
+          id: "1",
+          artist_id: "dunno",
+          album_name: "dunno",
+          artist_name: "vocalokat",
+          name: "",
+          album_image: "./thumbnails/spa.jpeg",
+          audio: "./self_proclaimed_angel.mp3",
+        },
+      ];
+      currentPlaylistStore.activeurl = "./self_proclaimed_angel.mp3";
+    });
+    console.log(currentPlaylistStore.currentSong);
+    render(<AudioPlayer />);
+
+    const currentSongNameSpan = screen.queryByTestId("currentSongName");
+    expect(currentSongNameSpan).toBeNull();
+  });
 });

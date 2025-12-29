@@ -75,7 +75,7 @@ const AudioPlayer = observer(() => {
             id="currentSongName"
             data-testid="currentSongName"
           >
-            {currentSong?.name}
+            {currentSong.name}
           </span>
         )}
         {currentSong?.artist_name && (
@@ -84,7 +84,7 @@ const AudioPlayer = observer(() => {
             id="currentArtistName"
             data-testid="currentArtistName"
           >
-            by {currentSong?.artist_name}
+            by {currentSong.artist_name}
           </span>
         )}
       </div>
