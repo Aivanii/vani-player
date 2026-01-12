@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-const KeyboardHelpModal = () => {
-  const [shouldRender, setShouldRender] = useState(false);
+interface KeyboardHelpModalProps {
+  shouldRenderProp?: boolean;
+}
+
+const KeyboardHelpModal = ({
+  shouldRenderProp = false,
+}: KeyboardHelpModalProps) => {
+  const [shouldRender, setShouldRender] = useState(shouldRenderProp);
 
   useEffect(() => {
     if (!shouldRender) return;
 
     const handleClose = (event: KeyboardEvent) => {
-      console.log(event.key);
       if (event.key === "Escape") {
         setShouldRender(false);
       }
@@ -25,6 +30,8 @@ const KeyboardHelpModal = () => {
     <>
       {createPortal(
         <div
+          id="keyboardHelpModal"
+          data-testid="keyboardHelpModal"
           className={`long-duration-dynamic fixed top-1/2 left-1/2 flex h-full w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center transition-all ${shouldRender ? "scale-100 opacity-100" : "scale-0 opacity-0"}`}
           onClick={(event) => {
             if (event.currentTarget === event.target) setShouldRender(false);
@@ -188,6 +195,8 @@ const KeyboardHelpModal = () => {
             </div>
             <div className="py-6">
               <button
+                id="keyboardModalCloseBtn"
+                data-testid="keyboardModalCloseBtn"
                 className="px-6 py-2"
                 onClick={() => setShouldRender(false)}
               >
@@ -201,6 +210,8 @@ const KeyboardHelpModal = () => {
       <div className="absolute right-0 bottom-0 hidden md:block">
         <button
           className="aspect-square h-12"
+          id="keyboardModalBtn"
+          data-testid="keyboardModalBtn"
           onClick={() => setShouldRender(true)}
           title="show shortcurs"
         >
