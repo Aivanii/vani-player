@@ -75,7 +75,7 @@ const AudioPlayer = observer(() => {
             id="currentSongName"
             data-testid="currentSongName"
           >
-            {currentSong?.name}
+            {currentSong.name}
           </span>
         )}
         {currentSong?.artist_name && (
@@ -84,7 +84,7 @@ const AudioPlayer = observer(() => {
             id="currentArtistName"
             data-testid="currentArtistName"
           >
-            by {currentSong?.artist_name}
+            by {currentSong.artist_name}
           </span>
         )}
       </div>
@@ -113,7 +113,7 @@ const AudioPlayer = observer(() => {
               className="invert-icon"
               width="32"
               height="32"
-              src="https://img.icons8.com/ios/32/left--v1.png"
+              src="./icons/previousTrack.png"
               alt="previous track"
             />
           </button>
@@ -129,11 +129,7 @@ const AudioPlayer = observer(() => {
               className="invert-icon"
               width="32"
               height="32"
-              src={
-                isPlaying
-                  ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
-                  : "https://img.icons8.com/puffy/32/play.png"
-              }
+              src={isPlaying ? "./icons/pause.png" : "./icons/play.png"}
               alt="play button"
             />
           </button>
@@ -155,7 +151,7 @@ const AudioPlayer = observer(() => {
               className="invert-icon"
               width="32"
               height="32"
-              src="https://img.icons8.com/ios/32/right--v1.png"
+              src="./icons/nextTrack.png"
               alt="next track"
             />
           </button>
@@ -172,15 +168,23 @@ const AudioPlayer = observer(() => {
             }}
           >
             <div className="flex flex-row items-center justify-center">
-              <button className="p-2" onClick={toggleMute} title="mute">
+              <button
+                className="p-2"
+                onClick={toggleMute}
+                title="mute"
+                id="muteBtn"
+                data-testid="muteBtn"
+              >
                 <img
+                  id="muteBtnImg"
+                  data-testid="muteBtnImg"
                   className="invert-icon aspect-square"
                   width="24"
                   height="24"
                   src={` ${
                     isCurrentlyMuted
-                      ? "https://img.icons8.com/ios-filled/100/no-audio--v1.png"
-                      : "https://img.icons8.com/ios-filled/100/high-volume--v1.png"
+                      ? "./icons/volumeOff.png"
+                      : "./icons/volumeOn.png"
                   }`}
                   alt="sound changing button"
                 />
@@ -234,7 +238,7 @@ const AudioPlayer = observer(() => {
               className="invert-icon p-1"
               width="32"
               height="32"
-              src="https://img.icons8.com/?size=100&id=83204&format=png&color=000000"
+              src="./icons/loop.png"
               alt="loop"
             />
           </button>

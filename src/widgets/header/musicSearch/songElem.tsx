@@ -53,8 +53,8 @@ const SongElem = ({
               className="invert-icon z-20"
               src={
                 isThisSongActive && isPlaying
-                  ? "https://img.icons8.com/sf-regular-filled/48/pause.png"
-                  : "https://img.icons8.com/puffy/32/play.png"
+                  ? "./icons/pause.png"
+                  : "./icons/play.png"
               }
               alt="play this song"
             />

@@ -46,7 +46,7 @@ const InputFile = () => {
       <button className="w-full p-2" onClick={handleCustomButtonClick}>
         <img
           className="invert-icon aspect-square w-6"
-          src="https://img.icons8.com/?size=100&id=62888&format=png&color=000000"
+          src="./icons/addSong.png"
           alt="add custom song"
           title="add custom song"
         />

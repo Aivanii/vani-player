@@ -2,6 +2,8 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import AudioPlayer from "../../../widgets/audioPlayer/audioPlayer";
 import { currentPlaylistStore } from "../../../app/stores/currentPlaylistStore/currentPlaylistStore";
 import { runInAction } from "mobx";
+import { getAudioPercentageFromClick } from "../../../utils/dom/getAudioPercentageFromClick";
+import { createRef } from "react";
 
 describe("AudioPlayerBar", () => {
   let originalIsVolumeBarOnScreen: boolean =
