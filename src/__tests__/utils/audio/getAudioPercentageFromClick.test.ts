@@ -1,6 +1,6 @@
 import { runInAction } from "mobx";
-import { currentPlaylistStore } from "../../providers";
-import { getAudioPercentageFromClick } from "../../utils/dom/getAudioPercentageFromClick";
+import { currentPlaylistStore } from "../../../providers";
+import { getAudioPercentageFromClick } from "../../../utils/dom/getAudioPercentageFromClick";
 import { createRef } from "react";
 
 describe("getAudioPercentageFromClick", () => {

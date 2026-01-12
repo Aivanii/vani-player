@@ -1,4 +1,4 @@
-import { formatTime } from "../../utils/audio/formatTime";
+import { formatTime } from "../../../utils/audio/formatTime";
 
 describe("formatTime", () => {
   it("works with correct params", () => {
