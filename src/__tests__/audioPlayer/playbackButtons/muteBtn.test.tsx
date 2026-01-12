@@ -20,14 +20,14 @@ describe("mute button", () => {
     render(<AudioPlayer />);
 
     const muteBtnImg = screen.getByTestId("muteBtnImg");
-    expect(muteBtnImg).toHaveAttribute("src", " ./volumeOn.png");
+    expect(muteBtnImg).toHaveAttribute("src", " ./icons/volumeOn.png");
     expect(currentPlaylistStore.isMuted).toBe(false);
 
     const muteBtn = screen.getByTestId("muteBtn");
     await act(async () => {
       fireEvent.click(muteBtn);
     });
-    expect(muteBtnImg).toHaveAttribute("src", " ./volumeOff.png");
+    expect(muteBtnImg).toHaveAttribute("src", " ./icons/volumeOff.png");
     expect(currentPlaylistStore.isMuted).toBe(true);
   });
 
