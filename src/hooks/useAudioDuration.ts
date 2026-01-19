@@ -21,10 +21,6 @@ const useAudioDuration = (
 
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
 
-    if (audio.duration > 0) {
-      setAudioDurationMS(audio.duration);
-    }
-
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
     };

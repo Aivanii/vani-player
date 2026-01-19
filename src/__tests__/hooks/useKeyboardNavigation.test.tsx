@@ -47,6 +47,13 @@ describe("useKeyboardNavigation", () => {
     });
   });
 
+  it("shouldn't call anything when an input is focused", () => {
+    mockActiveElement("INPUT", false);
+    renderHook(() => useKeyboardNavigation(mockCallbacks));
+    document.dispatchEvent(new KeyboardEvent("keydown", {key: "Enter"}))
+    expect(mockCallbacks.onEnter).not.toHaveBeenCalled();
+  })
+
   it("should call appropriate callbacks for arrow keys", () => {
     renderHook(() => useKeyboardNavigation(mockCallbacks));
 
@@ -87,4 +94,55 @@ describe("useKeyboardNavigation", () => {
     document.dispatchEvent(new KeyboardEvent("keydown", { key: "m" }));
     expect(mockCallbacks.onKeyM).toHaveBeenCalledTimes(1);
   });
+
+  it("should call appropriate callbacks for comma and period", () => {
+    renderHook(() => useKeyboardNavigation(mockCallbacks));
+
+    const testCases = [
+      { key: ",", callback: "onComma" },
+      { key: ".", callback: "onPeriod" },
+    ];
+
+    testCases.forEach(({ key, callback }) => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key }));
+      expect(
+        mockCallbacks[callback as keyof typeof mockCallbacks],
+      ).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it("should call appropriate callbacks for number buttons", () => {
+    renderHook(() => useKeyboardNavigation(mockCallbacks));
+
+    const testCases = [
+      { key: "1", callback: "onDigit1" },
+      { key: "2", callback: "onDigit2" },
+      { key: "3", callback: "onDigit3" },
+      { key: "4", callback: "onDigit4" },
+      { key: "5", callback: "onDigit5" },
+      { key: "6", callback: "onDigit6" },
+      { key: "7", callback: "onDigit7" },
+      { key: "8", callback: "onDigit8" },
+      { key: "9", callback: "onDigit9" },
+    ];
+
+    testCases.forEach(({ key, callback }) => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key }));
+      expect(
+        mockCallbacks[callback as keyof typeof mockCallbacks],
+      ).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it("should call appropriate callbacks when activeElement is null", () => {
+    Object.defineProperty(document, "activeElement", {
+      value: null,
+      writable: true,
+    });
+
+    renderHook(() => useKeyboardNavigation(mockCallbacks));
+
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    expect(mockCallbacks.onEnter).toHaveBeenCalledTimes(1);
+  })
 });
