@@ -47,6 +47,17 @@ describe("useKeyboardNavigation", () => {
     });
   });
 
+  it("shouldn't call anything when an input is focused", () => {
+    renderHook(() => useKeyboardNavigation(mockCallbacks));
+
+    mockActiveElement("INPUT", false);
+    document.dispatchEvent(new KeyboardEvent("keydown", {key: "Enter"}))
+    mockActiveElement("TEXTAREA", false);
+    document.dispatchEvent(new KeyboardEvent("keydown", {key: "Enter"}))
+    
+    expect(mockCallbacks.onEnter).not.toHaveBeenCalled();
+  })
+
   it("should call appropriate callbacks for arrow keys", () => {
     renderHook(() => useKeyboardNavigation(mockCallbacks));
 
