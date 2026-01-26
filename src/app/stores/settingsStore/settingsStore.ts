@@ -84,7 +84,7 @@ class settingsStore {
 
   private applyVisualizerStyle = () => {
     const root = document.documentElement;
-    root.style.setProperty("--data-visualizer-style", this.activeAnimSpeedMs);
+    root.style.setProperty("--data-visualizer-style", this.visualizerStyle);
   };
 
   private getDefaultValuesForReset = () => ({
