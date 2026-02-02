@@ -168,4 +168,44 @@ describe("settingsStore", () => {
       );
     });
   });
+
+  describe("setActiveRounding", () => {
+    it("active rounding value is applied properly ", () => {
+      SettingsStore.activeRounding = "2";
+      SettingsStore.setActiveRounding("12");
+
+      expect(SettingsStore.activeRounding).toBe("12");
+      expect(mockRootElement.style.setProperty).toHaveBeenCalledWith(
+        "--data-active-rounding",
+        "12px",
+      );
+    });
+  });
+
+  describe("setActiveBorderSize", () => {
+    it("active border size value is applied properly ", () => {
+      SettingsStore.activeBorderSize = "2";
+      SettingsStore.setActiveBorderSize("12");
+
+      expect(SettingsStore.activeBorderSize).toBe("12");
+      expect(mockRootElement.style.setProperty).toHaveBeenCalledWith(
+        "--data-active-border-size",
+        "12px",
+      );
+    });
+  });
+
+  describe("setActiveAnimSpeedMs", () => {
+    it("active active anim speed value is applied properly ", () => {
+      SettingsStore.activeAnimSpeedMs = "250";
+      SettingsStore.setActiveAnimSpeedMs("100");
+
+      expect(SettingsStore.activeAnimSpeedMs).toBe("100");
+      expect(mockRootElement.style.setProperty).toHaveBeenCalledWith(
+        "--data-active-anim-speed",
+        "100ms",
+      );
+    });
+  });
+
 });
