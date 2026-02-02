@@ -196,7 +196,7 @@ describe("settingsStore", () => {
   });
 
   describe("setActiveAnimSpeedMs", () => {
-    it("active active anim speed value is applied properly ", () => {
+    it("active anim speed value is applied properly ", () => {
       SettingsStore.activeAnimSpeedMs = "250";
       SettingsStore.setActiveAnimSpeedMs("100");
 
@@ -208,4 +208,35 @@ describe("settingsStore", () => {
     });
   });
 
+  describe("resetToDefaults", () => {
+    it("all the params reset on a func's call", () => {
+      SettingsStore.setTheme("lavender");
+      SettingsStore.setActiveBlur("0");
+      SettingsStore.setActiveRounding("0");
+      SettingsStore.setActiveBorderSize("0");
+      SettingsStore.setActiveAnimSpeedMs("0");
+      SettingsStore.setRecsStyle("vertical");
+      SettingsStore.setVisualizerStyle("fancy");
+
+      expect(SettingsStore.theme).toBe("lavender");
+      expect(SettingsStore.activeBlur).toBe("0");
+      expect(SettingsStore.activeRounding).toBe("0");
+      expect(SettingsStore.activeBorderSize).toBe("0");
+      expect(SettingsStore.activeAnimSpeedMs).toBe("0");
+      expect(SettingsStore.recsStyle).toBe("vertical");
+      expect(SettingsStore.visualizerStyle).toBe("fancy");
+
+      runInAction(() => {
+        SettingsStore.resetToDefaults();
+      });
+
+      expect(SettingsStore.theme).not.toBe("lavender");
+      expect(SettingsStore.activeBlur).not.toBe("0");
+      expect(SettingsStore.activeRounding).not.toBe("0");
+      expect(SettingsStore.activeBorderSize).not.toBe("0");
+      expect(SettingsStore.activeAnimSpeedMs).not.toBe("0");
+      expect(SettingsStore.recsStyle).not.toBe("vertical");
+      expect(SettingsStore.visualizerStyle).not.toBe("fancy");
+    });
+  });
 });

@@ -88,6 +88,7 @@ class settingsStore {
   };
 
   private getDefaultValuesForReset = () => ({
+    theme: "auto",
     activeBlur: "8",
     activeRounding: "40",
     activeBorderSize: "1",
