@@ -1,10 +1,5 @@
+import { runInAction } from "mobx";
 import { SettingsStore } from "../../app/stores/settingsStore/settingsStore";
-import { settingsSections } from "../../features/settings/settingsSections";
-
-Object.defineProperty(window, "matchMedia", {
-  writable: true,
-  value: jest.fn().mockImplementation((query) => ({})),
-});
 
 const mockRootElement = {
   style: { setProperty: jest.fn() },
@@ -14,41 +9,103 @@ const mockRootElement = {
 };
 
 describe("settingsStore", () => {
+  const mockMatchMedia = jest.fn();
   beforeAll(() => {
     Object.defineProperty(document, "documentElement", {
       value: mockRootElement,
       writable: true,
     });
+    Object.defineProperty(window, "matchMedia", {
+      value: mockMatchMedia,
+      writable: true,
+    });
   });
   beforeEach(() => {
     jest.clearAllMocks();
+    mockMatchMedia.mockClear();
+    mockMatchMedia.mockImplementation((q: string) => ({
+      matches: q === "(prefers-color-scheme: dark)" ? true : false,
+      media: q,
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    }));
   });
 
   describe("setTheme", () => {
     it("should set light theme and update DOM", () => {
-      expect(1).toBe(2);
+      SettingsStore.setTheme("light");
+      expect(mockRootElement.setAttribute).toHaveBeenCalledWith(
+        "data-theme",
+        "light",
+      );
     });
     it("should set dark theme and update DOM", () => {
-      expect(1).toBe(2);
+      SettingsStore.setTheme("dark");
+      expect(mockRootElement.setAttribute).toHaveBeenCalledWith(
+        "data-theme",
+        "dark",
+      );
     });
     it("should set mint theme and update DOM", () => {
-      expect(1).toBe(2);
+      SettingsStore.setTheme("mint");
+      expect(mockRootElement.setAttribute).toHaveBeenCalledWith(
+        "data-theme",
+        "mint",
+      );
     });
     it("should set lavender theme and update DOM", () => {
-      expect(1).toBe(2);
+      SettingsStore.setTheme("lavender");
+      expect(mockRootElement.setAttribute).toHaveBeenCalledWith(
+        "data-theme",
+        "lavender",
+      );
     });
     it("auto theme detection", () => {
-      expect(1).toBe(2);
+      SettingsStore.setTheme("auto");
+      expect(mockRootElement.setAttribute).not.toHaveBeenCalledWith(
+        "data-theme",
+        "auto",
+      );
+
+      expect(SettingsStore.theme).toBe("auto");
     });
   });
 
   describe("auto theme detection", () => {
     it("should use dark theme when prefers-color-scheme: dark matches", () => {
-      expect(1).toBe(2);
+      runInAction(() => {
+        SettingsStore.setTheme("auto");
+      });
+
+      expect(mockMatchMedia).toHaveBeenCalledWith(
+        "(prefers-color-scheme: dark)",
+      );
+
+      expect(mockRootElement.setAttribute).toHaveBeenCalledWith(
+        "data-theme",
+        "dark",
+      );
     });
 
     it("should use light theme when prefers-color-scheme: light matches", () => {
-      expect(1).toBe(2);
+      mockMatchMedia.mockImplementation((q: string) => ({
+        matches: q === "(prefers-color-scheme: light)",
+        media: q,
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      }));
+      runInAction(() => {
+        SettingsStore.setTheme("auto");
+      });
+
+      expect(mockMatchMedia).toHaveBeenCalledWith(
+        "(prefers-color-scheme: dark)",
+      );
+
+      expect(mockRootElement.setAttribute).toHaveBeenCalledWith(
+        "data-theme",
+        "light",
+      );
     });
   });
 
