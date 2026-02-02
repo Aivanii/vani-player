@@ -113,7 +113,7 @@ describe("settingsStore", () => {
     it("should correctly switch between themes", () => {});
   });
 
-  describe("visualizerStyle", () => {
+  describe("setVisualizerStyle", () => {
     it("fancy visualizer property is applied properly", () => {
       SettingsStore.setVisualizerStyle("fancy");
 
@@ -135,7 +135,7 @@ describe("settingsStore", () => {
     });
   });
 
-  describe("recsStyle", () => {
+  describe("setRecsStyle", () => {
     it("vertical recsStyle property is applied properly", () => {
       SettingsStore.setRecsStyle("vertical");
 
@@ -153,6 +153,19 @@ describe("settingsStore", () => {
         SettingsStore.recsStyle,
       );
       expect(SettingsStore.recsStyle).toBe("horizontal");
+    });
+  });
+
+  describe("setActiveBlur", () => {
+    it("active blur value is applied properly ", () => {
+      SettingsStore.activeBlur = "2";
+      SettingsStore.setActiveBlur("12");
+
+      expect(SettingsStore.activeBlur).toBe("12");
+      expect(mockRootElement.style.setProperty).toHaveBeenCalledWith(
+        "--data-active-blur",
+        "12px",
+      );
     });
   });
 });
