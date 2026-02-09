@@ -50,9 +50,9 @@ describe("useKeyboardNavigation", () => {
   it("shouldn't call anything when an input is focused", () => {
     mockActiveElement("INPUT", false);
     renderHook(() => useKeyboardNavigation(mockCallbacks));
-    document.dispatchEvent(new KeyboardEvent("keydown", {key: "Enter"}))
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
     expect(mockCallbacks.onEnter).not.toHaveBeenCalled();
-  })
+  });
 
   it("should call appropriate callbacks for arrow keys", () => {
     renderHook(() => useKeyboardNavigation(mockCallbacks));
@@ -144,5 +144,60 @@ describe("useKeyboardNavigation", () => {
 
     document.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
     expect(mockCallbacks.onEnter).toHaveBeenCalledTimes(1);
-  })
+  });
+
+  describe("edge cases", () => {
+    it("should not call shortcut func when there is an editable elem focused", () => {
+      mockActiveElement("DIV", true);
+      renderHook(() => useKeyboardNavigation(mockCallbacks));
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowLeft" }),
+      );
+      expect(mockCallbacks.onLeft).not.toHaveBeenCalled();
+    });
+    it("should handle INPUT element", () => {
+      mockActiveElement("INPUT", true);
+      renderHook(() => useKeyboardNavigation(mockCallbacks));
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowLeft" }),
+      );
+      expect(mockCallbacks.onLeft).not.toHaveBeenCalled();
+    });
+    it("should handle TEXTAREA element", () => {
+      mockActiveElement("TEXTAREA", true);
+      renderHook(() => useKeyboardNavigation(mockCallbacks));
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowLeft" }),
+      );
+      expect(mockCallbacks.onLeft).not.toHaveBeenCalled();
+    });
+    it("should handle undefined callbacks in config", () => {
+      const emptyConfig = {};
+      renderHook(() => useKeyboardNavigation(emptyConfig));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowLeft" }),
+      );
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowRight" }),
+      );
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowUp" }));
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "ArrowDown" }),
+      );
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: " " }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "m" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "." }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "," }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "1" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "2" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "3" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "4" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "5" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "6" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "7" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "8" }));
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "9" }));
+    });
+  });
 });
