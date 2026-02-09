@@ -18,15 +18,15 @@ export const AudioProvider = observer(
     const {
       activeurl,
       currentSong,
-      togglePlay,
       isPlaying,
-      setNextSong,
       currentVolume,
       isCurrentlyMuted,
       currentAudioTimeMS,
+      isLooped,
+      togglePlay,
+      setNextSong,
       setCurrentAudioTimeMS,
       setAudioDurationMS,
-      isLooped,
       setIsPlaying,
     } = currentPlaylistStore;
 
